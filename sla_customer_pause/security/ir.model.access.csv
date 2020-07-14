@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sla_customer_pause_sla_customer_pause,sla_customer_pause.sla_customer_pause,model_sla_customer_pause_sla_customer_pause,base.group_user,1,1,1,1
