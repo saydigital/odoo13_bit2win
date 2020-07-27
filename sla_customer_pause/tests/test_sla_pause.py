@@ -2,6 +2,7 @@
 
 from odoo.tests.common import TransactionCase
 from odoo import fields
+from odoo.exceptions import UserError, AccessError, ValidationError
 
 class TestHelpdeskTicket(TransactionCase):
     
@@ -46,20 +47,32 @@ class TestHelpdeskTicket(TransactionCase):
         time_from_ticket_creation = self.HelpdeskSlaTicket.compute_elapsed_time_from_ticket_creation(date_creation_ticket, time_end_awaiting)
         
         # assert 
-        self.assertEqual(time_from_ticket_creation.days, 19)
+        self.assertEqual(time_from_ticket_creation.days, 13)
         self.assertEqual(time_from_ticket_creation.seconds, 0)
         
     def test_Difference_MonthsYearDaysDifferent_compute(self):
         # arrange
-        date_creation_ticket = fields.Datetime.now().replace(day=1, month=7, year=2020, hour=20, minute=0, second=4)
-        time_end_awaiting = fields.Datetime.now().replace(day=31, month=7, year=2020, hour=20, minute=0, second=7)
+        date_creation_ticket = fields.Datetime.now().replace(day=10, month=7, year=2020, hour=20, minute=0, second=4)
+        time_end_awaiting = fields.Datetime.now().replace(day=24, month=7, year=2020, hour=20, minute=0, second=7)
         
         # act
         time_from_ticket_creation = self.HelpdeskSlaTicket.compute_elapsed_time_from_ticket_creation(date_creation_ticket, time_end_awaiting)
         
         # assert 
-        self.assertEqual(time_from_ticket_creation.days, 23)
-        self.assertEqual(time_from_ticket_creation.seconds, 74823)
+        self.assertEqual(time_from_ticket_creation.days, 10)
+        self.assertEqual(time_from_ticket_creation.seconds, 0)
+        
+    def test_Difference_MonthsYearDaysDifferentChristmasHoliday_compute(self):
+        # arrange
+        date_creation_ticket = fields.Datetime.now().replace(day=23, month=12, year=2020, hour=20, minute=0, second=0)
+        time_end_awaiting = fields.Datetime.now().replace(day=28, month=12, year=2020, hour=20, minute=0, second=0)
+        
+        # act
+        time_from_ticket_creation = self.HelpdeskSlaTicket.compute_elapsed_time_from_ticket_creation(date_creation_ticket, time_end_awaiting)
+        
+        # assert 
+        self.assertEqual(time_from_ticket_creation.days, 3)
+        self.assertEqual(time_from_ticket_creation.seconds, 0)
     
     def test_Difference_DaysTheSame_compute(self):
         # arrange
@@ -78,34 +91,16 @@ class TestHelpdeskTicket(TransactionCase):
         time_end_awaiting = fields.Datetime.now().replace(day=20, month=7, year=2020, hour=12, minute=0, second=0)
         date_creation_ticket = fields.Datetime.now().replace(day=10, month=7, year=2020, hour=12, minute=0, second=0)
         
-        # act
-        #self.assertRaises(self.HelpdeskSlaTicket.compute_elapsed_time_from_ticket_creation(time_end_awaiting, date_creation_ticket))
-
-        # assert 
-        #self.assertException(time_from_ticket_creation)
+        # assert
+        with self.assertRaises(ValidationError):
+            # act
+            self.HelpdeskSlaTicket.compute_elapsed_time_from_ticket_creation(time_end_awaiting, date_creation_ticket)
+        
+    def test_compute_deadline(self):
+        
+         self.HelpdeskSlaTicket.compute_deadline(self )
         
         
         
         
-        
-        
-        
-        
-        
-        
-        
-    def test_work_duration(self):
-        # arrange
-        time_end_awaiting = fields.Datetime.now().replace(day=26, month=12, year=2020, hour=12, minute=0, second=0)
-        date_creation_ticket = fields.Datetime.now().replace(day=25, month=12, year=2020, hour=12, minute=0, second=0)
-        
-        
-        calendar_id = self.env['resource.calendar'].browse(1)
-        
-        work_duration = calendar_id.get_work_duration_data(date_creation_ticket, time_end_awaiting, compute_leaves=True)
-        
-        a = 0
-        
-        #duration_data = status.ticket_id.team_id.resource_calendar_id.get_work_duration_data(start_dt, end_dt, compute_leaves=True)
-
-               
+    

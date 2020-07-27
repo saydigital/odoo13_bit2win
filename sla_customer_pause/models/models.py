@@ -59,7 +59,7 @@ class HelpdeskTicket(models.Model):
         
         work_days = self.team_id.resource_calendar_id.get_work_duration_data(ticket_create_date, time_now, compute_leaves=True)
         
-        return timedelta(days=int(work_days['days']), seconds=int(work_days['hours'] * 60 * 60))
+        return timedelta(days=int(work_days['days']))
     
     def compute_deadline(self, working_calendar, remainig_sla_days, deadline, create_dt, time_hours):
         deadline = working_calendar.plan_days(remainig_sla_days, deadline, compute_leaves=True)
