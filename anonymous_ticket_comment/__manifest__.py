@@ -27,9 +27,16 @@
         # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
+        'views/assets.xml'
     ],
+
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
+    ],
+    
+    # Qweb
+    'qweb': [
+        "static/src/xml/portal_chatter.xml",
     ],
 }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+
+     <t t-extend="portal.chatter_messages">
+		<t t-jquery=".o_portal_chatter_message_title" t-operation="replace">
+           <h5 class='mb-1'><t t-esc="message.author_id[1]"/></h5>
+           <h5 class='mb-1'><t t-esc="message.author_id"/></h5>
+           <h5 class='mb-1'><t t-esc="message.id"/></h5>
+		</t>
+   	 </t>
+   	 
+</templates>
