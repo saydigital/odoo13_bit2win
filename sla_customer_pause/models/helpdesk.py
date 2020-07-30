@@ -4,13 +4,35 @@ from odoo import api, fields, models, _
 from odoo import exceptions 
 from datetime import datetime, timedelta
 
-
 class HelpdeskTicket(models.Model):
-    _inherit = "helpdesk.ticket"
+    _inherit = ["helpdesk.ticket"]
     _description = 'Helpdesk ticket inherit'
     
     awaiting_start = fields.Datetime()
-
+    
+    @api.returns('mail.message', lambda value: value.id)
+    def message_post(self, *,
+                     body='', subject=None, message_type='notification',
+                     email_from=None, author_id=None, parent_id=False,
+                     subtype_id=False, subtype=None, partner_ids=None, channel_ids=None,
+                     attachments=None, attachment_ids=None,
+                     add_sign=True, record_name=False,
+                     **kwargs):
+        
+        message =  super(HelpdeskTicket, self).message_post(body=body, subject=subject, message_type=message_type,
+                     email_from=email_from, author_id=author_id, parent_id=parent_id,
+                     subtype_id=subtype_id, subtype=subtype, partner_ids=partner_ids, channel_ids=channel_ids,
+                     attachments=attachments, attachment_ids=attachment_ids,
+                     add_sign=add_sign, record_name=record_name,
+                     **kwargs)
+            
+        communication_user = self.team_id.communication_user.id   
+        
+        if communication_user!=False:
+            message.communication_user = communication_user
+            
+        return message    
+   
     def write(self, vals):
         
         if self._is_awaiting_state(vals.get('stage_id')):
@@ -60,13 +82,14 @@ class HelpdeskTicket(models.Model):
         work_days = self.team_id.resource_calendar_id.get_work_duration_data(ticket_create_date, time_now, compute_leaves=True)
         
         return timedelta(days=int(work_days['days']))
-    
+        
     def compute_deadline(self, working_calendar, remainig_sla_days, deadline, create_dt, time_hours):
-        deadline = working_calendar.plan_days(remainig_sla_days, deadline, compute_leaves=True)
+        new_deadline = working_calendar.plan_days(remainig_sla_days, deadline, compute_leaves=True)
                 
-        deadline.replace(hour=create_dt.hour, minute=create_dt.minute, second=create_dt.second, microsecond=create_dt.microsecond)
-    
-        return self.compute_plan_hours(working_calendar, time_hours, deadline)
+        #new_deadline = new_deadline.replace(hour=deadline.hour, minute=deadline.minute, second=deadline.second, microsecond=deadline.microsecond)
+        
+        return new_deadline
+        #return self.compute_plan_hours(working_calendar, time_hours, new_deadline)
     
     def compute_plan_hours(self, working_calendar, time_hours, deadline):
         return working_calendar.plan_hours(time_hours, deadline, compute_leaves=True)
@@ -84,3 +107,11 @@ class HelpdeskTicket(models.Model):
             return False
         
         return (AWAITING_STATE in stage_id.name.lower())
+
+class HelpdeskTeam(models.Model):
+    _inherit = "helpdesk.team"
+    
+    communication_user = fields.Many2one('res.user', 'User')
+    
+
+    
