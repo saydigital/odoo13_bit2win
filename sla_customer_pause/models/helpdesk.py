@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from odoo import api, fields, models, _
 from odoo import exceptions 
 from datetime import datetime, timedelta
@@ -107,12 +105,3 @@ class HelpdeskTicket(models.Model):
             return False
         
         return (AWAITING_STATE in stage_id.name.lower())
-
-class HelpdeskTeam(models.Model):
-    _inherit = "helpdesk.team"
-    
-    communication_user_id = fields.Many2one('res.partner', 'Author')
-    
-   
-
-    
