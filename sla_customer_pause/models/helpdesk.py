@@ -26,10 +26,10 @@ class HelpdeskTicket(models.Model):
                      add_sign=add_sign, record_name=record_name,
                      **kwargs)
             
-        communication_user = self.team_id.communication_user.id   
+        communication_user_id = self.team_id.communication_user_id  
         
-        if communication_user!=False:
-            message.communication_user = communication_user
+        if bool(communication_user_id) & bool(1 in self.env.user.groups_id.ids):
+            message.communication_user_id = communication_user_id.id
             
         return message    
    
@@ -111,7 +111,8 @@ class HelpdeskTicket(models.Model):
 class HelpdeskTeam(models.Model):
     _inherit = "helpdesk.team"
     
-    communication_user = fields.Many2one('res.user', 'User')
+    communication_user_id = fields.Many2one('res.partner', 'Author')
     
+   
 
     
