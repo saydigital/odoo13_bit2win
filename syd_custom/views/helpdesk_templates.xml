@@ -37,12 +37,12 @@
                                     
                                     <div class="form-group row form-field o_website_form_required">
                                     <div class="col-lg-3 col-md-4 text-right">
-                                            <label class="col-form-label" for="security_level">Security Level</label>
+                                            <label class="col-form-label" for="priority">Security Level</label>
                                         </div>
                                         <div class="col-lg-7 col-md-8">
-                                    		<select name="security_level" class="form-control" autocomplete="on">
+                                    		<select name="priority" class="form-control" autocomplete="on">
 							                	<option selected="selected" disabled="True" value="select"> -- Seleziona -- </option>
-							                    <t t-foreach="security_level or []" t-as="sl">
+							                    <t t-foreach="priority or []" t-as="sl">
 							                        <option t-att-value="sl[0]" >
 							                            <t t-esc="sl[1]"/>
 							                        </option>
@@ -55,12 +55,12 @@
 							          
 							       <div class="form-group row form-field o_website_form_required">
                                     <div class="col-lg-3 col-md-4 text-right">
-                                            <label class="col-form-label" for="impact">Impact</label>
+                                            <label class="col-form-label" for="ticket_type_id">Impact</label>
                                         </div>
                                         <div class="col-lg-7 col-md-8">
-                                    		<select name="impact" class="form-control" autocomplete="on">
+                                    		<select name="ticket_type_id" class="form-control" autocomplete="on">
 							                	<option selected="selected" disabled="True" value="select"> -- Seleziona -- </option>
-							                    <t t-foreach="impact or []" t-as="i">
+							                    <t t-foreach="types or []" t-as="i">
 							                        <option t-att-value="i[0]" >
 							                            <t t-esc="i[1]"/>
 							                        </option>
