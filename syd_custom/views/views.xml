@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+      <record model="ir.ui.view" id="view_ticket_ext">
+		         <field name="name">helpdesk.ticket.contract</field>
+		        <field name="model">helpdesk.ticket</field>
+		        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+		        
+		        <field name="arch" type="xml">
+		         <xpath expr="//field[@name='ticket_type_id']" position="after">
+		         		<field name="security_level" />
+		         		<field name="impact" />
+		         		<field name="user_who_found" />
+		         		<field name="partner_created_id" />
+		         </xpath>
+		        
+		        
+		        </field>
+		     </record>
+    </data>
+</odoo>
