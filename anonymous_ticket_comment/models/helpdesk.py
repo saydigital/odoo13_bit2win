@@ -19,7 +19,7 @@ class HelpdeskTicket(models.Model):
                      add_sign=True, record_name=False,
                      **kwargs):
         
-        if self._is_user_from_backend() & bool(message_type=='comment'):
+        if self._is_user_from_backend() & bool(message_type=='comment') & bool(subtype=='mail.mt_comment'):
             author_id = self.team_id.communication_user_id.id #invert user
         
         message = super(HelpdeskTicket, self).message_post(body=body, subject=subject, message_type=message_type,
@@ -29,7 +29,7 @@ class HelpdeskTicket(models.Model):
                      add_sign=add_sign, record_name=record_name,
                      **kwargs)
         
-        if self._is_user_from_backend() & bool(message_type=='comment'):
+        if self._is_user_from_backend() & bool(message_type=='comment') & bool(subtype=='mail.mt_comment'):
             message.communication_user_id = self.env.user.partner_id
             
             #Log the message
