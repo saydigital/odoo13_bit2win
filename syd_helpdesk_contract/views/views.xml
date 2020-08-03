@@ -17,6 +17,23 @@
 		        </field>
 		     </record>
 		     
+		 <record model="ir.ui.view" id="view_ticket_contact_ext">
+		 	 <field name="name">res.partner.contract</field>
+		        <field name="model">res.partner</field>
+		        <field name="inherit_id" ref="base.view_partner_form"/>
+		         <field name="arch" type="xml">
+		 		 <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+				    <page  string="Helpdesk">
+				      
+				        <group >
+				          <field name="is_system_integrator" />
+				          <field name="helpdesk_analytic_account_ids" widget="many2many_tags"/>
+				        </group>
+				      
+				    </page>
+				  </xpath>
+		 </field>
+		 </record>
 		     
 		  <record model="ir.ui.view" id="view_analytic_ext">
 		         <field name="name">account.analytic.account.contract</field>
