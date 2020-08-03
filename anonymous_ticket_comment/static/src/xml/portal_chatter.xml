@@ -1,15 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates>
 
-	<t t-extend="portal.chatter_messages">
-		<t t-jquery=".o_portal_chatter_message_title" t-operation="replace">
-			<h5 t-if="message.communication_user_id != false">
-				<t t-esc="message.communication_user_id" />
-			</h5>
-			<h5 t-else="message.author_id">
-				<t t-esc="message.author_id" />
-			</h5>
-		</t>
-	</t>
-
 </templates>
