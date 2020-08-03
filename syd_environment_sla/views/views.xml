@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+    	<record model="ir.ui.view" id="view_ticket_ext">
+		         <field name="name">helpdesk.ticket.environment</field>
+		        <field name="model">helpdesk.ticket</field>
+		        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+		        
+		        <field name="arch" type="xml">
+		         <xpath expr="//field[@name='ticket_type_id']" position="after">
+		         		<field name="environment_id" />
+		         </xpath>
+		        
+		        
+		        </field>
+		     </record>
+    		
+			<record model="ir.ui.view" id="view_environment_ext">
+		         <field name="name">helpdesk.sla.environment</field>
+		        <field name="model">helpdesk.sla</field>
+		        <field name="inherit_id" ref="helpdesk.helpdesk_sla_view_form"/>
+		        
+		        <field name="arch" type="xml">
+		         <xpath expr="//field[@name='ticket_type_id']" position="after">
+		         		<field name="environment_id" />
+		         </xpath>
+		        
+		        
+		        </field>
+		     </record>
+		     
+		     
+		     
+		     
+		     	<record model="ir.ui.view" id="helpdesk_environment_tree">
+				      <field name="name">helpdesk.environment</field>
+				      <field name="model">helpdesk.environment</field>
+				      <field name="arch" type="xml">
+				        <tree>
+				        	<field name="sequence" widget="handle"/>
+				            <field name="name"/>
+				          
+				        </tree>
+				      </field>
+				    </record>
+				
+				<record model="ir.ui.view" id="helpdesk_environment_form">
+				      <field name="name">helpdesk.environment.form</field>
+				      <field name="model">helpdesk.environment</field>
+				      <field name="arch" type="xml">
+				        <form>
+				        	<sheet>
+				            <field name="name"/>
+				          	</sheet>
+				        </form>
+				      </field>
+				</record>
+				
+				    <record model="ir.actions.act_window" id="helpdesk_environment_act">
+				      <field name="name">Environment</field>
+				      <field name="res_model">helpdesk.environment</field>
+				      <field name="view_mode">tree,form</field>
+				    </record>
+				
+
+
+
+    <menuitem name="Environment" id="helpdesk_environment_menu" parent="helpdesk.helpdesk_menu_config"
+              action="helpdesk_environment_act"/>
+      
+    </data>
+</odoo>
