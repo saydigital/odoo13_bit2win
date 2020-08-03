@@ -9,8 +9,6 @@
 		        
 		        <field name="arch" type="xml">
 		         <xpath expr="//field[@name='ticket_type_id']" position="after">
-		         		<field name="security_level" />
-		         		<field name="impact" />
 		         		<field name="user_who_found" />
 		         		<field name="partner_created_id" />
 		         </xpath>
