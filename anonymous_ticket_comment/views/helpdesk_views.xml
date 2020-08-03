@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record
+		id="helpdesk_team_view_form_inherit_website_helpdesk_forum_test"
+		model="ir.ui.view">
+		<field name="name">helpdesk.helpdesk_team_view_form_inherit</field>
+		<field name="inherit_id" ref="helpdesk.helpdesk_team_view_form" />
+		<field name="model">helpdesk.team</field>
+		<field name="inherit_id" ref="helpdesk.helpdesk_team_view_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//div[@id='after-sales']" position="after">
+				<div id='communication_user_id_div'>
+					<h2>Autore di default</h2>
+					<div class="col-lg-6 o_setting_box" id="communication_user">
+
+						<label for="communication_user_id" />
+
+						<field name="communication_user_id" />
+					</div>
+				</div>
+
+			</xpath>
+		</field>
+	</record>
+</odoo>
