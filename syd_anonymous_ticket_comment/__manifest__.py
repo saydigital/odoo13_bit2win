@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "anonymous_ticket_comment",
+    'name': "syd_anonymous_ticket_comment",
 
     'description': """
        Replacing the member of the helpdesk team who wrote a comment with a configurable default user. 

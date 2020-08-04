@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "sla_customer_pause", 
+    'name': "syd_sla_customer_pause", 
 
     'description': """
       
