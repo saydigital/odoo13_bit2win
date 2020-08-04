@@ -10,7 +10,7 @@ class HelpdeskTicket(models.Model):
        
     user_who_found = fields.Text(string="User who found the problem")
     partner_created_id= fields.Many2one('res.partner',string="Partner")
-    
+    impact = fields.Selection([('0','Shutting'),('1','Normal')])
     
     @api.model
     def website_writable(self):
