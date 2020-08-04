@@ -9,7 +9,7 @@
 		<field name="inherit_id" ref="helpdesk.helpdesk_team_view_form" />
 		<field name="arch" type="xml">
 			<xpath expr="//div[@id='after-sales']" position="after">
-				<h2>Self-Service</h2>
+				<h2>Communication User</h2>
 				<div id="communication_user_id_div">
 					<group>
 						<field name="communication_user_id" />

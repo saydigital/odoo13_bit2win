@@ -5,7 +5,6 @@ class HelpdeskTeam(models.Model):
     _inherit = "helpdesk.team"
     
     communication_user_id = fields.Many2one('res.partner', 'Author')
-
     
 class HelpdeskTicket(models.Model):
     _inherit = "helpdesk.ticket"
@@ -54,7 +53,7 @@ class HelpdeskTicket(models.Model):
                      **kwargs):
             
             subtype = 'mail.mt_note'
-            body = 'Commento aggiunto dall''utente ' + str(self.env.user.partner_id.name)
+            body = 'Message sent by: ' + str(self.env.user.partner_id.name)
             author_id = self.env.user.partner_id.id
             
             super(HelpdeskTicket, self).message_post(body=body, subject=subject, message_type=message_type,
