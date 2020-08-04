@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "sla_customer_pause",
+    'name': "sla_customer_pause", 
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
