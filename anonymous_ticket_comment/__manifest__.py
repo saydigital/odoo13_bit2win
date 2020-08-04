@@ -34,10 +34,5 @@
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
-    ],
-    
-    # Qweb
-    'qweb': [
-        "static/src/xml/portal_chatter.xml",
-    ],
+    ]
 }

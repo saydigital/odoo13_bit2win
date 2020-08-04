@@ -68,8 +68,10 @@ class HelpdeskTicket(models.Model):
                 
         #new_deadline = new_deadline.replace(hour=deadline.hour, minute=deadline.minute, second=deadline.second, microsecond=deadline.microsecond)
         
-        return new_deadline
-        #return self.compute_plan_hours(working_calendar, time_hours, new_deadline)
+        return self.compute_hours(working_calendar, time_hours, new_deadline)
+    
+    def compute_hours(self, working_calendar,time_hours, deadline):
+        return self.compute_plan_hours(working_calendar, time_hours, new_deadline)
     
     def compute_plan_hours(self, working_calendar, time_hours, deadline):
         return working_calendar.plan_hours(time_hours, deadline, compute_leaves=True)
