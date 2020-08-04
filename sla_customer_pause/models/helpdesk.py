@@ -2,34 +2,16 @@ from odoo import api, fields, models, _
 from odoo import exceptions 
 from datetime import datetime, timedelta
 
+class HelpdeskStage(models.Model):
+    _inherit = 'helpdesk.stage'
+
+    is_awaiting = fields.Boolean('Awaiting Stage')
+
 class HelpdeskTicket(models.Model):
     _inherit = ["helpdesk.ticket"]
     _description = 'Helpdesk ticket inherit'
     
     awaiting_start = fields.Datetime()
-    
-    @api.returns('mail.message', lambda value: value.id)
-    def message_post(self, *,
-                     body='', subject=None, message_type='notification',
-                     email_from=None, author_id=None, parent_id=False,
-                     subtype_id=False, subtype=None, partner_ids=None, channel_ids=None,
-                     attachments=None, attachment_ids=None,
-                     add_sign=True, record_name=False,
-                     **kwargs):
-        
-        message =  super(HelpdeskTicket, self).message_post(body=body, subject=subject, message_type=message_type,
-                     email_from=email_from, author_id=author_id, parent_id=parent_id,
-                     subtype_id=subtype_id, subtype=subtype, partner_ids=partner_ids, channel_ids=channel_ids,
-                     attachments=attachments, attachment_ids=attachment_ids,
-                     add_sign=add_sign, record_name=record_name,
-                     **kwargs)
-            
-        communication_user_id = self.team_id.communication_user_id  
-        
-        if bool(communication_user_id) & bool(1 in self.env.user.groups_id.ids):
-            message.communication_user_id = communication_user_id.id
-            
-        return message    
    
     def write(self, vals):
         
@@ -104,4 +86,4 @@ class HelpdeskTicket(models.Model):
         if stage_id.id == False: 
             return False
         
-        return (AWAITING_STATE in stage_id.name.lower())
+        return (stage_id.is_awaiting)
