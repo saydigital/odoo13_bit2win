@@ -18,18 +18,19 @@ class WebsiteForm(WebsiteForm):
         priorities = request.env['helpdesk.ticket']._fields['priority'].selection
         for pid, pname in priorities:
             if pid == '0':
-                priority += [(pid,'Severity 1')]
+                priority += [(pid,'Cosmetic')]
             if pid == '1':
-                priority += [(pid,'Severity 2')]
+                priority += [(pid,'Major')]
             if pid == '2':
-                priority += [(pid,'Severity 3')]
+                priority += [(pid,'Minor')]
             if pid == '3':
-                priority += [(pid,'Severity 4')]
+                priority += [(pid,'Critical')]
         environment_ids = request.env['helpdesk.environment'].search([(1,'=',1)])
         environments = []
         for e in environment_ids:
             environments += [(e.id,e.name)]
-            
+        impact = []
+        impact = request.env['helpdesk.ticket']._fields['impact'].selection    
         type_ids = request.env['helpdesk.ticket.type'].search([(1,'=',1)])
         types = []
         for t in type_ids:
@@ -39,7 +40,8 @@ class WebsiteForm(WebsiteForm):
                                                                       'system_integrator':partner_id.is_system_integrator,
                                                                       'types': types,
                                                                       'priority': priority,
-                                                                      'environment': environments
+                                                                      'environment': environments,
+                                                                      'impact':impact
                                                                       })
 
     
