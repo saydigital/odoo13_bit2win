@@ -172,6 +172,8 @@
        </t>
     </template>
 
+	
+	
 	<template id="syd_custom.portal_helpdesk_ticket" inherit_id="helpdesk.portal_helpdesk_ticket" name="portal_helpdesk_ticket_inherit" priority="42">
 		<xpath expr="//t[@t-if='tickets']/thead/tr/th[last()]" position="before">
 			<th>Creation Date</th>
@@ -181,5 +183,45 @@
 			<td class="text-left"><span t-field="ticket.create_date"/></td>
 			<td class="text-left"><span t-field="ticket.environment_id.name"/></td>
 		</xpath>
+	</template>	
+	
+	
+<!-- 	<template id="syd_custom.tickets_followup" inherit_id="helpdesk.tickets_followup" name="syd_custom_tickets_followup_inherit" priority="42"> -->
+<!--    		<xpath expr="//div[@t-if='ticket.user_id']" position="after"> -->
+<!-- 			<div class="row mb-4" t-if="ticket.impact"> -->
+<!--                 <strong class="col-lg-2">Impact</strong> -->
+<!--                 <div t-field="ticket.impact"/> -->
+<!--             </div> -->
+<!-- 		</xpath> -->
+<!-- 	</template>	 -->
+
+	<template id="syd_custom.tickets_followup" inherit_id="helpdesk.tickets_followup" name="syd_custom_tickets_followup_inherit" priority="42">
+   		<xpath expr="//div[@t-if='ticket.user_id']" position="after">
+			<div class="row mb-4" t-if="ticket.priority">
+                <strong class="col-lg-2">Priority</strong>
+                <div t-field="ticket.priority"/>
+            </div>
+		</xpath>
+		
+		<xpath expr="//div[@t-if='ticket.user_id']" position="after">
+			<div class="row mb-4" t-if="ticket.create_date">
+                <strong class="col-lg-2">Create Date</strong>
+                <div t-field="ticket.create_date"/>
+            </div>
+		</xpath>		
+
+		<xpath expr="//div[@t-if='ticket.user_id']" position="after">
+			<div class="row mb-4" t-if="ticket.ticket_type_id">
+                <strong class="col-lg-2">Ticket Type</strong>
+                <div t-field="ticket.ticket_type_id.name"/>
+            </div>
+		</xpath>			
+		
+		<xpath expr="//div[@t-if='ticket.user_id']" position="after">
+			<div class="row mb-4" t-if="ticket.contract_id">
+                <strong class="col-lg-2">Contract</strong>
+                <div t-field="ticket.contract_id.name"/>
+            </div>
+		</xpath>		
 	</template>	
 </odoo>
