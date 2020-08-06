@@ -33,6 +33,7 @@ class WebsiteForm(WebsiteForm):
             contract = partner_id._get_contract()
             request.params['partner_id'] = partner_id.id
         if contract:
+            request.params['contract_id'] = contract.id
             request.params['team_id'] = contract.helpdesk_team_id.id
             request.params['partner_created_id']=partner_id.id
                 
