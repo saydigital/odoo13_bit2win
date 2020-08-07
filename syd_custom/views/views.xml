@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <data>
+	<data>
+		<record model="ir.ui.view" id="view_ticket_ext">
+			<field name="name">helpdesk.ticket.contract</field>
+			<field name="model">helpdesk.ticket</field>
+			<field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form" />
 
-      <record model="ir.ui.view" id="view_ticket_ext">
-		         <field name="name">helpdesk.ticket.contract</field>
-		        <field name="model">helpdesk.ticket</field>
-		        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
-		        
-		        <field name="arch" type="xml">
-		         <xpath expr="//field[@name='ticket_type_id']" position="after">
-		         		<field name="user_who_found" />
-		         		<field name="partner_created_id" />
-		         </xpath>
-		        
-		        
-		        </field>
-		     </record>
-    </data>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='ticket_type_id']" position="after">
+					<field name="user_who_found" />
+					<field name="partner_created_id" />
+				</xpath>
+
+
+			</field>
+		</record>
+
+		<record id="helpdesk_ticket_view_kanban_inherit" model="ir.ui.view">
+			<field name="name">helpdesk.ticket.kanban</field>
+			<field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_kanban" />
+			<field name="model">helpdesk.ticket</field>
+			<field name="arch" type="xml">
+				<xpath expr="//div[hasclass('oe_kanban_content')]" position="inside">
+					<field name="team_id" />
+				</xpath>
+			</field>
+		</record>
+	</data>
 </odoo>
