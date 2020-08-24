@@ -1,3 +1,4 @@
+
 ### Ignore generic temp file, undo files, etc...
 .~lock.*
 *.*~
@@ -52,4 +53,4 @@ __pycache__/
 *.pyc
 .project
 .pydevproject
-*__pycache__
+
