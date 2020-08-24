@@ -17,3 +17,12 @@ class HelpdeskTicket(models.Model):
         model = self.env['ir.model'].sudo().search([('model', '=', 'helpdesk.ticket')])
         model.website_form_access = True
         self.env['ir.model.fields'].sudo().formbuilder_whitelist('helpdesk.ticket',TICKET_FIELDS)
+    
+    @api.model
+    def _read_group_stage_ids(self, stages, domain, order):
+        
+        if self.env.context.get('from_home'):
+            search_domain = [(True, '=', True)]
+            return stages.search(search_domain, order=order)
+
+        return super(HelpdeskTicket,self)._read_group_stage_ids(stages, domain, order)
