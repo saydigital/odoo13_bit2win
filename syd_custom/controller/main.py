@@ -8,7 +8,7 @@ from odoo.addons.website_form.controllers.main import WebsiteForm
 
 class WebsiteForm(WebsiteForm):
 
-    @http.route('''/helpdesk_b2w/submit''', type='http', auth="user", website=True)
+    @http.route('''/bit2win/form''', type='http', auth="user", website=True)
     def website_helpdesk_form(self, **kwargs):
         partner_id = request.env.user.partner_id
         
