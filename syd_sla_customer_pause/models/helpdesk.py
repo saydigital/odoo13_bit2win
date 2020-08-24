@@ -9,7 +9,6 @@ class HelpdeskStage(models.Model):
 
 class HelpdeskTicket(models.Model):
     _inherit = ["helpdesk.ticket"]
-    _description = 'Helpdesk ticket inherit'
     
     awaiting_start = fields.Datetime()
    
