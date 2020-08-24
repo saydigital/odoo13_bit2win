@@ -21,7 +21,8 @@
     'data':[
             'data/data.xml',
         'views/helpdesk_templates.xml',
-        'views/views.xml'
+        'views/views.xml',
+        'security/ir.model.access.csv'
     ],
     'installable' : True,
     'application' : False,
