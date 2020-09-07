@@ -41,6 +41,25 @@ class HelpdeskTicket(models.Model):
     release_id = fields.Many2one('helpdesk.release','Release')
     reported_by = fields.Many2one('helpdesk.reportedby','Reported by')
     
+    
+    def set_level_1(self):
+        self.write({'level':'1'})
+        
+    def set_level_2(self):
+        self.write({'level':'2'})
+        
+    def set_fixing(self):
+        self.write({'fixing':True})
+        
+    def set_no_fixing(self):
+        self.write({'fixing':False})
+        
+    def set_pay_attention(self):
+        self.write({'pay_attention':True})
+        
+    def no_pay_attention(self):
+        self.write({'pay_attention':False})
+        
     @api.model
     def website_writable(self):
         model = self.env['ir.model'].sudo().search([('model', '=', 'helpdesk.ticket')])
