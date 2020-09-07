@@ -10,6 +10,11 @@
 				<xpath expr="//field[@name='ticket_type_id']" position="after">
 					<field name="user_who_found" />
 					<field name="partner_created_id" />
+					<field name="reason_why_id" />
+					<field name="release_id" />
+					<field name="reported_by" />
+					<field name="access_granted" />
+
 				</xpath>
 
 
@@ -45,5 +50,84 @@
         
     <menuitem id="helpdesk_ticket_menu_my_home" name="Home" action="helpdesk_ticket_action_main_my_home"
         sequence="4" parent="helpdesk.menu_helpdesk_root"/>
+        
+        
+		     
+		     	<record model="ir.ui.view" id="helpdesk_reason_tree">
+				      <field name="name">helpdesk.reason</field>
+				      <field name="model">helpdesk.reason</field>
+				      <field name="arch" type="xml">
+				        <tree editable="bottom">
+				        	<field name="sequence" widget="handle"/>
+				            <field name="name"/>
+				          
+				        </tree>
+				      </field>
+				    </record>
+				
+				
+				    <record model="ir.actions.act_window" id="helpdesk_reason_act">
+				      <field name="name">Reason</field>
+				      <field name="res_model">helpdesk.reason</field>
+				      <field name="view_mode">tree</field>
+				    </record>
+				
+
+
+
+    <menuitem name="Reason" id="helpdesk_reason_menu" parent="helpdesk.helpdesk_menu_config"
+              action="helpdesk_reason_act"/>
+              
+              
+               	<record model="ir.ui.view" id="helpdesk_release_tree">
+				      <field name="name">helpdesk.release</field>
+				      <field name="model">helpdesk.release</field>
+				      <field name="arch" type="xml">
+				        <tree editable="bottom">
+				        	<field name="sequence" widget="handle"/>
+				            <field name="name"/>
+				          
+				        </tree>
+				      </field>
+				    </record>
+				
+				
+				    <record model="ir.actions.act_window" id="helpdesk_release_act">
+				      <field name="name">Release</field>
+				      <field name="res_model">helpdesk.release</field>
+				      <field name="view_mode">tree</field>
+				    </record>
+				
+
+
+
+    <menuitem name="Release" id="helpdesk_release_menu" parent="helpdesk.helpdesk_menu_config"
+              action="helpdesk_release_act"/>
+              
+              
+               	<record model="ir.ui.view" id="helpdesk_reported_tree">
+				      <field name="name">helpdesk.reported</field>
+				      <field name="model">helpdesk.reported</field>
+				      <field name="arch" type="xml">
+				        <tree editable="bottom">
+				        	<field name="sequence" widget="handle"/>
+				            <field name="name"/>
+				          
+				        </tree>
+				      </field>
+				    </record>
+				
+				
+				    <record model="ir.actions.act_window" id="helpdesk_reported_act">
+				      <field name="name">Reported</field>
+				      <field name="res_model">helpdesk.reported</field>
+				      <field name="view_mode">tree</field>
+				    </record>
+				
+
+
+
+    <menuitem name="Reason" id="helpdesk_reported_menu" parent="helpdesk.helpdesk_menu_config"
+              action="helpdesk_reported_act"/>
         
 </odoo>
