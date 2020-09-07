@@ -10,149 +10,205 @@
                 <h2 t-if="team" class="text-center text-muted">
                     <span><t t-esc="team.name"/></span>
                 </h2>
-                <div id="wrap" class="oe_structure oe_empty">
+                <div id="wrap" class="oe_structure 	oe_empty">
                     <div class="container">
                         <div class="row">
-                            <section id="forms" class="col-12">
+                            <section id="forms" class="col-xl-12">
                                 
                                 <form id="helpdesk_ticket_form" action="/website_form/" method="post" class="s_website_form container-fluid mt32" enctype="multipart/form-data" data-model_name="helpdesk.ticket" data-success_page="/your-ticket-has-been-submitted" data-editable-form="false"  hide-change-model="true">
-                                    <t t-if="system_integrator">
-                                    <div id="contract_form" class="form-group row form-field o_website_form_required">
-                                    <div class="col-lg-3 col-md-4 text-right">
-                                            <label class="col-form-label" for="contract">Contracts</label>
-                                        </div>
-                                        <div class="col-lg-7 col-md-8">
-                                    		<select name="contract" class="form-control" autocomplete="on">
-							                	<option selected="selected" disabled="True" value="select"> -- Seleziona -- </option>
-							                    <t t-foreach="contracts or []" t-as="contract">
-							                        <option t-att-value="contract[0]" >
-							                            <t t-esc="contract[1]"/>
-							                        </option>
-							                    </t>
-							                    
-							                </select>
-							            </div>
-							          </div>
-                                    </t>
+                                    
+<!--                                     <t t-if="system_integrator"> -->
+	                                    <div id="contract_form" class="form-group row form-field o_website_form_required">
+		                                    <div class="text-right">
+		                                            <label class="col-form-label" for="contract">Contracts</label>
+		                                        </div>
+		                                        <div class="col-lg-9">
+		                                    		<select name="contract" class="form-control" autocomplete="on">
+									                	<option selected="selected" disabled="True" value="select"> -- Seleziona -- </option>
+									                    <t t-foreach="contracts or []" t-as="contract">
+									                        <option t-att-value="contract[0]" >
+									                            <t t-esc="contract[1]"/>
+									                        </option>
+									                    </t>
+									                    
+									                </select>
+									            </div>
+									     </div>
+<!--                                     </t> -->
                                      
+							          
+							           
+							          
 							          
 							          
 							       <div class="form-group row form-field o_website_form_required">
-                                    <div class="col-lg-3 col-md-4 text-right">
-                                            <label class="col-form-label" for="ticket_type_id">Type</label>
-                                        </div>
-                                        <div class="col-lg-7 col-md-8">
-                                    		<select name="ticket_type_id" class="form-control" autocomplete="on">
-							                	<option selected="selected" disabled="True" value="select"> -- Select -- </option>
-							                    <t t-foreach="types or []" t-as="i">
-							                        <option t-att-value="i[0]" >
-							                            <t t-esc="i[1]"/>
-							                        </option>
-							                    </t>
-							                    
-							                </select>
-							            </div>
-							          </div>
+		                                    <div class="text-right">
+		                                            <label class="col-form-label" for="ticket_type_id">Bit2win Release #</label>
+		                                    </div>
+		                                    <div class="col-2">
+		                                    	<select name="ticket_type_id" class="form-control" autocomplete="on">
+									            	<option selected="selected" disabled="True" value="select"> -- Select --  </option>
+									                	<t t-foreach="types or []" t-as="i">
+									                    	<option t-att-value="i[0]" >
+									                        	<t t-esc="i[1]"/>
+									                        </option>
+									                    </t>
+									             </select>
+									         </div>							       
+							       
+							      
+		                                    <div class="text-right">
+		                                            <label class="col-form-label" for="ticket_type_id">Question or Issue</label>
+		                                    </div>
+		                                    <div class="col-2">
+		                                    	<select name="ticket_type_id" class="form-control" autocomplete="on">
+									            	<option selected="selected" disabled="True" value="select"> - Select - </option>
+									                	<t t-foreach="types or []" t-as="i">
+									                    	<option t-att-value="i[0]" >
+									                        	<t t-esc="i[1]"/>
+									                        </option>
+									                    </t>
+									             </select>
+									         </div>
+									         
+									         
+<!-- 									        <div id="priority_form" class="form-group row form-field o_website_form_required col-2"> -->
+<!-- 									        <div id="priority_form"> -->
+		                                    	<div class="text-right">
+		                                            <label class="col-form-label" for="environment_id">Environment</label>
+		                                        </div>
+		                                        
+		                                        <div class="col-2">
+		                                    		<select name="environment_id" class="form-control" autocomplete="on">
+									                	<option selected="selected" disabled="True" value="select"> -- Select -- </option>
+									                    <t t-foreach="environment or []" t-as="p">
+									                        <option t-att-value="p[0]" >
+									                            <t t-esc="p[1]"/>
+									                        </option>
+									                    </t>
+									                    
+									                </select>
+									            </div>
+<!-- 									          </div>								          -->
+							         </div>
 							          
-							          <div id="priority_form" class="form-group row form-field o_website_form_required">
-                                    <div class="col-lg-3 col-md-4 text-right">
-                                            <label class="col-form-label" for="environment_id">Environment</label>
-                                        </div>
-                                        <div class="col-lg-7 col-md-8">
-                                    		<select name="environment_id" class="form-control" autocomplete="on">
-							                	<option selected="selected" disabled="True" value="select"> -- Select -- </option>
-							                    <t t-foreach="environment or []" t-as="p">
-							                        <option t-att-value="p[0]" >
-							                            <t t-esc="p[1]"/>
-							                        </option>
-							                    </t>
-							                    
-							                </select>
-							            </div>
-							          </div>
 							          
-							    <div class="row">
-                                      		<div class="col-md-12 text-left">
-                                            	<p>
-                                            	<strong>Severity Level</strong><br />
-                                            	1-Critical: System unavailability condition or Software ineffectiveness with production environment impact<br />
-                                            	2-Major: High business conditionb impact, which could put at risk production environment<br />
-                                            	3-Minor: Limited impact on Business condition, with most of the Software functions still useable<br />
-                                            	4-Cosmetic: System fault without impact on Business condition<br />
-                                            	</p>
-                                            </div>
+
+							          
+<!-- 							    <div class="row" hidden="True"> -->
+<!--                                       		<div class="col-md-12 text-left"> -->
+<!--                                             	<p> -->
+<!--                                             	<strong>Severity Level</strong><br /> -->
+<!--                                             	1-Critical: System unavailability condition or Software ineffectiveness with production environment impact<br /> -->
+<!--                                             	2-Major: High business conditionb impact, which could put at risk production environment<br /> -->
+<!--                                             	3-Minor: Limited impact on Business condition, with most of the Software functions still useable<br /> -->
+<!--                                             	4-Cosmetic: System fault without impact on Business condition<br /> -->
+<!--                                             	</p> -->
+<!--                                             </div> -->
                                       
-                                      </div>
-                                     <div class="form-group row form-field o_website_form_required">
-                                    <div class="col-lg-3 col-md-4 text-right">
-                                            <label class="col-form-label" for="priority">Priority</label>
-                                        </div>
-                                        <div class="col-lg-7 col-md-8">
-                                    		<select name="priority" class="form-control" autocomplete="on">
-							                	<option selected="selected" disabled="True" value="select"> -- Select -- </option>
-							                    <t t-foreach="priority or []" t-as="sl">
-							                        <option t-att-value="sl[0]" >
-							                            <t t-esc="sl[1]"/>
-							                        </option>
-							                    </t>
-							                    
-							                </select>
-							            </div>
-							          </div>       
+<!--                                </div> -->
+                                   
+                                   
+                                   
+                                 <div class="form-group row form-field o_website_form_required">
+	                                 	<div class="">
+	                                        <label class="col-form-label" for="priority">Severity Level</label>
+	                                    </div>
+		                                <div class="col-lg-4">
+		                                	<select name="priority" class="form-control" autocomplete="on">
+									         	<option selected="selected" disabled="True" value="select"> - Select - </option>
+									            	<t t-foreach="priority or []" t-as="sl">
+									                	<option t-att-value="sl[0]" >
+									                    	<t t-esc="sl[1]"/>
+									                    </option>
+									                </t>
+									         </select>
+									     </div>
+									       <div class="">
+	                                            <label class="col-form-label" for="impact">Impact</label>
+	                                        </div>
+	                                        <div class="col-lg-4">
+	                                    		<select name="impact" class="form-control" autocomplete="on">
+								                	<option selected="selected" disabled="True" value="select"> - Select - </option>
+								                    <t t-foreach="impact or []" t-as="i">
+								                        <option t-att-value="i[0]" >
+								                            <t t-esc="i[1]"/>
+								                        </option>
+								                    </t>
+								                    
+								                </select>
+								            </div>
+							        </div>  
+							        
+							             
 							   <div class="form-group row form-field o_website_form_required">
-                                    <div class="col-lg-3 col-md-4 text-right">
-                                            <label class="col-form-label" for="impact">Impact</label>
-                                        </div>
-                                        <div class="col-lg-7 col-md-8">
-                                    		<select name="impact" class="form-control" autocomplete="on">
-							                	<option selected="selected" disabled="True" value="select"> -- Select -- </option>
-							                    <t t-foreach="impact or []" t-as="i">
-							                        <option t-att-value="i[0]" >
-							                            <t t-esc="i[1]"/>
-							                        </option>
-							                    </t>
-							                    
-							                </select>
-							            </div>
-							          </div>       
-							      
-                                    <div class="form-group row form-field">
-                                        <div class="col-lg-3 col-md-4 text-right">
-                                            <label class="col-form-label" for="user_who_found">User who found</label>
-                                        </div>
-                                        <div class="col-lg-7 col-md-8">
-                                            <textarea class="form-control o_website_form_input" name="user_who_found"/>
-                                        </div>
-                                    </div>
-							          
-							      
-							          
-							      
-                                    
-                                    <div id="subject_form" class="form-group row form-field o_website_form_required">
-                                        <div class="col-lg-3 col-md-4 text-right">
+<!-- 							        <div id="subject_form" class="form-group row form-field o_website_form_required"> -->
+                                        <div class="">
                                             <label class="col-form-label" for="name">Subject</label>
                                         </div>
-                                        <div class="col-lg-7 col-md-8">
+                                        <div class="col-lg-5">
                                             <input type="text" class="form-control o_website_form_input" name="name" required="1"/>
                                         </div>
-                                    </div>
+<!--                                     </div> -->
+							      
+<!--                                     <div class="form-group row form-field"> -->
+                                        <div class="">
+                                            <label class="col-form-label" for="user_who_found">User who found</label>
+                                        </div>
+                                        <div class="col-3">
+                                            <input class="form-control o_website_form_input" name="user_who_found"/>
+                                        </div>
+<!--                                     </div> -->
+							    </div>      
+							      
+                                    
+
                                     <div id="description_form" class="form-group row form-field">
-                                        <div class="col-lg-3 col-md-4 text-right">
+                                        
+                                        <div class="">
+                                        	 <br></br>
+                                        	
                                             <label class="col-form-label" for="description">Description</label>
                                         </div>
-                                        <div class="col-lg-7 col-md-8">
-                                            <textarea class="form-control o_website_form_input" name="description"/>
+                                        <div class="col-lg-5" rows="7">
+                                        <br></br>
+                                            <textarea class="form-control o_website_form_input" style="height: 140px;" name="description"/>
                                         </div>
-                                    </div>
+<!--                                     </div> -->
                                 
-                                    <div class="form-group row form-field">
-                                        <div class="col-lg-3 col-md-4 text-right">
-                                            <label class="col-form-label" for="attachments">Attachment(s)</label>
-                                        </div>
-                                        <div class="col-lg-7 col-md-8">
-                                            <input type="file" name="attachments" class="form-control o_website_form_input" multiple="true" accept="image/*,application/pdf,video/*"/>
-                                        </div>
+<!--                                     <div class="form-group row form-field"> -->
+<!--                                         <div class="col-lg-3 col-md-4 text-right"> -->
+<!--                                             <label class="col-form-label" for="attachments">Attachment(s)</label> -->
+<!--                                         </div> -->
+<!--                                         <div class="col-lg-7 col-md-8"> -->
+<!--                                             <input type="file" name="attachments" class="form-control o_website_form_input" multiple="true" accept="image/*,application/pdf,video/*"/> -->
+<!--                                         </div> -->
+											<div>
+												<div class="">
+			                                            <label class="col-form-label" for="ticket_type_id">Reported by</label>
+			                                    </div>
+			                                    <div class="">
+			                                    	<select name="ticket_type_id" class="form-control" autocomplete="on">
+										            	<option selected="selected" disabled="True" value="select"> - Select - </option>
+										                	<t t-foreach="types or []" t-as="i">
+										                    	<option t-att-value="i[0]" >
+										                        	<t t-esc="i[1]"/>
+										                        </option>
+										                    </t>
+										             </select>
+										         </div>
+		 										<div class=""> 
+			                                            <label class="col-form-label" for="attachments">Attachment(s)</label>
+			                                    </div>
+			                                    <div class="">
+			                                            <input type="file" name="attachments" class="form-control o_website_form_input" multiple="true" accept="image/*,application/pdf,video/*"/>
+			                                    </div>
+		                                    </div>									         
+									         
+									         
+									         
+
+
                                     </div>
                                     <div class="form-group row">
                                         <div class="offset-lg-3 offset-md-4 col-md-8 col-lg-7">
