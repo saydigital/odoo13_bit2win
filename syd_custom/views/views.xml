@@ -30,8 +30,8 @@
         								<button name="set_pay_attention" string="Pay Attention" type="object" class="oe_highlight" groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('pay_attention', '=', False)]}"/>
 										<button name="no_pay_attention" string="Situation Normal" type="object" class="oe_highlight" groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('pay_attention', '=', True)]}"/>
 										
-										<button name="set_fixing" string="Pay Attention" type="object"  groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('fixing', '=', False)]}"/>
-										<button name="set_no_fixing" string="Situation Normal" type="object"  groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('fixing', '=', True)]}"/>
+										<button name="set_fixing" string="Fixing" type="object"  groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('fixing', '=', False)]}"/>
+										<button name="set_no_fixing" string="Not Fixing" type="object"  groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('fixing', '=', True)]}"/>
 										
         
         </xpath>
