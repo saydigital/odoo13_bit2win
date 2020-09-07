@@ -2,16 +2,64 @@
 
 from odoo import models, fields, api
 
-TICKET_FIELDS = ['name','environment_id','description','contract_id','partner_id','partner_created_id','user_who_found','impact','ticket_type_id','priority']
+TICKET_FIELDS = ['name','release_id','reported_by','access_granted','level','environment_id','description','contract_id','partner_id','partner_created_id','user_who_found','impact','ticket_type_id','priority']
 
+
+                
+class HelpdeskReason(models.Model):
+    _name = "helpdesk.reason"
+    _description = "Reason"
+    
+    name = fields.Char('Reason') 
+    sequence = fields.Integer('Sequence')
+    
+class HelpdeskRelease(models.Model):
+    _name = "helpdesk.release"
+    _description = "Release"
+    
+    name = fields.Char('Release')
+    sequence = fields.Integer('Sequence')
+                    
+class HelpdeskReported(models.Model):
+    _name = "helpdesk.reported"
+    _description = "Reported"
+    
+    name = fields.Char('Reason')
+    sequence = fields.Integer('Sequence')
                 
 class HelpdeskTicket(models.Model):
     _inherit = "helpdesk.ticket"            
        
     user_who_found = fields.Text(string="User who found the problem")
     partner_created_id= fields.Many2one('res.partner',string="Partner")
-    impact = fields.Selection([('0','Shutting'),('1','Normal')])
+    impact = fields.Selection([('0','Blocking'),('1','Non Blocking')],default="0")
+    access_granted = fields.Boolean('Access Granted')
+    level = fields.Selection([('1','Level 1'),('2','Level 2')],default="1")
+    fixing = fields.Boolean('Fixing')
+    pay_attention = fields.Boolean('Pay Attention')
+    reason_why_id = fields.Many2one('helpdesk.reason','Reason')
+    release_id = fields.Many2one('helpdesk.release','Release')
+    reported_by = fields.Many2one('helpdesk.reportedby','Reported by')
     
+    
+    def set_level_1(self):
+        self.write({'level':'1'})
+        
+    def set_level_2(self):
+        self.write({'level':'2'})
+        
+    def set_fixing(self):
+        self.write({'fixing':True})
+        
+    def set_no_fixing(self):
+        self.write({'fixing':False})
+        
+    def set_pay_attention(self):
+        self.write({'pay_attention':True})
+        
+    def no_pay_attention(self):
+        self.write({'pay_attention':False})
+        
     @api.model
     def website_writable(self):
         model = self.env['ir.model'].sudo().search([('model', '=', 'helpdesk.ticket')])
