@@ -1,287 +1,284 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+	<template id="syd_custom.ticket_submit" name="Helpdesk: Submit a Ticket">
+		<t name="Helpdesk" priority="29" t-name="website.helpdesk">
+			<t t-call="website.layout">
+				<t t-set="additional_title">Ticket</t>
+				<h2 t-if="team" class="text-center text-muted">
+					<span>
+						<t t-esc="team.name" />
+					</span>
+				</h2>
+				<div id="wrap" class="oe_structure oe_empty">
+					<div class="row justify-content-center">
+						<section id="forms" class="col-xl-9">
+							<form id="helpdesk_ticket_form" action="/website_form/" method="post"
+								class="s_website_form container-fluid mt32" enctype="multipart/form-data" data-model_name="helpdesk.ticket"
+								data-success_page="/your-ticket-has-been-submitted" data-editable-form="false" hide-change-model="true">
 
-  
+								<div class="container ">
 
-     <template id="syd_custom.ticket_submit" name="Helpdesk: Submit a Ticket">
-         <t name="Helpdesk" priority="29" t-name="website.helpdesk">
-            <t t-call="website.layout">
-                <t t-set="additional_title">Ticket</t>
-                <h2 t-if="team" class="text-center text-muted">
-                    <span><t t-esc="team.name"/></span>
-                </h2>
-                <div id="wrap" class="oe_structure 	oe_empty">
-                    <div class="container">
-                        <div class="row">
-                            <section id="forms" class="col-xl-12">
-                                
-                                <form id="helpdesk_ticket_form" action="/website_form/" method="post" class="s_website_form container-fluid mt32" enctype="multipart/form-data" data-model_name="helpdesk.ticket" data-success_page="/your-ticket-has-been-submitted" data-editable-form="false"  hide-change-model="true">
-                                    
-<!--                                     <t t-if="system_integrator"> -->
-	                                    <div id="contract_form" class="form-group row form-field o_website_form_required">
-		                                    <div class="text-right">
-		                                            <label class="col-form-label" for="contract">Contracts</label>
-		                                        </div>
-		                                        <div class="col-lg-9">
-		                                    		<select name="contract" class="form-control" autocomplete="on">
-									                	<option selected="selected" disabled="True" value="select"> -- Seleziona -- </option>
-									                    <t t-foreach="contracts or []" t-as="contract">
-									                        <option t-att-value="contract[0]" >
-									                            <t t-esc="contract[1]"/>
-									                        </option>
-									                    </t>
-									                    
-									                </select>
-									            </div>
-									     </div>
-<!--                                     </t> -->
-                                     
-							          
-							           
-							          
-							          
-							          
-							       <div class="form-group row form-field o_website_form_required">
-		                                    <div class="text-right">
-		                                            <label class="col-form-label" for="ticket_type_id">Bit2win Release #</label>
-		                                    </div>
-		                                    <div class="col-2">
-		                                    	<select name="ticket_type_id" class="form-control" autocomplete="on">
-									            	<option selected="selected" disabled="True" value="select"> -- Select --  </option>
-									                	<t t-foreach="types or []" t-as="i">
-									                    	<option t-att-value="i[0]" >
-									                        	<t t-esc="i[1]"/>
-									                        </option>
-									                    </t>
-									             </select>
-									         </div>							       
-							       
-							      
-		                                    <div class="text-right">
-		                                            <label class="col-form-label" for="ticket_type_id">Question or Issue</label>
-		                                    </div>
-		                                    <div class="col-2">
-		                                    	<select name="ticket_type_id" class="form-control" autocomplete="on">
-									            	<option selected="selected" disabled="True" value="select"> - Select - </option>
-									                	<t t-foreach="types or []" t-as="i">
-									                    	<option t-att-value="i[0]" >
-									                        	<t t-esc="i[1]"/>
-									                        </option>
-									                    </t>
-									             </select>
-									         </div>
-									         
-									         
-<!-- 									        <div id="priority_form" class="form-group row form-field o_website_form_required col-2"> -->
-<!-- 									        <div id="priority_form"> -->
-		                                    	<div class="text-right">
-		                                            <label class="col-form-label" for="environment_id">Environment</label>
-		                                        </div>
-		                                        
-		                                        <div class="col-2">
-		                                    		<select name="environment_id" class="form-control" autocomplete="on">
-									                	<option selected="selected" disabled="True" value="select"> -- Select -- </option>
-									                    <t t-foreach="environment or []" t-as="p">
-									                        <option t-att-value="p[0]" >
-									                            <t t-esc="p[1]"/>
-									                        </option>
-									                    </t>
-									                    
-									                </select>
-									            </div>
-<!-- 									          </div>								          -->
-							         </div>
-							          
-							          
-
-							          
-<!-- 							    <div class="row" hidden="True"> -->
-<!--                                       		<div class="col-md-12 text-left"> -->
-<!--                                             	<p> -->
-<!--                                             	<strong>Severity Level</strong><br /> -->
-<!--                                             	1-Critical: System unavailability condition or Software ineffectiveness with production environment impact<br /> -->
-<!--                                             	2-Major: High business conditionb impact, which could put at risk production environment<br /> -->
-<!--                                             	3-Minor: Limited impact on Business condition, with most of the Software functions still useable<br /> -->
-<!--                                             	4-Cosmetic: System fault without impact on Business condition<br /> -->
-<!--                                             	</p> -->
-<!--                                             </div> -->
-                                      
-<!--                                </div> -->
-                                   
-                                   
-                                   
-                                 <div class="form-group row form-field o_website_form_required">
-	                                 	<div class="">
-	                                        <label class="col-form-label" for="priority">Severity Level</label>
-	                                    </div>
-		                                <div class="col-lg-4">
-		                                	<select name="priority" class="form-control" autocomplete="on">
-									         	<option selected="selected" disabled="True" value="select"> - Select - </option>
-									            	<t t-foreach="priority or []" t-as="sl">
-									                	<option t-att-value="sl[0]" >
-									                    	<t t-esc="sl[1]"/>
-									                    </option>
-									                </t>
-									         </select>
-									     </div>
-									       <div class="">
-	                                            <label class="col-form-label" for="impact">Impact</label>
-	                                        </div>
-	                                        <div class="col-lg-4">
-	                                    		<select name="impact" class="form-control" autocomplete="on">
-								                	<option selected="selected" disabled="True" value="select"> - Select - </option>
-								                    <t t-foreach="impact or []" t-as="i">
-								                        <option t-att-value="i[0]" >
-								                            <t t-esc="i[1]"/>
-								                        </option>
-								                    </t>
-								                    
-								                </select>
-								            </div>
-							        </div>  
-							        
-							             
-							   <div class="form-group row form-field o_website_form_required">
-<!-- 							        <div id="subject_form" class="form-group row form-field o_website_form_required"> -->
-                                        <div class="">
-                                            <label class="col-form-label" for="name">Subject</label>
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <input type="text" class="form-control o_website_form_input" name="name" required="1"/>
-                                        </div>
-<!--                                     </div> -->
-							      
-<!--                                     <div class="form-group row form-field"> -->
-                                        <div class="">
-                                            <label class="col-form-label" for="user_who_found">User who found</label>
-                                        </div>
-                                        <div class="col-3">
-                                            <input class="form-control o_website_form_input" name="user_who_found"/>
-                                        </div>
-<!--                                     </div> -->
-							    </div>      
-							      
-                                    
-
-                                    <div id="description_form" class="form-group row form-field">
-                                        
-                                        <div class="">
-                                        	 <br></br>
-                                        	
-                                            <label class="col-form-label" for="description">Description</label>
-                                        </div>
-                                        <div class="col-lg-5" rows="7">
-                                        <br></br>
-                                            <textarea class="form-control o_website_form_input" style="height: 140px;" name="description"/>
-                                        </div>
-<!--                                     </div> -->
-                                
-<!--                                     <div class="form-group row form-field"> -->
-<!--                                         <div class="col-lg-3 col-md-4 text-right"> -->
-<!--                                             <label class="col-form-label" for="attachments">Attachment(s)</label> -->
-<!--                                         </div> -->
-<!--                                         <div class="col-lg-7 col-md-8"> -->
-<!--                                             <input type="file" name="attachments" class="form-control o_website_form_input" multiple="true" accept="image/*,application/pdf,video/*"/> -->
-<!--                                         </div> -->
-											<div>
-												<div class="">
-			                                            <label class="col-form-label" for="ticket_type_id">Reported by</label>
-			                                    </div>
-			                                    <div class="">
-			                                    	<select name="ticket_type_id" class="form-control" autocomplete="on">
-										            	<option selected="selected" disabled="True" value="select"> - Select - </option>
-										                	<t t-foreach="types or []" t-as="i">
-										                    	<option t-att-value="i[0]" >
-										                        	<t t-esc="i[1]"/>
-										                        </option>
-										                    </t>
-										             </select>
-										         </div>
-		 										<div class=""> 
-			                                            <label class="col-form-label" for="attachments">Attachment(s)</label>
-			                                    </div>
-			                                    <div class="">
-			                                            <input type="file" name="attachments" class="form-control o_website_form_input" multiple="true" accept="image/*,application/pdf,video/*"/>
-			                                    </div>
-		                                    </div>									         
-									         
-									         
-									         
+									<div class="">
+										<div class="">
+											<!-- <t t-if="system_integrator"> -->
+											<div id="contract_form" class="form-group row form-field o_website_form_required col-xl-12">
+												<div class="col-xl-12">
+													<div class="">
+														<label class="col-form-label" for="contract">Contracts</label>
+													</div>
+													<div class="">
+														<select name="contract" class="form-control" autocomplete="on">
+															<option selected="selected" disabled="True" value="select"> -- Seleziona -- </option>
+															<t t-foreach="contracts or []" t-as="contract">
+																<option t-att-value="contract[0]">
+																	<t t-esc="contract[1]" />
+																</option>
+															</t>
+														</select>
+													</div>
+												</div>
+											</div>
+											<!-- </t> -->
+										</div>
+									</div>
 
 
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="offset-lg-3 offset-md-4 col-md-8 col-lg-7">
-                                            <button type="submit" class="btn btn-primary btn-lg o_website_form_send o_default_snippet_text">Send</button>
-                                            <span id="o_website_form_result"></span>
-                                        </div>
-                                    </div>
-                                </form>
-                            </section>
-                        </div>
-                    </div>
-                </div>
-            </t>
-        
-        
+									<div class="form-group row form-field o_website_form_required col-xl-12">
+										<div class="col-xl-6">
+											<div class="">
+												<label class="col-form-label" for="ticket_type_id">Question or Issue</label>
+											</div>
+											<div class="">
+												<select name="ticket_type_id" class="form-control" autocomplete="on" required="True">
+													<option disabled="True" selected="selected"> -- Select -- </option>
+													<t t-foreach="types or []" t-as="i">
+														<option t-att-value="i[0]">
+															<t t-esc="i[1]" />
+														</option>
+													</t>
+												</select>
+											</div>
+										</div>
 
-       </t>
-    </template>
+										<div class="col-xl-6">
+											<div class="">
+												<label class="col-form-label" for="environment_id">Environment</label>
+											</div>
 
+											<div class="">
+												<select name="environment_id" class="form-control" autocomplete="on">
+													<option selected="selected" disabled="True" value="select"> -- Select -- </option>
+													<t t-foreach="environment or []" t-as="p">
+														<option t-att-value="p[0]">
+															<t t-esc="p[1]" />
+														</option>
+													</t>
+
+												</select>
+											</div>
+										</div>
+									</div>
+
+
+									<div class="form-group row form-field o_website_form_required col-xl-12">
+										<div class="col-xl-4">
+											<div class="">
+												<label class="col-form-label" for="release_id">Bit2win Release</label>
+											</div>
+											<div class="">
+												<select name="release_id" class="form-control" autocomplete="on">
+													<option selected="selected" disabled="True" value="select"> -- Select --  </option>
+													<t t-foreach="release or []" t-as="rel">
+														<option t-att-value="rel[0]">
+															<t t-esc="rel[1]" />
+														</option>
+													</t>
+												</select>
+											</div>
+										</div>
+										
+										<div class="col-xl-4">
+											<div class="">
+												<label class="col-form-label" for="priority">Severity Level</label>
+											</div>
+											<div class="">
+												<select name="priority" class="form-control" autocomplete="on">
+													<option selected="selected" disabled="True" value="select"> - Select - </option>
+													<t t-foreach="priority or []" t-as="sl">
+														<option t-att-value="sl[0]">
+															<t t-esc="sl[1]" />
+														</option>
+													</t>
+												</select>
+											</div>
+										</div>
+										
+										<div class="col-xl-4">
+											<div class="">
+												<label class="col-form-label" for="impact">Impact</label>
+											</div>
+											<div class="">
+												<select name="impact" class="form-control" autocomplete="on">
+													<option selected="selected" disabled="True" value="select"> - Select - </option>
+													<t t-foreach="impact or []" t-as="i">
+														<option t-att-value="i[0]">
+															<t t-esc="i[1]" />
+														</option>
+													</t>
 	
-	
-	<template id="syd_custom.portal_helpdesk_ticket" inherit_id="helpdesk.portal_helpdesk_ticket" name="portal_helpdesk_ticket_inherit" priority="42">
+												</select>
+											</div>
+										</div>	
+									</div>
+
+									<div class="form-group row form-field o_website_form_required col-xl-12">
+										<!-- <div id="subject_form" class="form-group row form-field o_website_form_required"> -->
+										<div class="col-xl-8">	
+											<div class="">
+												<label class="col-form-label" for="name">Subject</label>
+											</div>
+											<div class="">
+												<input type="text" class="form-control o_website_form_input" name="name" required="True" />
+											</div>
+										</div>
+										<!-- </div> -->
+
+										<!-- <div class="form-group row form-field"> -->
+										<div class="col-xl-4">	
+											<div class="">
+												<label class="col-form-label" for="user_who_found">User who found</label>
+											</div>
+											<div class="">
+												<input class="form-control o_website_form_input" name="user_who_found" />
+											</div>
+										</div>
+										<!-- </div> -->
+									</div>
+
+
+									<div class="form-group row form-field col-xl-12">
+										<div class="col-xl-9">	
+											<div class="">
+												<label class="col-form-label" for="description">Description</label>
+											</div>
+											<div class="" >
+												<textarea class="form-control o_website_form_input" name="description" />
+											</div>
+										</div>
+										
+										<div class="col-xl-3">
+											<div class="">
+												<label class="col-form-label" for="reported_by">Reported by</label>
+											</div>
+											<div class="">
+												<select name="reported_by" class="form-control" autocomplete="on">
+													<option selected="selected" disabled="True" value="select"> - Select - </option>
+													<t t-foreach="reported_by or []" t-as="r">
+														<option t-att-value="r[0]">
+															<t t-esc="r[1]" />
+														</option>
+													</t>
+												</select>
+											</div>
+											<div class="">
+												<label class="col-form-label" for="attachments">Attachment(s)</label>
+											</div>
+											<div class="">
+												<input type="file" name="attachments" class="form-control o_website_form_input" multiple="true"
+													accept="image/*,application/pdf,video/*" />
+											</div>
+										</div>
+
+									</div>
+
+
+									<!-- <div class="row" hidden="True"> -->
+									<!-- <div class="col-md-12 text-left"> -->
+									<!-- <p> -->
+									<!-- <strong>Severity Level</strong><br /> -->
+									<!-- 1-Critical: System unavailability condition or Software ineffectiveness with production environment impact<br 
+										/> -->
+									<!-- 2-Major: High business conditionb impact, which could put at risk production environment<br /> -->
+									<!-- 3-Minor: Limited impact on Business condition, with most of the Software functions still useable<br /> -->
+									<!-- 4-Cosmetic: System fault without impact on Business condition<br /> -->
+									<!-- </p> -->
+									<!-- </div> -->
+
+									<!-- </div> -->
+
+									<div class="form-group row">
+										<div class="offset-lg-3 offset-md-4 col-md-8 col-lg-7">
+											<button type="submit" class="btn btn-primary btn-lg o_website_form_send o_default_snippet_text">Send</button>
+											<span id="o_website_form_result"></span>
+										</div>
+									</div>
+								</div>
+							</form>
+						</section>
+					</div>
+				</div>
+			</t>
+		</t>
+	</template>
+
+	<template id="syd_custom.portal_helpdesk_ticket" inherit_id="helpdesk.portal_helpdesk_ticket"
+		name="portal_helpdesk_ticket_inherit" priority="42">
 		<xpath expr="//t[@t-if='tickets']/thead/tr/th[last()]" position="before">
 			<th>Creation Date</th>
 			<th>Environment</th>
 		</xpath>
 		<xpath expr="//t[@t-foreach='tickets']/tr/td[hasclass('text-center')]" position="before">
-			<td class="text-left"><span t-field="ticket.create_date"/></td>
-			<td class="text-left"><span t-field="ticket.environment_id.name"/></td>
+			<td class="text-left">
+				<span t-field="ticket.create_date" />
+			</td>
+			<td class="text-left">
+				<span t-field="ticket.environment_id.name" />
+			</td>
 		</xpath>
-	</template>	
+	</template>
 
-	<template id="syd_custom.tickets_followup" inherit_id="helpdesk.tickets_followup" name="syd_custom_tickets_followup_inherit" priority="42">
-   		<xpath expr="//div[@t-if='ticket.user_id']" position="after">
-			<div class="row mb-4">
-                <strong class="col-lg-2">Impact</strong>
-                <div t-field="ticket.impact"/>
-            </div>
-		</xpath>
-   		
-   		<xpath expr="//div[@t-if='ticket.user_id']" position="after">
-			<div class="row mb-4">
-                <strong class="col-lg-2">Priority test</strong>
-                <div t-field="ticket.priority"/>
-            </div>
-		</xpath>
-		
+	<template id="syd_custom.tickets_followup" inherit_id="helpdesk.tickets_followup"
+		name="syd_custom_tickets_followup_inherit" priority="42">
 		<xpath expr="//div[@t-if='ticket.user_id']" position="after">
 			<div class="row mb-4">
-                <strong class="col-lg-2">Create Date</strong>
-                <div t-field="ticket.create_date"/>
-            </div>
+				<strong class="col-lg-2">Impact</strong>
+				<div t-field="ticket.impact" />
+			</div>
 		</xpath>
 
 		<xpath expr="//div[@t-if='ticket.user_id']" position="after">
 			<div class="row mb-4">
-                <strong class="col-lg-2">Environment</strong>
-                <div t-field="ticket.environment_id.name"/>
-            </div>
-		</xpath>		
+				<strong class="col-lg-2">Priority test</strong>
+				<div t-field="ticket.priority" />
+			</div>
+		</xpath>
 
 		<xpath expr="//div[@t-if='ticket.user_id']" position="after">
 			<div class="row mb-4">
-                <strong class="col-lg-2">Ticket Type</strong>
-                <div t-field="ticket.ticket_type_id.name"/>
-            </div>
-		</xpath>			
-		
+				<strong class="col-lg-2">Create Date</strong>
+				<div t-field="ticket.create_date" />
+			</div>
+		</xpath>
+
 		<xpath expr="//div[@t-if='ticket.user_id']" position="after">
 			<div class="row mb-4">
-                <strong class="col-lg-2">Contract</strong>
-                <div t-field="ticket.contract_id.name"/>
-            </div>
-		</xpath>		
-	</template>	
+				<strong class="col-lg-2">Environment</strong>
+				<div t-field="ticket.environment_id.name" />
+			</div>
+		</xpath>
+
+		<xpath expr="//div[@t-if='ticket.user_id']" position="after">
+			<div class="row mb-4">
+				<strong class="col-lg-2">Ticket Type</strong>
+				<div t-field="ticket.ticket_type_id.name" />
+			</div>
+		</xpath>
+
+		<xpath expr="//div[@t-if='ticket.user_id']" position="after">
+			<div class="row mb-4">
+				<strong class="col-lg-2">Contract</strong>
+				<div t-field="ticket.contract_id.name" />
+			</div>
+		</xpath>
+	</template>
 </odoo>

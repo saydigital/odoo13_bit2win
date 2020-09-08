@@ -39,7 +39,7 @@ class HelpdeskTicket(models.Model):
     pay_attention = fields.Boolean('Pay Attention')
     reason_why_id = fields.Many2one('helpdesk.reason','Reason')
     release_id = fields.Many2one('helpdesk.release','Release')
-    reported_by = fields.Many2one('helpdesk.reportedby','Reported by')
+    reported_by = fields.Many2one('helpdesk.reported','Reported by')
     
     
     def set_level_1(self):
