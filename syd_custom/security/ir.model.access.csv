@@ -1,7 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_helpdesk_ticket_type_all,helpdesk.ticket.type.all,helpdesk.model_helpdesk_ticket_type,,1,0,0,0
-access_helpdesk_reason,reason,model_helpdesk_reason,,1,0,0,0
-access_helpdesk_reason_user,reason user,model_helpdesk_reason,base.group_user,1,1,1,1
 access_helpdesk_release,release,model_helpdesk_release,,1,0,0,0
 access_helpdesk_release_user,release user,model_helpdesk_release,base.group_user,1,1,1,1
 access_helpdesk_reported,reported,model_helpdesk_reported,,1,0,0,0

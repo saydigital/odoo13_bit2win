@@ -5,13 +5,21 @@ from odoo import models, fields, api
 TICKET_FIELDS = ['name','release_id','reported_by','access_granted','level','environment_id','description','contract_id','partner_id','partner_created_id','user_who_found','impact','ticket_type_id','priority']
 
 
-                
-class HelpdeskReason(models.Model):
-    _name = "helpdesk.reason"
-    _description = "Reason"
+class ResPartner(models.Model):
+    _inherit = "res.partner"
     
-    name = fields.Char('Reason') 
+    reported_by = fields.Many2one('helpdesk.reported','Helpdesk Role')
+    
+    
+    
+    
+class HelpdeskReported(models.Model):
+    _name = "helpdesk.reported"
+    _description = "Reported"
+    
+    name = fields.Char('Reported')
     sequence = fields.Integer('Sequence')
+                
     
 class HelpdeskRelease(models.Model):
     _name = "helpdesk.release"
@@ -20,26 +28,20 @@ class HelpdeskRelease(models.Model):
     name = fields.Char('Release')
     sequence = fields.Integer('Sequence')
                     
-class HelpdeskReported(models.Model):
-    _name = "helpdesk.reported"
-    _description = "Reported"
-    
-    name = fields.Char('Reason')
-    sequence = fields.Integer('Sequence')
                 
 class HelpdeskTicket(models.Model):
     _inherit = "helpdesk.ticket"            
        
-    user_who_found = fields.Text(string="User who found the problem")
-    partner_created_id= fields.Many2one('res.partner',string="Partner")
-    impact = fields.Selection([('0','Blocking'),('1','Non Blocking')],default="0")
-    access_granted = fields.Boolean('Access Granted')
-    level = fields.Selection([('1','Level 1'),('2','Level 2')],default="1")
-    fixing = fields.Boolean('Fixing')
-    pay_attention = fields.Boolean('Pay Attention')
-    reason_why_id = fields.Many2one('helpdesk.reason','Reason')
-    release_id = fields.Many2one('helpdesk.release','Release')
-    reported_by = fields.Many2one('helpdesk.reportedby','Reported by')
+    user_who_found = fields.Text(string="User who found the problem",tracking=True)
+    partner_created_id= fields.Many2one('res.partner',string="Partner",tracking=True)
+    impact = fields.Selection([('0','Blocking'),('1','Non Blocking')],default="0",tracking=True)
+    access_granted = fields.Boolean('Access Granted',tracking=True)
+    level = fields.Selection([('1','Level 1'),('2','Level 2')],default="1",tracking=True)
+    fixing = fields.Boolean('Fixing',tracking=True)
+    pay_attention = fields.Boolean('Pay Attention',tracking=True)
+    reason_why_id = fields.Char('Reason',tracking=True)
+    release_id = fields.Many2one('helpdesk.release','Release',tracking=True)
+    reported_by = fields.Many2one('helpdesk.reported','Reported by',related="partner_id.reported_by",tracking=True)
     
     
     def set_level_1(self):

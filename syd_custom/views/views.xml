@@ -26,12 +26,10 @@
         <xpath expr="//button[@name='assign_ticket_to_self']" position="after">
         			                    <button name="set_level_1" string="Set Level 1" type="object"  groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('level', '=', '1')]}"/>
         			                    <button name="set_level_2" string="Set Level 2" type="object"  groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('level', '=', '2')]}"/>
-        								
         								<button name="set_pay_attention" string="Pay Attention" type="object" class="oe_highlight" groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('pay_attention', '=', True)]}"/>
 										<button name="no_pay_attention" string="Situation Normal" type="object" class="oe_highlight" groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('pay_attention', '=', False)]}"/>
-										
-										<button name="set_fixing" string="Fixing" type="object"  groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('fixing', '=', False)]}"/>
-										<button name="set_no_fixing" string="Not Fixing" type="object"  groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('fixing', '=', True)]}"/>
+										<button name="set_fixing" string="Fixing" type="object"  groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('fixing', '=', True)]}"/>
+										<button name="set_no_fixing" string="Not Fixing" type="object"  groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('fixing', '=', False)]}"/>
 										
         
         </xpath>
@@ -40,11 +38,11 @@
         <xpath expr="//div[@name='button_box']" position="after">
 					<field name="pay_attention" invisible="1" />
 					<div attrs="{'invisible':[('pay_attention','=',False)]}">
-						<span style="background-color:red;color:white;padding:2px;">Pay Attention</span>
+						<span style="background-color:red;color:white;padding:4px;">Pay Attention</span>
 					</div>
 					<field name="fixing" invisible="1" />
 					<div attrs="{'invisible':[('fixing','=',False)]}">
-						<span style="background-color:green;color:white;padding:2px;">Fixing</span>
+						<span style="background-color:green;color:white;padding:4px;">Fixing</span>
 					</div>
        			</xpath>
        			
@@ -80,35 +78,24 @@
         </field>
     </record>
         
+        <record model="ir.ui.view" id="view_ticket_contact_ext">
+		 	 <field name="name">res.partner.ext</field>
+		        <field name="model">res.partner</field>
+		        <field name="inherit_id" ref="syd_helpdesk_contract.view_ticket_contact_ext"/>
+		         <field name="arch" type="xml">
+		 		 <xpath expr="//field[@name='is_system_integrator']" position="after">
+				   
+				          <field name="reported_by" />
+				        
+				  </xpath>
+		 </field>
+		 </record>
+        
     <menuitem id="helpdesk_ticket_menu_my_home" name="Home" action="helpdesk_ticket_action_main_my_home"
         sequence="4" parent="helpdesk.menu_helpdesk_root"/>
         
         
-		     
-		     	<record model="ir.ui.view" id="helpdesk_reason_tree">
-				      <field name="name">helpdesk.reason</field>
-				      <field name="model">helpdesk.reason</field>
-				      <field name="arch" type="xml">
-				        <tree editable="bottom">
-				        	<field name="sequence" widget="handle"/>
-				            <field name="name"/>
-				          
-				        </tree>
-				      </field>
-				    </record>
-				
-				
-				    <record model="ir.actions.act_window" id="helpdesk_reason_act">
-				      <field name="name">Reason</field>
-				      <field name="res_model">helpdesk.reason</field>
-				      <field name="view_mode">tree</field>
-				    </record>
-				
-
-
-
-    <menuitem name="Reason" id="helpdesk_reason_menu" parent="helpdesk.helpdesk_menu_config"
-              action="helpdesk_reason_act"/>
+		
               
               
                	<record model="ir.ui.view" id="helpdesk_release_tree">
@@ -159,7 +146,7 @@
 
 
 
-    <menuitem name="Reason" id="helpdesk_reported_menu" parent="helpdesk.helpdesk_menu_config"
+    <menuitem name="Reported" id="helpdesk_reported_menu" parent="helpdesk.helpdesk_menu_config"
               action="helpdesk_reported_act"/>
         
 </odoo>
