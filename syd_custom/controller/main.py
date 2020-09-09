@@ -50,6 +50,9 @@ class WebsiteForm(WebsiteForm):
         types = []
         for t in type_ids:
             types += [(t.id,t.name)]
+            
+        reason_why_id = request.env['helpdesk.ticket']._fields['reason_why_id']        
+        
         return request.render("syd_custom.ticket_submit", {
                                                                       'contracts': contracts,
                                                                       'system_integrator':partner_id.is_system_integrator,
@@ -58,8 +61,8 @@ class WebsiteForm(WebsiteForm):
                                                                       'environment': environments,
                                                                       'impact':impact, 
                                                                       'release': releases, 
-                                                                      'reported_by': reported
-                                                                      
+                                                                      'reported_by': reported, 
+                                                                      'reason_why': reason_why_id
                                                                       })
 
     

@@ -3,6 +3,8 @@
 	<template id="syd_custom.ticket_submit" name="Helpdesk: Submit a Ticket">
 		<t name="Helpdesk" priority="29" t-name="website.helpdesk">
 			<t t-call="website.layout">
+				<body id="body_onload" onload="body_onLoad()" />
+			
 				<t t-set="additional_title">Ticket</t>
 				<h2 t-if="team" class="text-center text-muted">
 					<span>
@@ -18,15 +20,15 @@
 
 								<div class="container ">
 
-									<div class="">
-										<div class="">
-											<!-- <t t-if="system_integrator"> -->
+									<div>
+										<div>
+											<t t-if="system_integrator">
 											<div id="contract_form" class="form-group row form-field o_website_form_required col-xl-12">
 												<div class="col-xl-12">
-													<div class="">
+													<div>
 														<label class="col-form-label" for="contract">Contracts</label>
 													</div>
-													<div class="">
+													<div>
 														<select name="contract" class="form-control" autocomplete="on">
 															<option selected="selected" disabled="True" value="select"> -- Seleziona -- </option>
 															<t t-foreach="contracts or []" t-as="contract">
@@ -38,19 +40,19 @@
 													</div>
 												</div>
 											</div>
-											<!-- </t> -->
+											</t>
 										</div>
 									</div>
 
 
 									<div class="form-group row form-field o_website_form_required col-xl-12">
 										<div class="col-xl-6">
-											<div class="">
+											<div>
 												<label class="col-form-label" for="ticket_type_id">Question or Issue</label>
 											</div>
-											<div class="">
-												<select name="ticket_type_id" class="form-control" autocomplete="on" required="True">
-													<option disabled="True" selected="selected"> -- Select -- </option>
+											<div>
+												<select name="ticket_type_id" class="form-control" autocomplete="on" required="True" onChange="hideSeverityLevels(this)">
+													<option selected="selected" disabled="True" value="selected"> -- Select -- </option>
 													<t t-foreach="types or []" t-as="i">
 														<option t-att-value="i[0]">
 															<t t-esc="i[1]" />
@@ -61,13 +63,13 @@
 										</div>
 
 										<div class="col-xl-6">
-											<div class="">
+											<div>
 												<label class="col-form-label" for="environment_id">Environment</label>
 											</div>
 
-											<div class="">
-												<select name="environment_id" class="form-control" autocomplete="on">
-													<option selected="selected" disabled="True" value="select"> -- Select -- </option>
+											<div>
+												<select name="environment_id" class="form-control o_website_form_required o_website_form_select" required="True" autocomplete="on">
+													<option selected="selected" disabled="True" value="select"> -- Select --  </option>
 													<t t-foreach="environment or []" t-as="p">
 														<option t-att-value="p[0]">
 															<t t-esc="p[1]" />
@@ -82,10 +84,10 @@
 
 									<div class="form-group row form-field o_website_form_required col-xl-12">
 										<div class="col-xl-4">
-											<div class="">
+											<div>
 												<label class="col-form-label" for="release_id">Bit2win Release</label>
 											</div>
-											<div class="">
+											<div>
 												<select name="release_id" class="form-control" autocomplete="on">
 													<option selected="selected" disabled="True" value="select"> -- Select --  </option>
 													<t t-foreach="release or []" t-as="rel">
@@ -96,28 +98,29 @@
 												</select>
 											</div>
 										</div>
-										
+
 										<div class="col-xl-4">
-											<div class="">
+											<div>
 												<label class="col-form-label" for="priority">Severity Level</label>
 											</div>
-											<div class="">
-												<select name="priority" class="form-control" autocomplete="on">
-													<option selected="selected" disabled="True" value="select"> - Select - </option>
+											<div>
+												<select name="priority" id="select_severity" class="form-control" autocomplete="on" data-toggle="tooltip" data-html="true" title="" >
+													<option selected="selected" disabled="True"  value="select"> - Select - </option>
 													<t t-foreach="priority or []" t-as="sl">
 														<option t-att-value="sl[0]">
 															<t t-esc="sl[1]" />
 														</option>
 													</t>
 												</select>
+												
 											</div>
 										</div>
-										
+
 										<div class="col-xl-4">
-											<div class="">
+											<div>
 												<label class="col-form-label" for="impact">Impact</label>
 											</div>
-											<div class="">
+											<div >
 												<select name="impact" class="form-control" autocomplete="on">
 													<option selected="selected" disabled="True" value="select"> - Select - </option>
 													<t t-foreach="impact or []" t-as="i">
@@ -125,65 +128,48 @@
 															<t t-esc="i[1]" />
 														</option>
 													</t>
-	
+
 												</select>
 											</div>
-										</div>	
+										</div>
 									</div>
 
 									<div class="form-group row form-field o_website_form_required col-xl-12">
-										<!-- <div id="subject_form" class="form-group row form-field o_website_form_required"> -->
-										<div class="col-xl-8">	
-											<div class="">
+										<div class="col-xl-8">
+											<div>
 												<label class="col-form-label" for="name">Subject</label>
 											</div>
-											<div class="">
+											<div>
 												<input type="text" class="form-control o_website_form_input" name="name" required="True" />
 											</div>
 										</div>
-										<!-- </div> -->
 
-										<!-- <div class="form-group row form-field"> -->
-										<div class="col-xl-4">	
-											<div class="">
+										<div class="col-xl-4">
+											<div>
 												<label class="col-form-label" for="user_who_found">User who found</label>
 											</div>
-											<div class="">
+											<div>
 												<input class="form-control o_website_form_input" name="user_who_found" />
 											</div>
 										</div>
-										<!-- </div> -->
 									</div>
 
 
-									<div class="form-group row form-field col-xl-12">
-										<div class="col-xl-9">	
-											<div class="">
+									<div class="form-group row form-field o_website_form_required col-xl-12">
+										<div class="col-xl-9">
+											<div>
 												<label class="col-form-label" for="description">Description</label>
 											</div>
-											<div class="" >
-												<textarea class="form-control o_website_form_input" name="description" />
+											<div>
+												<textarea class="form-control o_website_form_input" name="description" required="True" />
 											</div>
 										</div>
-										
+
 										<div class="col-xl-3">
-											<div class="">
-												<label class="col-form-label" for="reported_by">Reported by</label>
-											</div>
-											<div class="">
-												<select name="reported_by" class="form-control" autocomplete="on">
-													<option selected="selected" disabled="True" value="select"> - Select - </option>
-													<t t-foreach="reported_by or []" t-as="r">
-														<option t-att-value="r[0]">
-															<t t-esc="r[1]" />
-														</option>
-													</t>
-												</select>
-											</div>
-											<div class="">
+											<div>
 												<label class="col-form-label" for="attachments">Attachment(s)</label>
 											</div>
-											<div class="">
+											<div>
 												<input type="file" name="attachments" class="form-control o_website_form_input" multiple="true"
 													accept="image/*,application/pdf,video/*" />
 											</div>
@@ -194,14 +180,14 @@
 
 									<!-- <div class="row" hidden="True"> -->
 									<!-- <div class="col-md-12 text-left"> -->
-									<!-- <p> -->
-									<!-- <strong>Severity Level</strong><br /> -->
-									<!-- 1-Critical: System unavailability condition or Software ineffectiveness with production environment impact<br 
-										/> -->
-									<!-- 2-Major: High business conditionb impact, which could put at risk production environment<br /> -->
-									<!-- 3-Minor: Limited impact on Business condition, with most of the Software functions still useable<br /> -->
-									<!-- 4-Cosmetic: System fault without impact on Business condition<br /> -->
-									<!-- </p> -->
+<!-- 									<p> -->
+<!-- 									<strong>Severity Level</strong><br /> -->
+<!-- 									1-Critical: System unavailability condition or Software ineffectiveness with production environment impact<br  -->
+<!-- 										/> -->
+<!-- 									2-Major: High business conditionb impact, which could put at risk production environment<br /> -->
+<!-- 									3-Minor: Limited impact on Business condition, with most of the Software functions still useable<br /> -->
+<!-- 									4-Cosmetic: System fault without impact on Business condition<br /> -->
+<!-- 									</p> -->
 									<!-- </div> -->
 
 									<!-- </div> -->
