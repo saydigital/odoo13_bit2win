@@ -31,7 +31,8 @@
 													</div>
 													<div>
 														<select name="contract" class="form-control" autocomplete="on">
-															<option selected="selected" disabled="True" value="select"> -- Seleziona -- </option>
+															<option selected="selected" disabled="True" value="selected"> -- Select -- </option>
+															
 															<t t-foreach="contracts or []" t-as="contract">
 																<option t-att-value="contract[0]">
 																	<t t-esc="contract[1]" />
@@ -53,7 +54,6 @@
 											</div>
 											<div>
 												<select name="ticket_type_id" class="form-control" autocomplete="on" required="True" onChange="hideSeverityLevels(this)">
-													<option selected="selected" disabled="True" value="selected"> -- Select -- </option>
 													<t t-foreach="types or []" t-as="i">
 														<option t-att-value="i[0]">
 															<t t-esc="i[1]" />
@@ -70,7 +70,6 @@
 
 											<div>
 												<select name="environment_id" class="form-control o_website_form_required o_website_form_select" required="True" autocomplete="on">
-													<option selected="selected" disabled="True" value="select"> -- Select --  </option>
 													<t t-foreach="environment or []" t-as="p">
 														<option t-att-value="p[0]">
 															<t t-esc="p[1]" />
@@ -90,7 +89,6 @@
 											</div>
 											<div>
 												<select name="release_id" class="form-control" autocomplete="on">
-													<option selected="selected" disabled="True" value="select"> -- Select --  </option>
 													<t t-foreach="release or []" t-as="rel">
 														<option t-att-value="rel[0]">
 															<t t-esc="rel[1]" />
@@ -106,7 +104,6 @@
 											</div>
 											<div>
 												<select name="priority" id="select_severity" class="form-control" autocomplete="on" data-toggle="tooltip" data-html="true" title="" >
-													<option selected="selected" disabled="True"  value="select"> - Select - </option>
 													<t t-foreach="priority or []" t-as="sl">
 														<option t-att-value="sl[0]">
 															<t t-esc="sl[1]" />
@@ -123,7 +120,6 @@
 											</div>
 											<div >
 												<select name="impact" class="form-control" autocomplete="on">
-													<option selected="selected" disabled="True" value="select"> - Select - </option>
 													<t t-foreach="impact or []" t-as="i">
 														<option t-att-value="i[0]">
 															<t t-esc="i[1]" />
@@ -195,7 +191,7 @@
 
 									<div class="form-group row">
 										<div class="offset-lg-3 offset-md-4 col-md-8 col-lg-7">
-											<button type="submit" class="btn btn-primary btn-lg o_website_form_send o_default_snippet_text" id="my_button" name="my_button" onclick="return formValidate(this);">Send</button>
+											<button type="submit" class="btn btn-primary btn-lg o_website_form_send o_default_snippet_text" id="button_send" name="button_send">Send</button>
 											<span id="o_website_form_result"></span>
 										</div>
 									</div>
