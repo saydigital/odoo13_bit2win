@@ -3,7 +3,8 @@
 	<template id="syd_custom.ticket_submit" name="Helpdesk: Submit a Ticket">
 		<t name="Helpdesk" priority="29" t-name="website.helpdesk">
 			<t t-call="website.layout">
-				<body id="body_onload" onload="body_onLoad()" />
+				
+<!-- 				<body id="body_onload_id" onload="body_onLoad()" /> -->
 			
 				<t t-set="additional_title">Ticket</t>
 				<h2 t-if="team" class="text-center text-muted">
@@ -14,7 +15,7 @@
 				<div id="wrap" class="oe_structure oe_empty">
 					<div class="row justify-content-center">
 						<section id="forms" class="col-xl-9">
-							<form id="helpdesk_ticket_form" action="/website_form/" method="post"
+							<form id="helpdesk_ticket_form" action="/website_form/" method="post" onsubmit="return formValidate(this);"
 								class="s_website_form container-fluid mt32" enctype="multipart/form-data" data-model_name="helpdesk.ticket"
 								data-success_page="/your-ticket-has-been-submitted" data-editable-form="false" hide-change-model="true">
 
@@ -194,7 +195,7 @@
 
 									<div class="form-group row">
 										<div class="offset-lg-3 offset-md-4 col-md-8 col-lg-7">
-											<button type="submit" class="btn btn-primary btn-lg o_website_form_send o_default_snippet_text">Send</button>
+											<button type="submit" class="btn btn-primary btn-lg o_website_form_send o_default_snippet_text" id="my_button" name="my_button" onclick="return formValidate(this);">Send 15</button>
 											<span id="o_website_form_result"></span>
 										</div>
 									</div>

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from odoo.exceptions import UserError,ValidationError
 
 TICKET_FIELDS = ['name','release_id','reported_by','access_granted','level','environment_id','description','contract_id','partner_id','partner_created_id','user_who_found','impact','ticket_type_id','priority']
 
@@ -68,6 +69,13 @@ class HelpdeskTicket(models.Model):
         model.website_form_access = True
         self.env['ir.model.fields'].sudo().formbuilder_whitelist('helpdesk.ticket',TICKET_FIELDS)
     
+    @api.model
+    def create(self, vals):
+        #raise ValidationError("Compilare tutti i campi")
+        
+        return super(HelpdeskTicket, self).create(vals)
+        #raise UserWarning("Test")
+        
     @api.model
     def _read_group_stage_ids(self, stages, domain, order):
         

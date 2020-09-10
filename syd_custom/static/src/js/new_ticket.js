@@ -1,9 +1,12 @@
 function body_onLoad(e){
+	// $('helpdesk_ticket_form').on('click', 'button.my_button', function(e) {
+	//	e.preventDefault(); 
+	// })
 }
 
 
 function formValidate(e){
-
+	//e.preventDefault()
 }
 
 function hideSeverityLevels(e) { 
