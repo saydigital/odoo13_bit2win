@@ -1,7 +1,8 @@
 function body_onLoad(e){
-	// $('helpdesk_ticket_form').on('click', 'button.my_button', function(e) {
-	//	e.preventDefault(); 
-	// })
+	//$(document).ready(function() {
+	//  $('#example').tooltip(); 
+	//  document.getElementById('example').title = "ciao"
+	// });
 }
 
 
