@@ -1,27 +1,64 @@
-function body_onLoad(e){
-	//$(document).ready(function() {
-	//  $('#example').tooltip(); 
-	//  document.getElementById('example').title = "ciao"
-	// });
-}
-
-
-function formValidate(e){
-	//e.preventDefault()
-}
-
 function hideSeverityLevels(e) { 
-	if(e.selectedIndex=='1'){
-		document.getElementById('select_severity').options[1].style.display = 'none'; 
-		document.getElementById('select_severity').options[2].style.display = 'none'; 
+
+	if(isIssue(e)==true){
+		setParamsForIssue(e); 
 		
-		severity_selected = document.getElementById('select_severity').selectedIndex
-		if(severity_selected == '1' || severity_selected == '2'){
-			document.getElementById('select_severity').selectedIndex = 0
-		}
-	
-	} else {
-		document.getElementById('select_severity').options[1].style.display = 'inline-block'; 
-		document.getElementById('select_severity').options[2].style.display = 'inline-block'; 
+	} else if (isQuestion(e)==true){
+		setParamsForQuestion(e); 
+		
+	} else { 
+		setParamsForConfiguration(e); 
 	}
 }
+
+
+function isIssue(e){
+	return (e.selectedIndex=='2')
+}
+
+function isQuestion(e){
+	return (e.selectedIndex=='1')
+}
+
+/* Issue */
+function setParamsForIssue(e){
+		// Environment, obbligatorio: Production/UAT/Development-Test (li vedo tutti)
+		document.getElementById('select_environment').options[1].style.display = 'inline-block'; 
+		document.getElementById('select_environment').options[2].style.display = 'inline-block';	
+		document.getElementById('select_environment').options[2].style.display = 'inline-block';
+		
+		
+		// Severity, obbligatorio: Comestic/Minor/Major/Critical
+		document.getElementById('select_severity').options[1].style.display = 'inline-block'; 
+		document.getElementById('select_severity').options[2].style.display = 'inline-block'; 
+		document.getElementById('select_severity').options[3].style.display = 'inline-block'; 
+		document.getElementById('select_severity').options[4].style.display = 'inline-block'; 
+		
+}
+
+function setParamsForQuestion(e){
+		// Environment, Non obbligatorio: Production/UAT/Development-Test (li vedo tutti)
+		document.getElementById('select_environment').options[1].style.display = 'inline-block'; 
+		document.getElementById('select_environment').options[2].style.display = 'inline-block';	
+		document.getElementById('select_environment').options[2].style.display = 'inline-block';
+		
+		// Severity, non obbligatorio: Cosmetic/Minor
+		document.getElementById('select_severity').options[1].style.display = 'inline-block'; 
+		document.getElementById('select_severity').options[2].style.display = 'none'; 
+		document.getElementById('select_severity').options[3].style.display = 'inline-block'; 
+		document.getElementById('select_severity').options[4].style.display = 'none'; 
+}
+
+function setParamsForConfiguration(e){
+		// Environment, Non obbligatorio: Production/UAT/Development-Test
+		document.getElementById('select_environment').options[1].style.display = 'inline-block'; 
+		document.getElementById('select_environment').options[2].style.display = 'none';	
+		document.getElementById('select_environment').options[3].style.display = 'inline-block';
+		
+		// Severity, non obbligatorio: Cosmetic/Minor
+		document.getElementById('select_severity').options[1].style.display = 'inline-block'; 
+		document.getElementById('select_severity').options[2].style.display = 'none'; 
+		document.getElementById('select_severity').options[3].style.display = 'inline-block'; 
+		document.getElementById('select_severity').options[4].style.display = 'none'; 
+}
+

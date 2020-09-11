@@ -3,7 +3,7 @@
 from odoo import models, fields, api
 from odoo.exceptions import UserError,ValidationError
 
-TICKET_FIELDS = ['name','release_id','reported_by','access_granted','level','environment_id','description','contract_id','partner_id','partner_created_id','user_who_found','impact','ticket_type_id','priority']
+TICKET_FIELDS = ['name','release_id','reported_by','access_granted','level','environment_id','description','contract_id','partner_id','partner_created_id','user_who_found','impact','ticket_type_id','priority','granted_user']
 
 
 class ResPartner(models.Model):
@@ -37,14 +37,15 @@ class HelpdeskTicket(models.Model):
     partner_created_id= fields.Many2one('res.partner',string="Partner",tracking=True)
     impact = fields.Selection([('0','Blocking'),('1','Non Blocking')],default="0",tracking=True)
     access_granted = fields.Boolean('Access Granted',tracking=True)
+    granted_user = fields.Text(string="Granted User",tracking=True)
     level = fields.Selection([('1','Level 1'),('2','Level 2')],default="1",tracking=True)
     fixing = fields.Boolean('Fixing',tracking=True)
     pay_attention = fields.Boolean('Pay Attention',tracking=True)
     reason_why_id = fields.Char('Reason',tracking=True)
     release_id = fields.Many2one('helpdesk.release','Release',tracking=True)
     reported_by = fields.Many2one('helpdesk.reported','Reported by',related="partner_id.reported_by",tracking=True)
-    
-    
+    environment_id_desc = fields.Text(string="Environment",tracking=True)
+
     def set_level_1(self):
         self.write({'level':'1'})
         
@@ -68,13 +69,6 @@ class HelpdeskTicket(models.Model):
         model = self.env['ir.model'].sudo().search([('model', '=', 'helpdesk.ticket')])
         model.website_form_access = True
         self.env['ir.model.fields'].sudo().formbuilder_whitelist('helpdesk.ticket',TICKET_FIELDS)
-    
-    @api.model
-    def create(self, vals):
-        #raise ValidationError("Compilare tutti i campi")
-        
-        return super(HelpdeskTicket, self).create(vals)
-        #raise UserWarning("Test")
         
     @api.model
     def _read_group_stage_ids(self, stages, domain, order):
