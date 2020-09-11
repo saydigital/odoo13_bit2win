@@ -29,10 +29,10 @@ function setParamsForIssue(e){
 		
 		
 		// Severity, obbligatorio: Comestic/Minor/Major/Critical
-		document.getElementById('select_severity').options[0].style.display = 'inline-block'; 
 		document.getElementById('select_severity').options[1].style.display = 'inline-block'; 
 		document.getElementById('select_severity').options[2].style.display = 'inline-block'; 
 		document.getElementById('select_severity').options[3].style.display = 'inline-block'; 
+		document.getElementById('select_severity').options[4].style.display = 'inline-block'; 
 		
 }
 
@@ -43,10 +43,10 @@ function setParamsForQuestion(e){
 		document.getElementById('select_environment').options[2].style.display = 'inline-block';
 		
 		// Severity, non obbligatorio: Cosmetic/Minor
-		document.getElementById('select_severity').options[0].style.display = 'inline-block'; 
-		document.getElementById('select_severity').options[1].style.display = 'none'; 
-		document.getElementById('select_severity').options[2].style.display = 'inline-block'; 
-		document.getElementById('select_severity').options[3].style.display = 'none'; 
+		document.getElementById('select_severity').options[1].style.display = 'inline-block'; 
+		document.getElementById('select_severity').options[2].style.display = 'none'; 
+		document.getElementById('select_severity').options[3].style.display = 'inline-block'; 
+		document.getElementById('select_severity').options[4].style.display = 'none'; 
 }
 
 function setParamsForConfiguration(e){
@@ -56,9 +56,9 @@ function setParamsForConfiguration(e){
 		document.getElementById('select_environment').options[3].style.display = 'inline-block';
 		
 		// Severity, non obbligatorio: Cosmetic/Minor
-		document.getElementById('select_severity').options[0].style.display = 'inline-block'; 
-		document.getElementById('select_severity').options[1].style.display = 'none'; 
-		document.getElementById('select_severity').options[2].style.display = 'inline-block'; 
-		document.getElementById('select_severity').options[3].style.display = 'none'; 
+		document.getElementById('select_severity').options[1].style.display = 'inline-block'; 
+		document.getElementById('select_severity').options[2].style.display = 'none'; 
+		document.getElementById('select_severity').options[3].style.display = 'inline-block'; 
+		document.getElementById('select_severity').options[4].style.display = 'none'; 
 }
 
