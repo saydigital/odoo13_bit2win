@@ -136,7 +136,7 @@
 									<div class="form-group row form-field col-xl-12">
 										<div class="col-xl-4">
 											<div>
-												<label class="col-form-label" for="granted_user">Granted User (tips)</label>
+												<label class="col-form-label" for="granted_user">Granted User</label>
 											</div>
 											<div>
 												<input class="form-control o_website_form_input" name="granted_user" />
@@ -232,7 +232,7 @@
 <!-- 							  					<input type="submit" id="send_button_id" value="Send" name="send_button" class="btn btn-primary btn-lg"/> -->
 											
 												<button type="submit" class="btn btn-primary btn-lg o_website_form_send o_default_snippet_text"
-													id="button_send" name="button_send" >Send button</button>
+													id="button_send" name="button_send" >Send</button>
 											<span id="o_website_form_result"></span>
 										</div>
 									</div>
