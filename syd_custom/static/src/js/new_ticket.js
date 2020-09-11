@@ -1,9 +1,13 @@
 function body_onLoad(e){
+	//$(document).ready(function() {
+	//  $('#example').tooltip(); 
+	//  document.getElementById('example').title = "ciao"
+	// });
 }
 
 
 function formValidate(e){
-
+	//e.preventDefault()
 }
 
 function hideSeverityLevels(e) { 
