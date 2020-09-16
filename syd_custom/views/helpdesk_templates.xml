@@ -17,7 +17,9 @@
 							<form id="helpdesk_ticket_form" action="/website_form/" method="post"
 								class="s_website_form container-fluid mt32" enctype="multipart/form-data" data-model_name="helpdesk.ticket"
 								data-success_page="/your-ticket-has-been-submitted" data-editable-form="false" hide-change-model="true">
-
+								    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <input type="hidden" name="partner_created_id" t-att-value="request.env.user.partner_id.id"/>
+								
 								<div class="container ">
 									<div>
 										<div>
