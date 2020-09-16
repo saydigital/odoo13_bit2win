@@ -11,7 +11,7 @@
 				        <form>
 				        	<sheet>
 				        		<field name="ticket_id" invisible="1"/>
-				            	<field name="name"/>
+				            	<field name="date_fix"/>
 				          	</sheet>
 				          	 <footer>
 		                        <button string="Set Fixing"
