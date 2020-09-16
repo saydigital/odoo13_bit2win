@@ -18,7 +18,8 @@
 							<br />
 						</div>
 						<div class="pt16 pb16 col-lg-2 bg-gamma">
-							<h1 id="progress"></h1>
+							<h1 id="progress">
+							</h1>
 							<h4>
 								Work in
 								<br />
@@ -32,7 +33,8 @@
 						</div>
 
 						<div class="pt16 pb16 col-lg-2 bg-alpha">
-							<h1 id="closed"></h1>
+							<h1 id="closed">
+							</h1>
 							<h4>Closed</h4>
 						</div>
 						<div class="pt16 pb16 col-lg-2 bg-epsilon">
