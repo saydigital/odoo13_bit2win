@@ -14,7 +14,8 @@
 					<field name="release_id" />
 					<field name="reported_by" />
 					<field name="access_granted" />
-
+					<field name="impact" />
+					<field name="date_fix" attrs="{'invisible': [('fixing', '=', False)]}"/>
 				</xpath>
 
 				<xpath  expr="/form[1]/sheet[1]/div[1]"  position="before">
@@ -28,7 +29,7 @@
         			                    <button name="set_level_2" string="Set Level 2" type="object"  groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('level', '=', '2')]}"/>
         								<button name="set_pay_attention" string="Pay Attention" type="object" class="oe_highlight" groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('pay_attention', '=', True)]}"/>
 										<button name="no_pay_attention" string="Situation Normal" type="object" class="oe_highlight" groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('pay_attention', '=', False)]}"/>
-										<button name="set_fixing" string="Fixing" type="object"  groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('fixing', '=', True)]}"/>
+										<button name="%(syd_custom.syd_custom_wizard_fix_act)" string="Fixing" type="action"  groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('fixing', '=', True)]}"/>
 										<button name="set_no_fixing" string="Not Fixing" type="object"  groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('fixing', '=', False)]}"/>
 										
         
