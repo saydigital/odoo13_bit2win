@@ -9,7 +9,6 @@
 	<template id="snippet_testimonial" name="Ticket Counter">
 		<section class="s_text_image pt32 pb32">
 			<div class="container">
-				<div class="container">
 					<div class="row align-items-stretch">
 						<div class="pt16 pb16 bg-beta col-lg-2 offset-lg-1">
 							<h1 id="open">
@@ -38,14 +37,15 @@
 							<h4>Closed</h4>
 						</div>
 						<div class="pt16 pb16 col-lg-2 bg-epsilon">
-							<h1 id="all"></h1>
+							<h1 id="all">
+							</h1>
 							<h4>
 								<a href="/my/tickets">
 									<font style="color: rgb(255, 255, 255);">All</font>
 								</a>
 							</h4>
 						</div>
-					</div>
+				
 				</div>
 			</div>
 		</section>
