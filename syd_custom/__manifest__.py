@@ -19,7 +19,7 @@
                 'syd_helpdesk_contract'
                 ],
     'data':[
-            'data/data.xml',
+        'data/data.xml',
         'views/helpdesk_templates.xml',
         'wizard/wizard.xml',
         'views/views.xml',
