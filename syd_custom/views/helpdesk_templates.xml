@@ -244,6 +244,7 @@
 		<xpath expr="//t[@t-if='tickets']/thead/tr/th[last()]" position="before">
 			<th>Creation Date</th>
 			<th>Environment</th>
+			<th>Level</th>
 		</xpath>
 		<xpath expr="//t[@t-foreach='tickets']/tr/td[hasclass('text-center')]" position="before">
 			<td class="text-left">
@@ -251,6 +252,12 @@
 			</td>
 			<td class="text-left">
 				<span t-field="ticket.environment_id.name" />
+				<t t-if="ticket.fixing">
+					<span class="badge badge-pill badge-warning">Fixing</span>
+				</t>
+			</td>
+			<td class="text-left">
+				<span t-field="ticket.level" />
 			</td>
 		</xpath>
 	</template>
@@ -277,11 +284,21 @@
 				<div t-field="ticket.create_date" />
 			</div>
 		</xpath>
-
+		
+		<xpath expr="//div[@t-if='ticket.user_id']" position="after">
+			<div class="row mb-4">
+				<strong class="col-lg-2">Level</strong>
+				<div t-field="ticket.level" />
+			</div>
+		</xpath>
+		
 		<xpath expr="//div[@t-if='ticket.user_id']" position="after">
 			<div class="row mb-4">
 				<strong class="col-lg-2">Environment</strong>
 				<div t-field="ticket.environment_id.name" />
+				<t t-if="ticket.fixing">
+					<span class="badge badge-pill badge-warning">Fixing</span>
+				</t>
 			</div>
 		</xpath>
 
