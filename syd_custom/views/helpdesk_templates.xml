@@ -68,7 +68,7 @@
 											</div>
 
 											<div>
-												<select id="select_environment" name="environment_name" class="form-control" autocomplete="on">
+												<select id="select_environment" name="environment" class="form-control" autocomplete="on">
 													<option selected="selected" disabled="True" value="selected">-- Select --</option>
 													<t t-foreach="environment or []" t-as="p">
 														<option t-att-value="p[0]">
@@ -99,7 +99,7 @@
 												</label>
 											</div>
 											<div>
-												<select name="select_severity_name" id="select_severity" class="form-control" autocomplete="on">
+												<select name="priority" id="select_severity" class="form-control" autocomplete="on">
 													<option selected="selected" disabled="True" value="selected">-- Select --</option>
 													<t t-foreach="priority or []" t-as="sl">
 														<option t-att-value="sl[0]">
