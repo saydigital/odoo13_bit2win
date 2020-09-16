@@ -273,8 +273,19 @@
 
 		<xpath expr="//div[@t-if='ticket.user_id']" position="after">
 			<div class="row mb-4">
-				<strong class="col-lg-2">Priority</strong>
-				<div t-field="ticket.priority" />
+				<strong class="col-lg-2">Severity</strong>
+				<t t-if="ticket.priority=='0'" >
+						Cosmetic
+				</t>
+				<t t-if="ticket.priority=='0'" >
+						Minimal
+				</t>
+				<t t-if="ticket.priority=='0'" >
+						Major
+				</t>
+				<t t-if="ticket.priority=='0'" >
+						Critical
+				</t>
 			</div>
 		</xpath>
 
@@ -315,22 +326,6 @@
 				<div t-field="ticket.contract_id.name" />
 			</div>
 		</xpath>
-		<xpath expr="//div[@t-if='ticket.priority']" position="replace">
-			<div class="row mb-4">
-				<strong class="col-lg-2">Severity</strong>
-				<t t-if="ticket.priority=='0'" >
-						Cosmetic
-				</t>
-				<t t-if="ticket.priority=='0'" >
-						Minimal
-				</t>
-				<t t-if="ticket.priority=='0'" >
-						Major
-				</t>
-				<t t-if="ticket.priority=='0'" >
-						Critical
-				</t>
-			</div>
-		</xpath>
+		
 	</template>
 </odoo>
