@@ -9,7 +9,7 @@ odoo.define('syd_custom.TicketCounter', function (require) {
 			&& document.getElementById('progress')
 			&& document.getElementById('closed')
 			&& document.getElementById('all')
-			&& document.getElementById('waiting_answer')
+			&& document.getElementById('waiting_answer')){
 	
 		ajax.jsonRpc('/getTicketCounter', 'call', {})
 			.then(function (data) {
@@ -19,6 +19,7 @@ odoo.define('syd_custom.TicketCounter', function (require) {
 				document.getElementById('all').innerHTML = data.all;
 				document.getElementById('waiting_answer').innerHTML = data.waiting_answer; 
 			}) 
+	}
 });
 
 function hideSeverityLevels(e) { 
