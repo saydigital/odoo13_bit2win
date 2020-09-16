@@ -28,6 +28,7 @@
 				      <field name="res_model">syd_custom.wizard_fix</field>
 				      <field name="view_mode">form</field>
 				      <field name="target">blank</field>
+				      <field name="context">{'ticket_id':active_id}</field>
 				    </record>
 				
 
