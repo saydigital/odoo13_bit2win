@@ -21,6 +21,7 @@
     'data':[
             'data/data.xml',
         'views/helpdesk_templates.xml',
+        'wizard/wizard.xml',
         'views/views.xml',
         'views/asset.xml',
         'security/ir.model.access.csv'
