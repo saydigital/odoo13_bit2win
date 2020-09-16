@@ -17,6 +17,7 @@
                 'sale'
                 ],
     'data':[
+        'security/helpdesk_security.xml',
         'views/helpdesk_templates.xml',
         'views/views.xml'
     ],

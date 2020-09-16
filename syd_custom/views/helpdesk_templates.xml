@@ -3,8 +3,6 @@
 	<template id="syd_custom.ticket_submit" name="Helpdesk: Submit a Ticket">
 		<t name="Helpdesk" priority="29" t-name="website.helpdesk">
 			<t t-call="website.layout">
-			
-<!-- 				<body id="body_onload_id" onload="body_onLoad()" /> -->
 
 				<t t-set="additional_title">Ticket</t>
 				<h2 t-if="team" class="text-center text-muted">
@@ -15,18 +13,17 @@
 				<div id="wrap" class="oe_structure oe_empty">
 					<div class="row justify-content-center">
 						<section id="forms" class="col-xl-9">
-							
+
 							<form id="helpdesk_ticket_form" action="/website_form/" method="post"
 								class="s_website_form container-fluid mt32" enctype="multipart/form-data" data-model_name="helpdesk.ticket"
 								data-success_page="/your-ticket-has-been-submitted" data-editable-form="false" hide-change-model="true">
 
 								<div class="container ">
-
 									<div>
 										<div>
 											<t t-if="system_integrator">
 												<div id="contract_form" class="form-group row form-field col-xl-12">
-													<div class="col-xl-12">
+													<div class="col-xl-12" id="container_contract">
 														<div>
 															<label class="col-form-label" for="contract">Contracts</label>
 														</div>
@@ -47,16 +44,15 @@
 										</div>
 									</div>
 
-
 									<div class="form-group row form-field col-xl-12">
-										<div class="col-xl-6">
+										<div class="col-xl-6" id="container_ticket_type">
 											<div>
 												<label class="col-form-label" for="ticket_type_id">Question or Issue</label>
 											</div>
 											<div>
-												<select name="ticket_type_id" class="form-control" onChange="hideSeverityLevels(this)">
-							  						<option value="">-- Select --</option>
-													
+												<select id="ticket_type_id" required="True" name="ticket_type_id" class="form-control"
+													onChange="hideSeverityLevels(this)">
+													<option selected="selected" disabled="True" value="selected">-- Select --</option>
 													<t t-foreach="types or []" t-as="i">
 														<option t-att-value="i[0]">
 															<t t-esc="i[1]" />
@@ -66,14 +62,14 @@
 											</div>
 										</div>
 
-										<div class="col-xl-6">
+										<div class="col-xl-6" id="container_environment">
 											<div>
 												<label class="col-form-label" for="environment_id">Environment (configurabile)</label>
 											</div>
 
 											<div>
-												<select id="select_environment" name="environment_name" class="form-control" autocomplete="on">
-							  						<option value="">- Select -</option>
+												<select id="select_environment" name="environment" class="form-control" autocomplete="on">
+													<option selected="selected" disabled="True" value="selected">-- Select --</option>
 													<t t-foreach="environment or []" t-as="p">
 														<option t-att-value="p[0]">
 															<t t-esc="p[1]" />
@@ -86,79 +82,79 @@
 
 
 									<div class="form-group row form-field col-xl-12">
-											<div class="col-xl-4">
-												<div>
-													<label class="col-form-label" for="environment_id_desc">Environment Id</label>
-												</div>
-												<div>
-													<input class="form-control o_website_form_input" name="environment_id_desc" />
-												</div>
-											</div>			
+										<div class="col-xl-4" id="container_environment_desc">
+											<div>
+												<label class="col-form-label" for="environment_id_desc">Environment Id</label>
+											</div>
+											<div>
+												<input class="form-control o_website_form_input" name="environment_id_desc" id="environment_id_desc" />
+											</div>
+										</div>
 
-											<div class="col-xl-4">
-												<div>
-													<label class="col-form-label" for="priority">
-														Severity Level
-														<i class="fa fa-info-circle" data-html="true" data-toggle="modal" data-target="#get_so" />
-													</label>
-												</div>
-												<div>
-													<select name="select_severity_name" id="select_severity" class="form-control" autocomplete="on">
-														<option value="">-- Select --</option>
-														<t t-foreach="priority or []" t-as="sl">
-															<option t-att-value="sl[0]">
-																<t t-esc="sl[1]" />
-															</option>
-														</t>
-													</select>
-	
-												</div>
+										<div class="col-xl-4" id="container_priority">
+											<div>
+												<label class="col-form-label" for="priority">
+													Severity Level
+													<i class="fa fa-info-circle" data-html="true" data-toggle="modal" data-target="#get_so" />
+												</label>
 											</div>
-	
-											<div class="col-xl-4">
-												<div>
-													<label class="col-form-label" for="impact">Impact</label>
-												</div>
-												<div>
-													<select name="impact" class="form-control" autocomplete="on" required="False">
-														<option value="">-- Select --</option>
-														<t t-foreach="impact or []" t-as="i">
-															<option t-att-value="i[0]">
-																<t t-esc="i[1]" />
-															</option>
-														</t>
-	
-													</select>
-												</div>
+											<div>
+												<select name="priority" id="select_severity" class="form-control" autocomplete="on">
+													<option selected="selected" disabled="True" value="selected">-- Select --</option>
+													<t t-foreach="priority or []" t-as="sl">
+														<option t-att-value="sl[0]">
+															<t t-esc="sl[1]" />
+														</option>
+													</t>
+												</select>
+
 											</div>
+										</div>
+
+										<div class="col-xl-4" id="container_impact">
+											<div>
+												<label class="col-form-label" for="impact">Impact</label>
+											</div>
+											<div>
+												<select id="impact_id" name="impact" class="form-control" autocomplete="on" required="False">
+													<option selected="selected" disabled="True" value="selected">-- Select --</option>
+													<t t-foreach="impact or []" t-as="i">
+														<option t-att-value="i[0]">
+															<t t-esc="i[1]" />
+														</option>
+													</t>
+
+												</select>
+											</div>
+										</div>
 									</div>
-									
+
 									<div class="form-group row form-field col-xl-12">
-										<div class="col-xl-4">
+										<div class="col-xl-4" id="container_granted">
 											<div>
 												<label class="col-form-label" for="granted_user">Granted User</label>
 											</div>
 											<div>
-												<input class="form-control o_website_form_input" name="granted_user" />
+												<input class="form-control o_website_form_input" name="granted_user" id="granted_user" />
 											</div>
 										</div>
-										<div class="col-xl-4">
+										<div class="col-xl-4" id="container_user_who_found">
 											<div>
 												<label class="col-form-label" for="user_who_found">Business User</label>
 											</div>
 											<div>
-												<input class="form-control o_website_form_input" name="user_who_found" />
+												<input class="form-control o_website_form_input" name="user_who_found" id="user_who_found" />
 											</div>
 										</div>
-										
-										
-										<div class="col-xl-4">
+
+
+										<div class="col-xl-4" id="container_release_id">
 											<div>
 												<label class="col-form-label" for="release_id">Bit2win Release</label>
 											</div>
 											<div>
-												<select name="release_id" class="form-control" autocomplete="on">
-													<option value="">-- Select --</option>
+												<select id="release_id" name="release_id" class="form-control" autocomplete="on">
+													<option selected="selected" disabled="True" value="selected">-- Select --</option>
 
 													<t t-foreach="release or []" t-as="rel">
 														<option t-att-value="rel[0]">
@@ -167,35 +163,31 @@
 													</t>
 												</select>
 											</div>
-										</div>										
-										
-																			
-									</div>									
-									
+										</div>
+									</div>
 
 									<div class="form-group row form-field col-xl-12">
-										<div class="col-xl-12">
+										<div class="col-xl-12" id="container_subject">
 											<div>
 												<label class="col-form-label" for="name">Subject</label>
 											</div>
 											<div>
-												<input type="text" class="form-control o_website_form_input" name="name" />
+												<input type="text" class="form-control o_website_form_input" name="name" id="subject" />
 											</div>
 										</div>
 									</div>
 
-
 									<div class="form-group row form-field col-xl-12">
-										<div class="col-xl-9">
+										<div class="col-xl-9" id="container_description">
 											<div>
 												<label class="col-form-label" for="description">Description</label>
 											</div>
 											<div>
-												<textarea class="form-control o_website_form_input" name="description"/>
+												<textarea class="form-control o_website_form_input" name="description" id="description" />
 											</div>
 										</div>
 
-										<div class="col-xl-3">
+										<div class="col-xl-3" id="container_attachments">
 											<div>
 												<label class="col-form-label" for="attachments">Attachment(s)</label>
 											</div>
@@ -229,10 +221,10 @@
 
 									<div class="form-group row">
 										<div class="offset-lg-3 offset-md-4 col-md-8 col-lg-7">
-<!-- 							  					<input type="submit" id="send_button_id" value="Send" name="send_button" class="btn btn-primary btn-lg"/> -->
-											
-												<button type="submit" class="btn btn-primary btn-lg o_website_form_send o_default_snippet_text"
-													id="button_send" name="button_send" >Send</button>
+											<!-- <input type="submit" id="send_button_id" value="Send" name="send_button" class="btn btn-primary btn-lg"/> -->
+
+											<button type="submit" class="btn btn-primary btn-lg o_website_form_send o_default_snippet_text"
+												id="button_send" name="button_send">Send</button>
 											<span id="o_website_form_result"></span>
 										</div>
 									</div>

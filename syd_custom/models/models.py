@@ -3,7 +3,7 @@
 from odoo import models, fields, api
 from odoo.exceptions import UserError,ValidationError
 
-TICKET_FIELDS = ['name','release_id','reported_by','access_granted','level','environment_id','description','contract_id','partner_id','partner_created_id','user_who_found','impact','ticket_type_id','priority','granted_user']
+TICKET_FIELDS = ['environment_id_desc','name','release_id','reported_by','access_granted','level','environment_id','description','contract_id','partner_id','partner_created_id','user_who_found','impact','ticket_type_id','priority','granted_user']
 
 
 class ResPartner(models.Model):
@@ -45,6 +45,7 @@ class HelpdeskTicket(models.Model):
     release_id = fields.Many2one('helpdesk.release','Release',tracking=True)
     reported_by = fields.Many2one('helpdesk.reported','Reported by',related="partner_id.reported_by",tracking=True)
     environment_id_desc = fields.Text(string="Environment",tracking=True)
+    date_fix = fields.Date('Planned Fix Date')
 
     def set_level_1(self):
         self.write({'level':'1'})
