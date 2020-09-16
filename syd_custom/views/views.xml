@@ -8,16 +8,19 @@
 
 			<field name="arch" type="xml">
 				<xpath expr="//field[@name='ticket_type_id']" position="after">
-					<field name="user_who_found" />
-					<field name="partner_created_id" />
+					
 					<field name="reason_why_id" />
 					<field name="release_id" />
-					<field name="reported_by" />
-					<field name="access_granted" />
+					
 					<field name="impact" />
 					<field name="date_fix" attrs="{'invisible': [('fixing', '=', False)]}"/>
 				</xpath>
-
+				<xpath expr="//field[@name='partner_email']" position="after">
+					<field name="reported_by" />
+					<field name="access_granted" />
+					<field name="user_who_found" />
+					<field name="partner_created_id" />
+				</xpath>
 				<xpath  expr="/form[1]/sheet[1]/div[1]"  position="before">
         		<field name="level" invisible="1"/>
         		 <widget name="web_ribbon" title="LEVEL 1" bg_color="bg-danger" attrs="{'invisible': [('level', '!=', '1')]}"/>
