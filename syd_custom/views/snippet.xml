@@ -13,7 +13,6 @@
 					<div class="row align-items-stretch">
 						<div class="pt16 pb16 bg-beta col-lg-2 offset-lg-1">
 							<h1 id="open">
-<!-- 								<t t-esc="request.env['helpdesk.ticket'].search_count([])" t-set="counting_ticket"></t> -->
 							</h1>
 							<h4>Open</h4>
 							<br />
