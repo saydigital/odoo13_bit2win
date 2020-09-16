@@ -264,7 +264,7 @@
 
 		<xpath expr="//div[@t-if='ticket.user_id']" position="after">
 			<div class="row mb-4">
-				<strong class="col-lg-2">Priority test</strong>
+				<strong class="col-lg-2">Priority</strong>
 				<div t-field="ticket.priority" />
 			</div>
 		</xpath>

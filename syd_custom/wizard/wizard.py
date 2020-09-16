@@ -5,7 +5,7 @@ from odoo.exceptions import UserError,ValidationError
 
 
 
-class Wizard(models.Model):
+class Wizard(models.Transient):
     _name="syd_custom.wizard_fix"
     
     date_fix =  fields.Date('Planned Fix Date',required=True)
