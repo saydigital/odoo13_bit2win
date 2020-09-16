@@ -277,13 +277,13 @@
 				<t t-if="ticket.priority=='0'" >
 						Cosmetic
 				</t>
-				<t t-if="ticket.priority=='0'" >
+				<t t-if="ticket.priority=='1'" >
 						Minimal
 				</t>
-				<t t-if="ticket.priority=='0'" >
+				<t t-if="ticket.priority=='2'" >
 						Major
 				</t>
-				<t t-if="ticket.priority=='0'" >
+				<t t-if="ticket.priority=='3'" >
 						Critical
 				</t>
 			</div>
