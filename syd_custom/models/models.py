@@ -3,7 +3,7 @@
 from odoo import models, fields, api
 from odoo.exceptions import UserError,ValidationError
 
-TICKET_FIELDS = ['environment_id_desc','name','release_id','reported_by','access_granted','level','environment_id','description','contract_id','partner_id','partner_created_id','user_who_found','impact','ticket_type_id','priority','granted_user']
+TICKET_FIELDS = ['partner_created_id','environment_id_desc','name','release_id','reported_by','access_granted','level','environment_id','description','contract_id','partner_id','partner_created_id','user_who_found','impact','ticket_type_id','priority','granted_user']
 
 
 class ResPartner(models.Model):
@@ -34,7 +34,7 @@ class HelpdeskTicket(models.Model):
     _inherit = "helpdesk.ticket"            
        
     user_who_found = fields.Text(string="User who found the problem",tracking=True)
-    partner_created_id= fields.Many2one('res.partner',string="Partner",tracking=True)
+    partner_created_id= fields.Many2one('res.partner',string="Partner",tracking=True,default=lambda self: self.env.user.partner_id.id)
     impact = fields.Selection([('0','Blocking'),('1','Non Blocking')],default="0",tracking=True)
     access_granted = fields.Boolean('Access Granted',tracking=True)
     granted_user = fields.Text(string="Granted User",tracking=True)

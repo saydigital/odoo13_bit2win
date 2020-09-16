@@ -15,7 +15,7 @@ class Wizard(models.TransientModel):
     def set_fix(self):
         self.ticket_id.write({
                               'date_fix':self.date_fix,
-                              'fixing':self.fixing
+                              'fixing':True
                               })
     
     
