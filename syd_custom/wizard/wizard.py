@@ -7,7 +7,7 @@ from odoo.exceptions import UserError,ValidationError
 
 class Wizard(models.TransientModel):
     _name="syd_custom.wizard_fix"
-    
+    _description = "Wizard date fix"
     date_fix =  fields.Date('Planned Fix Date',required=True)
     ticket_id = fields.Many2one('helpdesk.ticket',string="Ticket")
     
