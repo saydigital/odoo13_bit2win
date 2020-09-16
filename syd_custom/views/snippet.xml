@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 	<template id="place_into_bar" inherit_id="website.snippets" name="Ticket counter bar">
-		<xpath expr="//div[@id='snippet_structure']/div[@hasclass('o_panel_body')]" position="inside">
+		<xpath expr="//div[@id='snippet_structure']/div[hasclass('o_panel_body')]" position="inside">
 			<t t-snippet="syd_custom.snippet_testimonial" t-thumbnail="/theme_tutorial/static/src/img/ui/snippet_thumb.jpg" />
 		</xpath>
 	</template>
