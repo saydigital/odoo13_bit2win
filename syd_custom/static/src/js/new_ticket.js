@@ -5,8 +5,13 @@ odoo.define('syd_custom.TicketCounter', function (require) {
 	var ajax = require('web.ajax');
 	//var core = require('web.core');
 	//var rpc = require('web.rpc');
+	if (document.getElementById('open') 
+			&& document.getElementById('progress')
+			&& document.getElementById('closed')
+			&& document.getElementById('all')
+			&& document.getElementById('waiting_answer')
 	
-	ajax.jsonRpc('/getTicketCounter', 'call', {})
+		ajax.jsonRpc('/getTicketCounter', 'call', {})
 			.then(function (data) {
 				document.getElementById('open').innerHTML = data.open; 
 				document.getElementById('progress').innerHTML = data.work_in_progress; 
