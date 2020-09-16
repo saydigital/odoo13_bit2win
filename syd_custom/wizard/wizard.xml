@@ -10,8 +10,10 @@
 				      <field name="arch" type="xml">
 				        <form>
 				        	<sheet>
+				        		<group>
 				        		<field name="ticket_id" invisible="1"/>
 				            	<field name="date_fix"/>
+				            	</group>
 				          	</sheet>
 				          	 <footer>
 		                        <button string="Set Fixing"
