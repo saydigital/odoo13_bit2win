@@ -20,9 +20,9 @@ class WebsiteForm(WebsiteForm):
             if pid == '0':
                 priority += [(pid,'Cosmetic')]
             if pid == '1':
-                priority += [(pid,'Major')]
-            if pid == '2':
                 priority += [(pid,'Minor')]
+            if pid == '2':
+                priority += [(pid,'Major')]
             if pid == '3':
                 priority += [(pid,'Critical')]
         environment_ids = request.env['helpdesk.environment'].search([(1,'=',1)])
