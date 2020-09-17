@@ -35,7 +35,7 @@ class HelpdeskStage(models.Model):
 
     name_for_customer = fields.Char('Name for customer')
     flag_before_email = fields.Boolean('Flag before email')   
-    flag_after_email = fields.Boolean('Flag before email')
+    flag_after_email = fields.Boolean('Flag after email')
             
 class HelpdeskTicket(models.Model):
     _inherit = "helpdesk.ticket"            
@@ -76,7 +76,7 @@ class HelpdeskTicket(models.Model):
     
     def _is_user_from_backend(self):
         #if 1 user is from backend
-        return (bool( self.team_id.communication_user_id) & bool(1 in self.env.user.groups_id.ids))
+        return ( bool(1 in self.env.user.groups_id.ids))
     
     
     def set_level_1(self):

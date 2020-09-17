@@ -104,7 +104,7 @@
 		 		 <xpath expr="//field[@name='fold']" position="after">
 				   			<field name="name_for_customer" />
 				          <field name="flag_before_email" />
-				        	<field name="flag_before_email" />
+				        	<field name="flag_after_email" />
 				  </xpath>
 		 		</field>
 		 </record>
