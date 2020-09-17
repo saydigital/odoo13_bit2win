@@ -50,7 +50,7 @@ class HelpdeskTicket(models.Model):
     pay_attention = fields.Boolean('Pay Attention',tracking=True)
     reason_why_id = fields.Char('Reason',tracking=True)
     release_id = fields.Many2one('helpdesk.release','Release',tracking=True)
-    reported_by = fields.Many2one('helpdesk.reported','Reported by',related="partner_id.reported_by",tracking=True)
+    reported_by = fields.Many2one('helpdesk.reported','Reported by role',related="partner_id.reported_by",tracking=True)
     environment_id_desc = fields.Text(string="Environment Description",tracking=True)
     date_fix = fields.Date('Planned Fix Date',tracking=True)
 
