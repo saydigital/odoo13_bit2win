@@ -68,7 +68,7 @@ class HelpdeskTicket(models.Model):
                      attachments=attachments, attachment_ids=attachment_ids,
                      add_sign=add_sign, record_name=record_name,
                      **kwargs)
-        if  bool(message_type=='comment') and bool(subtype=='mail.mt_comment') and self.stage_id.flag_before_email:
+        if  self._is_user_from_frontend() and bool(message_type=='comment') and bool(subtype=='mt_comment') and self.stage_id.flag_before_email:
             stage_id = self.env['helpdesk.stage'].search([('flag_after_email','=',True)],limit=1)
             if stage_id:
                 self.stage_id = stage_id.id
