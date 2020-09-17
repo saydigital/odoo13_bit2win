@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+	
+
 	<template id="syd_custom.ticket_submit" name="Helpdesk: Submit a Ticket">
 		<t name="Helpdesk" priority="29" t-name="website.helpdesk">
 			<t t-call="website.layout">
@@ -326,6 +328,12 @@
 				<div t-field="ticket.contract_id.name" />
 			</div>
 		</xpath>
+		<xpath expr="//t[@t-set='card_body']" position="inside">
 		
+					<t t-call="website_mail.follow">
+                                <t t-set="email" t-value="request.env.user.partner_id.email"/>
+                                <t t-set="object" t-value="ticket"/>
+                            </t>
+		</xpath>
 	</template>
 </odoo>
