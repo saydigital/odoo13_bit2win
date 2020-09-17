@@ -54,6 +54,31 @@ class HelpdeskTicket(models.Model):
     environment_id_desc = fields.Text(string="Environment Description",tracking=True)
     date_fix = fields.Date('Planned Fix Date',tracking=True)
 
+    @api.returns('mail.message', lambda value: value.id)
+    def message_post(self, *,
+                     body='', subject=None, message_type='notification',
+                     email_from=None, author_id=None, parent_id=False,
+                     subtype_id=False, subtype=None, partner_ids=None, channel_ids=None,
+                     attachments=None, attachment_ids=None,
+                     add_sign=True, record_name=False,
+                     **kwargs):
+        message = super(HelpdeskTicket, self).message_post(body=body, subject=subject, message_type=message_type,
+                     email_from=email_from, author_id=author_id, parent_id=parent_id,
+                     subtype_id=subtype_id, subtype=subtype, partner_ids=partner_ids, channel_ids=channel_ids,
+                     attachments=attachments, attachment_ids=attachment_ids,
+                     add_sign=add_sign, record_name=record_name,
+                     **kwargs)
+        if not self._is_user_from_backend() & bool(message_type=='comment') & bool(subtype=='mail.mt_comment') and self.stage_id.flag_before_email:
+            stage_id = self.env['helpdesk.stage'].search([('flag_after_email','=',True)],limit=1)
+            if stage_id:
+                self.stage_id = stage_id.id
+        return message
+    
+    def _is_user_from_backend(self):
+        #if 1 user is from backend
+        return (bool( self.team_id.communication_user_id) & bool(1 in self.env.user.groups_id.ids))
+    
+    
     def set_level_1(self):
         self.write({'level':'1'})
         
