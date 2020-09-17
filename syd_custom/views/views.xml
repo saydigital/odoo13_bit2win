@@ -95,6 +95,20 @@
 		 </field>
 		 </record>
         
+        
+        <record model="ir.ui.view" id="view_ticket_stage_ext">
+        		<field name="name">helpdesk.stage.form</field>
+        		<field name="model">helpdesk.stage</field>
+		        <field name="inherit_id" ref="helpdesk.helpdesk_stage_view_form"/>
+		         <field name="arch" type="xml">
+		 		 <xpath expr="//field[@name='fold']" position="after">
+				   			<field name="name_for_customer" />
+				          <field name="flag_before_email" />
+				        	<field name="flag_after_email" />
+				  </xpath>
+		 		</field>
+		 </record>
+          
     <menuitem id="helpdesk_ticket_menu_my_home" name="Home" action="helpdesk_ticket_action_main_my_home"
         sequence="4" parent="helpdesk.menu_helpdesk_root"/>
         

@@ -3,7 +3,7 @@
 
 {
     'name': "Custom B2W",
-    'version': '0.0.1',
+    'version': '0.0.2',
     'license': 'Other proprietary',
     'summary': """Helpdesk Extended
     """,
