@@ -68,15 +68,15 @@ class HelpdeskTicket(models.Model):
                      attachments=attachments, attachment_ids=attachment_ids,
                      add_sign=add_sign, record_name=record_name,
                      **kwargs)
-        if (not self._is_user_from_backend()) and bool(message_type=='comment') and bool(subtype=='mail.mt_comment') and self.stage_id.flag_before_email:
+        if self._is_user_from_frontend() and bool(message_type=='comment') and bool(subtype=='mail.mt_comment') and self.stage_id.flag_before_email:
             stage_id = self.env['helpdesk.stage'].search([('flag_after_email','=',True)],limit=1)
             if stage_id:
                 self.stage_id = stage_id.id
         return message
     
-    def _is_user_from_backend(self):
+    def _is_user_from_frontend(self):
         #if 1 user is from backend
-        return ( bool(1 in self.env.user.groups_id.ids))
+        return ( bool(8 in self.env.user.groups_id.ids))
     
     
     def set_level_1(self):
