@@ -329,11 +329,13 @@
 			</div>
 		</xpath>
 		<xpath expr="//t[@t-set='card_body']" position="inside">
-		
+			<div class="float-right">
 					<t t-call="website_mail.follow">
                                 <t t-set="email" t-value="request.env.user.partner_id.email"/>
                                 <t t-set="object" t-value="ticket"/>
+                                <t t-set="icons_design" t-value="True"/>
                             </t>
+            </div>
 		</xpath>
 	</template>
 </odoo>

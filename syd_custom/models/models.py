@@ -70,7 +70,15 @@ class HelpdeskTicket(models.Model):
         model = self.env['ir.model'].sudo().search([('model', '=', 'helpdesk.ticket')])
         model.website_form_access = True
         self.env['ir.model.fields'].sudo().formbuilder_whitelist('helpdesk.ticket',TICKET_FIELDS)
-        
+    
+    
+    def create(self,vals):
+        tickets = super(HelpdeskTicket, self).create(vals)
+        for ticket in tickets:
+            if ticket.partner_created_id.id != ticket.partner_id.id:
+                ticket.message_subscribe(partner_ids=ticket.partner_created_id.ids)
+        return tickets
+    
     @api.model
     def _read_group_stage_ids(self, stages, domain, order):
         
