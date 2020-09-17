@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="place_into_bar" inherit_id="website.snippets" name="Ticket counter bar">
+		<xpath expr="//div[@id='snippet_structure']/div[hasclass('o_panel_body')]" position="inside">
+			<t t-snippet="syd_custom.snippet_testimonial" t-thumbnail="/theme_tutorial/static/src/img/ui/snippet_thumb.jpg" />
+		</xpath>
+	</template>
+
+	<template id="snippet_testimonial" name="Ticket Counter">
+		<section class="s_text_image pt32 pb32">
+			<div class="container">
+					<div class="row align-items-stretch">
+						<div class="pt16 pb16 bg-beta col-lg-2 offset-lg-1">
+							<h1 id="open">
+							</h1>
+							<h4>Open</h4>
+							<br />
+						</div>
+						<div class="pt16 pb16 col-lg-2 bg-gamma">
+							<h1 id="progress">
+							</h1>
+							<h4>
+								Work in
+								<br />
+								progess
+							</h4>
+						</div>
+						<div class="pt16 pb16 col-lg-2 bg-delta">
+							<h1 id="waiting_answer">
+							</h1>
+							<h4>Waiting for answer</h4>
+						</div>
+
+						<div class="pt16 pb16 col-lg-2 bg-alpha">
+							<h1 id="closed">
+							</h1>
+							<h4>Closed</h4>
+						</div>
+						<div class="pt16 pb16 col-lg-2 bg-epsilon">
+							<h1 id="all">
+							</h1>
+							<h4>
+								<a href="/my/tickets">
+									<font style="color: rgb(255, 255, 255);">All</font>
+								</a>
+							</h4>
+						</div>
+				
+				</div>
+			</div>
+		</section>
+	</template>
+</odoo>
