@@ -29,7 +29,14 @@ class HelpdeskRelease(models.Model):
     name = fields.Char('Release')
     sequence = fields.Integer('Sequence')
                     
-                
+
+class HelpdeskStage(models.Model):
+    _inherit = 'helpdesk.stage'
+
+    name_for_customer = fields.Char('Name for customer')
+    flag_before_email = fields.Boolean('Flag before email')   
+    flag_after_email = fields.Boolean('Flag before email')
+            
 class HelpdeskTicket(models.Model):
     _inherit = "helpdesk.ticket"            
        

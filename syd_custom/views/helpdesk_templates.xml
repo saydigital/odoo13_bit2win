@@ -337,5 +337,8 @@
                             </t>
             </div>
 		</xpath>
+		<xpath expr="//span[@t-field='ticket.stage_id.name']" position="replace">
+		   <span t-field="ticket.stage_id.name_for_customer" class=" badge badge-pill badge-info" title="Current stage of this ticket"/>
+		</xpath>
 	</template>
 </odoo>
