@@ -8,15 +8,19 @@
 
 			<field name="arch" type="xml">
 				<xpath expr="//field[@name='ticket_type_id']" position="after">
-					<field name="user_who_found" />
-					<field name="partner_created_id" />
+					
 					<field name="reason_why_id" />
 					<field name="release_id" />
+					
+					<field name="impact" />
+					<field name="date_fix" attrs="{'invisible': [('fixing', '=', False)]}"/>
+				</xpath>
+				<xpath expr="//field[@name='partner_email']" position="after">
 					<field name="reported_by" />
 					<field name="access_granted" />
-
+					<field name="user_who_found" />
+					<field name="partner_created_id" />
 				</xpath>
-
 				<xpath  expr="/form[1]/sheet[1]/div[1]"  position="before">
         		<field name="level" invisible="1"/>
         		 <widget name="web_ribbon" title="LEVEL 1" bg_color="bg-danger" attrs="{'invisible': [('level', '!=', '1')]}"/>
@@ -28,7 +32,7 @@
         			                    <button name="set_level_2" string="Set Level 2" type="object"  groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('level', '=', '2')]}"/>
         								<button name="set_pay_attention" string="Pay Attention" type="object" class="oe_highlight" groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('pay_attention', '=', True)]}"/>
 										<button name="no_pay_attention" string="Situation Normal" type="object" class="oe_highlight" groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('pay_attention', '=', False)]}"/>
-										<button name="set_fixing" string="Fixing" type="object"  groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('fixing', '=', True)]}"/>
+										<button name="%(syd_custom_wizard_fix_act)d" string="Fixing" type="action"  groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('fixing', '=', True)]}"/>
 										<button name="set_no_fixing" string="Not Fixing" type="object"  groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('fixing', '=', False)]}"/>
 										
         
@@ -91,6 +95,20 @@
 		 </field>
 		 </record>
         
+        
+        <record model="ir.ui.view" id="view_ticket_stage_ext">
+        		<field name="name">helpdesk.stage.form</field>
+        		<field name="model">helpdesk.stage</field>
+		        <field name="inherit_id" ref="helpdesk.helpdesk_stage_view_form"/>
+		         <field name="arch" type="xml">
+		 		 <xpath expr="//field[@name='fold']" position="after">
+				   			<field name="name_for_customer" />
+				          <field name="flag_before_email" />
+				        	<field name="flag_after_email" />
+				  </xpath>
+		 		</field>
+		 </record>
+          
     <menuitem id="helpdesk_ticket_menu_my_home" name="Home" action="helpdesk_ticket_action_main_my_home"
         sequence="4" parent="helpdesk.menu_helpdesk_root"/>
         

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		
+              
+              
+               	<record model="ir.ui.view" id="syd_custom_wizard_fix">
+				      <field name="name">syd_custom.wizard_fix</field>
+				      <field name="model">syd_custom.wizard_fix</field>
+				      <field name="arch" type="xml">
+				        <form>
+				        	<sheet>
+				        		<group>
+				        		<field name="ticket_id" invisible="1"/>
+				            	<field name="date_fix"/>
+				            	</group>
+				          	</sheet>
+				          	 <footer>
+		                        <button string="Set Fixing"
+		                                name="set_fix" type="object" class="btn-primary"/>
+		                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+		                    </footer>
+				        </form>
+				      </field>
+				    </record>
+				
+				
+				    <record model="ir.actions.act_window" id="syd_custom_wizard_fix_act">
+				      <field name="name">Wizard Fix</field>
+				      <field name="res_model">syd_custom.wizard_fix</field>
+				      <field name="view_mode">form</field>
+				      <field name="target">new</field>
+				      <field name="context">{'default_ticket_id':active_id}</field>
+				    </record>
+				
+
+
+
+   </data>
+        
+</odoo>

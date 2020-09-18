@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="syd_custom.portal_helpdesk_ticket" inherit_id="helpdesk.portal_helpdesk_ticket" name="portal_helpdesk_ticket_inherit" priority="1500">
+		<xpath expr="//t[@t-call='portal.portal_layout']" position="replace">
+			<t t-call="portal.portal_layout">
+				<t t-set="breadcrumbs_searchbar" t-value="True" />
+	
+				<t t-call="portal.portal_searchbar">
+					<t t-set="title">Tickets</t>
+				</t>
+				<div t-if="not tickets" class="alert alert-info">
+					There are currently no Ticket for your account.
+				</div>
+	
+				<t t-call="syd_custom.waiting_tickets"/>
+				
+				<br></br>
+				<br></br>
+				
+				<t t-call="syd_custom.progress_tickets"/>
+				
+				<br></br>
+				<br></br>
+				
+				<t t-call="syd_custom.open_tickets"/>
+				
+				<br></br>
+				<br></br>			
+				
+				<t t-call="syd_custom.closed_tickets"/>
+				
+				<br></br>
+				<br></br>
+		
+				<t t-call="syd_custom.reject_tickets"/>
+				
+				<div t-if="pager" class="o_portal_pager text-center">
+					<t t-call="portal.pager" />
+				</div>
+			</t>
+		</xpath>
+	</template>
+
+	<template id="portal_table_custom" name="My Custom Portal Table">
+		<div t-attf-class="table-responsive border rounded border-top-0 #{classes if classes else ''}">
+			<table class="table rounded mb-0 bg-white o_portal_my_doc_table">
+				<t t-raw="0" />
+			</table>
+		</div>
+	</template>
+
+
+	<template id="reject_tickets" name="My Custom Portal Table">
+		<t t-if="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Rejected')" t-call="syd_custom.portal_table_custom">
+
+				<!--Intestazione fissa -->
+				<thead>
+					<tr>
+						<th class="text-right">Ref</th>
+						<th class="w-100">Description</th>
+						<th />
+						<th>Creation Date</th>
+						<th>Environment</th>
+						<th>Level</th>
+
+						<th class="text-center">Status</th>
+					</tr>
+				</thead>
+
+				<!-- Rendering degli elementi -->
+				<t t-foreach="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Rejected')" t-as="ticket">
+					<tr>
+						<td class="text-right">
+							<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
+								<small>#</small>
+								<t t-esc="ticket.id" />
+							</a>
+						</td>
+						<td>
+							<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
+								<span t-field="ticket.name" />
+							</a>
+						</td>
+						<td />
+						<td class="text-left">
+							<span t-field="ticket.create_date" />
+						</td>
+						<td class="text-left">
+							<span t-field="ticket.environment_id.name" />
+							<t t-if="ticket.fixing">
+								<span class="badge badge-pill badge-warning">Fixing</span>
+							</t>
+						</td>
+						<td class="text-left">
+							<span t-field="ticket.level" />
+						</td>
+						<td class="text-center">
+							<span class="badge badge-pill badge-info" t-field="ticket.stage_id.name_for_customer" />
+						</td>
+					</tr>
+
+					<t />
+				</t>
+			</t>
+	</template>
+
+	<template id="closed_tickets" name="My Custom Portal Table">
+		<t t-if="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Closed')" t-call="syd_custom.portal_table_custom">
+
+				<!--Intestazione fissa -->
+				<thead>
+					<tr>
+						<th class="text-right">Ref</th>
+						<th class="w-100">Description</th>
+						<th />
+						<th>Creation Date</th>
+						<th>Environment</th>
+						<th>Level</th>
+
+						<th class="text-center">Status</th>
+					</tr>
+				</thead>
+
+				<!-- Rendering degli elementi -->
+				<t t-foreach="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Closed')" t-as="ticket">
+					<tr>
+						<td class="text-right">
+							<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
+								<small>#</small>
+								<t t-esc="ticket.id" />
+							</a>
+						</td>
+						<td>
+							<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
+								<span t-field="ticket.name" />
+							</a>
+						</td>
+						<td />
+						<td class="text-left">
+							<span t-field="ticket.create_date" />
+						</td>
+						<td class="text-left">
+							<span t-field="ticket.environment_id.name" />
+							<t t-if="ticket.fixing">
+								<span class="badge badge-pill badge-warning">Fixing</span>
+							</t>
+						</td>
+						<td class="text-left">
+							<span t-field="ticket.level" />
+						</td>
+						<td class="text-center">
+							<span class="badge badge-pill badge-info" t-field="ticket.stage_id.name_for_customer" />
+						</td>
+					</tr>
+
+					<t />
+				</t>
+			</t>
+	</template>
+		
+	<template id="open_tickets" name="My Custom Portal Table">
+		<t t-if="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Open')" t-call="syd_custom.portal_table_custom">
+
+<!-- 				Intestazione fissa -->
+				<thead>
+					<tr>
+						<th class="text-right">Ref</th>
+						<th class="w-100">Description</th>
+						<th />
+						<th>Creation Date</th>
+						<th>Environment</th>
+						<th>Level</th>
+
+						<th class="text-center">Status</th>
+					</tr>
+				</thead>
+
+<!-- 				Rendering degli elementi -->
+				<t t-foreach="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Open')" t-as="ticket">
+					<tr>
+						<td class="text-right">
+							<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
+								<small>#</small>
+								<t t-esc="ticket.id" />
+							</a>
+						</td>
+						<td>
+							<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
+								<span t-field="ticket.name" />
+							</a>
+						</td>
+						<td />
+						<td class="text-left">
+							<span t-field="ticket.create_date" />
+						</td>
+						<td class="text-left">
+							<span t-field="ticket.environment_id.name" />
+							<t t-if="ticket.fixing">
+								<span class="badge badge-pill badge-warning">Fixing</span>
+							</t>
+						</td>
+						<td class="text-left">
+							<span t-field="ticket.level" />
+						</td>
+						<td class="text-center">
+							<span class="badge badge-pill badge-info" t-field="ticket.stage_id.name_for_customer" />
+						</td>
+					</tr>
+
+					<t />
+				</t>
+			</t>
+	</template>		
+	
+	<template id="progress_tickets" name="My Custom Portal Table">
+		<t t-if="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Work in progress')" t-call="syd_custom.portal_table_custom">
+
+				<!--Intestazione fissa -->
+				<thead>
+					<tr>
+						<th class="text-right">Ref</th>
+						<th class="w-100">Description</th>
+						<th />
+						<th>Creation Date</th>
+						<th>Environment</th>
+						<th>Level</th>
+
+						<th class="text-center">Status</th>
+					</tr>
+				</thead>
+
+				<!-- Rendering degli elementi -->
+				<t t-foreach="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Work in progress')" t-as="ticket">
+					<tr>
+						<td class="text-right">
+							<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
+								<small>#</small>
+								<t t-esc="ticket.id" />
+							</a>
+						</td>
+						<td>
+							<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
+								<span t-field="ticket.name" />
+							</a>
+						</td>
+						<td />
+						<td class="text-left">
+							<span t-field="ticket.create_date" />
+						</td>
+						<td class="text-left">
+							<span t-field="ticket.environment_id.name" />
+							<t t-if="ticket.fixing">
+								<span class="badge badge-pill badge-warning">Fixing</span>
+							</t>
+						</td>
+						<td class="text-left">
+							<span t-field="ticket.level" />
+						</td>
+						<td class="text-center">
+							<span class="badge badge-pill badge-info" t-field="ticket.stage_id.name_for_customer" />
+						</td>
+					</tr>
+
+					<t />
+				</t>
+			</t>
+	</template>		
+	
+	<template id="waiting_tickets" name="My Custom Portal Table">
+		<t t-if="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Waiting for customer')" t-call="syd_custom.portal_table_custom">
+
+				<!--Intestazione fissa -->
+				<thead>
+					<tr>
+						<th class="text-right">Ref</th>
+						<th class="w-100">Description</th>
+						<th />
+						<th>Creation Date</th>
+						<th>Environment</th>
+						<th>Level</th>
+
+						<th class="text-center">Status</th>
+					</tr>
+				</thead>
+
+				<!-- Rendering degli elementi -->
+				<t t-foreach="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Waiting for customer')" t-as="ticket">
+					<tr>
+						<td class="text-right">
+							<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
+								<small>#</small>
+								<t t-esc="ticket.id" />
+							</a>
+						</td>
+						<td>
+							<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
+								<span t-field="ticket.name" />
+							</a>
+						</td>
+						<td />
+						<td class="text-left">
+							<span t-field="ticket.create_date" />
+						</td>
+						<td class="text-left">
+							<span t-field="ticket.environment_id.name" />
+							<t t-if="ticket.fixing">
+								<span class="badge badge-pill badge-warning">Fixing</span>
+							</t>
+						</td>
+						<td class="text-left">
+							<span t-field="ticket.level" />
+						</td>
+						<td class="text-center">
+							<span class="badge badge-pill badge-info" t-field="ticket.stage_id.name_for_customer" />
+						</td>
+					</tr>
+
+					<t />
+				</t>
+			</t>
+	</template>	
+</odoo>
