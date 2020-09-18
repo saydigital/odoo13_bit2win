@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-
-
 {
     'name': "Custom B2W",
     'version': '0.0.2',
@@ -26,6 +24,7 @@
         'views/views.xml',
         'views/asset.xml',
         'views/snippet.xml',
+        'views/helpdesk_portal_templates.xml',
         'security/ir.model.access.csv'
     ],
     'installable' : True,
