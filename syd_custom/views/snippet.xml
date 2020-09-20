@@ -20,15 +20,13 @@
 							<h1 id="progress">
 							</h1>
 							<h4>
-								Work in
-								<br />
-								progess
+								Work in <br /> progess
 							</h4>
 						</div>
 						<div class="pt16 pb16 col-lg-2 bg-delta">
 							<h1 id="waiting_answer">
 							</h1>
-							<h4>Waiting for answer</h4>
+							<h4>Waiting for <br /> answer</h4>
 						</div>
 
 						<div class="pt16 pb16 col-lg-2 bg-alpha">
@@ -36,6 +34,13 @@
 							</h1>
 							<h4>Closed</h4>
 						</div>
+						
+						<div class="pt16 pb16 col-lg-2 bg-alpha">
+							<h1 id="rejected">
+							</h1>
+							<h4>Rejected</h4>
+						</div>
+												
 						<div class="pt16 pb16 col-lg-2 bg-epsilon">
 							<h1 id="all">
 							</h1>
