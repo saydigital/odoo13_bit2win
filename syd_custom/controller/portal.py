@@ -14,6 +14,13 @@ class CustomerPortal(CustomerPortal):
 
     @http.route(['/my/tickets', '/my/tickets/page/<int:page>'], type='http', auth="user", website=True)
     def my_helpdesk_tickets(self, page=1, date_begin=None, date_end=None, sortby=None, search=None, search_in='content', **kw):
+        
+        if(search==None): 
+            search = kw.pop("filterby", None)
+            
+            if(search!=None): 
+                search_in = 'state'
+        
         values = self._prepare_portal_layout_values()
         user = request.env.user
         domain = []

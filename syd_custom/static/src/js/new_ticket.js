@@ -3,22 +3,23 @@ odoo.define('syd_custom.TicketCounter', function (require) {
 	var ajax = require('web.ajax');
 
 	if (document.getElementById('open') 
-			&& document.getElementById('progress')
-			&& document.getElementById('closed')
-			&& document.getElementById('rejected')			
-			&& document.getElementById('all')
-			&& document.getElementById('waiting_answer')){
-	
-		ajax.jsonRpc('/getTicketCounter', 'call', {})
-			.then(function (data) {
-				document.getElementById('open').innerHTML = data.open; 
-				document.getElementById('progress').innerHTML = data.work_in_progress; 
-				document.getElementById('closed').innerHTML = data.closed;
-				document.getElementById('rejected').innerHTML = data.rejected; 				 
-				document.getElementById('all').innerHTML = data.all;
-				document.getElementById('waiting_answer').innerHTML = data.waiting_answer; 
+				&& document.getElementById('progress')
+				&& document.getElementById('closed')
+				&& document.getElementById('rejected')			
+				&& document.getElementById('all')
+				&& document.getElementById('waiting_answer')){
+					
+	ajax.jsonRpc('/getTicketCounter', 'call', {}).then(function (data) {
+					document.getElementById('open').innerHTML = data.open; 
+					document.getElementById('progress').innerHTML = data.work_in_progress; 
+					document.getElementById('closed').innerHTML = data.closed;
+					document.getElementById('rejected').innerHTML = data.rejected; 				 
+					document.getElementById('all').innerHTML = data.all;
+					document.getElementById('waiting_answer').innerHTML = data.waiting_answer; 
+				
 			}) 
-	}
+			
+		}
 });
 
 function hideSeverityLevels(e) { 
