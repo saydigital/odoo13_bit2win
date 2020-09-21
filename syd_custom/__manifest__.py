@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': "Custom B2W",
-    'version': '0.0.2',
+    'version': '0.0.6',
     'license': 'Other proprietary',
     'summary': """Helpdesk Extended
     """,
@@ -9,6 +9,7 @@
     'website': "http://www.saydigital.it",
     'category' : 'Website',
     'depends': [
+                'portal',
                 'helpdesk',
                 'analytic',
                 'website_helpdesk',

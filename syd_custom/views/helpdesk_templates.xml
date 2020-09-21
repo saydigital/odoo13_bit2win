@@ -243,79 +243,174 @@
 
 	<template id="syd_custom.tickets_followup" inherit_id="helpdesk.tickets_followup"
 		name="syd_custom_tickets_followup_inherit" priority="42">
-		<xpath expr="//div[@t-if='ticket.user_id']" position="after">
-			<div class="row mb-4">
-				<strong class="col-lg-2">Impact</strong>
-				<div t-field="ticket.impact" />
-			</div>
-		</xpath>
-
-		<xpath expr="//div[@t-if='ticket.user_id']" position="after">
-			<div class="row mb-4">
-				<strong class="col-lg-2">Severity</strong>
-				<t t-if="ticket.priority=='0'" >
-						Cosmetic
-				</t>
-				<t t-if="ticket.priority=='1'" >
-						Minimal
-				</t>
-				<t t-if="ticket.priority=='2'" >
-						Major
-				</t>
-				<t t-if="ticket.priority=='3'" >
-						Critical
-				</t>
-			</div>
-		</xpath>
-
-		<xpath expr="//div[@t-if='ticket.user_id']" position="after">
-			<div class="row mb-4">
-				<strong class="col-lg-2">Create Date</strong>
-				<div t-field="ticket.create_date" />
-			</div>
-		</xpath>
 		
-		<xpath expr="//div[@t-if='ticket.user_id']" position="after">
-			<div class="row mb-4">
-				<strong class="col-lg-2">Level</strong>
-				<div t-field="ticket.level" />
-			</div>
-		</xpath>
-		
-		<xpath expr="//div[@t-if='ticket.user_id']" position="after">
-			<div class="row mb-4">
-				<strong class="col-lg-2">Environment</strong>
-				<div t-field="ticket.environment_id.name" />
-				<t t-if="ticket.fixing">
-					<span class="badge badge-pill badge-warning">Fixing</span>
-				</t>
-			</div>
-		</xpath>
+		<xpath expr="//t[@t-call='portal.portal_layout']" position="replace">
+		  <t t-call="portal.portal_layout">
+			<t t-set="wrapwrap_classes" t-value="'o_portal_bg_dark'"/>
 
-		<xpath expr="//div[@t-if='ticket.user_id']" position="after">
-			<div class="row mb-4">
-				<strong class="col-lg-2">Ticket Type</strong>
-				<div t-field="ticket.ticket_type_id.name" />
-			</div>
-		</xpath>
-
-		<xpath expr="//div[@t-if='ticket.user_id']" position="replace">
-			<div class="row mb-4">
-				<strong class="col-lg-2">Contract</strong>
-				<div t-field="ticket.contract_id.name" />
-			</div>
-		</xpath>
-		<xpath expr="//t[@t-set='card_body']" position="inside">
-			<div class="float-right">
-					<t t-call="website_mail.follow">
+            <t t-set="o_portal_fullwidth_alert" groups="helpdesk.group_helpdesk_user">
+                <t t-call="portal.portal_back_in_edit_mode">
+                    <t t-set="backend_url" t-value="'/web#model=helpdesk.ticket&amp;id=%s&amp;view_type=form' % (ticket.id)"/>
+                </t>
+            </t>
+			<style>
+				.card {
+					border-top:1px !important;
+				}
+			</style>
+            <t t-call="portal.portal_record_layout">
+            	<t t-set="card_header" />
+                <t t-set="card_body">
+                	<div class="row">
+                		<div class="col-md-12" style="font-family:Raleway;">
+                		  <small class="text-muted"> <span>Ticket </span> #<span t-field="ticket.id"/> - 
+						 <span>Created </span> <strong  t-field="ticket.create_date" t-options='{"widget": "date"}'/>
+                		
+                			
+                			</small>
+                			 <span class="badge badge-danger" t-field="ticket.ticket_type_id.name"><i class="fa fa-exclamation-triangle"></i></span>
+                		<span class="badge badge-info" t-field="ticket.stage_id.name_for_customer"></span>
+                		</div>
+                	</div>
+                	<div class="row">
+                		<div class="col-md-10">
+                			<h5 class="mb-1 mb-md-0" style="font-family:Raleway;font-size:22px;">
+                                <span t-field="ticket.name"/>
+                                
+                            </h5>
+                		
+                		</div>
+                		<div class="col-md-2">
+                			<t t-call="website_mail.follow">
                                 <t t-set="email" t-value="request.env.user.partner_id.email"/>
                                 <t t-set="object" t-value="ticket"/>
                                 <t t-set="icons_design" t-value="True"/>
                             </t>
+                		</div>
+                		
+                	</div>
+                    
+                
+                     
+                    
+                    <div class="row mb-4"  style="font-family:Raleway;font-size:14px;">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col flex-grow-0 pr-3">
+                                    <img t-if="ticket.partner_id.image_1024" class="rounded-circle o_portal_contact_img" t-attf-src="data:image/png;base64,#{ticket.partner_id.image_1024}" alt="Contact"/>
+                                    <img t-else="" class="rounded-circle o_portal_contact_img" src="/web/static/src/img/user_menu_avatar.png" alt="Contact"/>
+                                </div>
+                                <div class="col pl-sm-0">
+                                    <div t-field="ticket.partner_id" t-options='{"widget": "contact", "fields": ["name", "email"], "no_marker": true}'/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-10 offset-lg-3">
+                        	<span>Type of Contract:</span><strong t-field="ticket.team_id.name"/>
+                        </div>
+                    </div>
+                   <div class="row mb-4" style="font-family:Raleway;font-size:12px;">
+	                   	<div class="col-md-2">
+	                   		<span>Environment</span><br />
+	                   		<strong t-field="ticket.environment_id.name" />
+							<t t-if="ticket.fixing">
+								<span class="badge badge-pill badge-warning">Fixing</span>
+							</t>
+	                   	</div>
+	                   <div class="col-md-2">
+	                   		<span>Bit2Win Release</span><br />
+	                   		<strong t-field="ticket.release_id.name" />
+							
+	                   	</div>
+	                   	<div class="col-md-2">
+	                   		<span>Severity Level</span><br />
+	                   		<strong>
+	                   		<t t-if="ticket.priority=='0'" >
+									0 - Cosmetic
+							</t>
+							<t t-if="ticket.priority=='1'" >
+									1 - Minimal
+							</t>
+							<t t-if="ticket.priority=='2'" >
+									2 - Major
+							</t>
+							<t t-if="ticket.priority=='3'" >
+									3 - Critical
+							</t>
+							</strong>
+	                   	</div>
+	                   	<div class="col-md-2">
+	                   		<span>Impact</span><br />
+	                   		<strong t-field="ticket.impact" />
+							
+	                   	</div>
+                   </div>
+                   <div class="row mb-4" style="font-family:Raleway;font-size:12px;">
+	                   	<div class="col-md-3">
+	                   		<span>User who found the problem:</span><br />
+	                   		<strong t-field="ticket.user_who_found" />
+							
+	                   	</div>
+	                   <div class="col-md-3">
+	                   		<span>On Date:</span><br />
+	                   		<strong  t-field="ticket.create_date" t-options='{"widget": "date"}'/>
+
+							
+	                   	</div>
+	                </div>
+                    <div class="row mb-4" style="font-family:Raleway;font-size:12px;">
+                    	<div class="col-md-12">
+                        	<small><span class="col-lg-2">Description:</span></small><br />
+                        	<div class="col-lg-12" t-field="ticket.description" style="background-color:#D8DDE6;border-radius: 4px;opacity:0.22"/>
+                        </div>
+                    </div>
+                </t>
+            </t>
+
+
+            <div t-if="ticket.team_id.allow_portal_ticket_closing and not ticket.stage_id.is_close and not ticket.closed_by_partner" class="modal" tabindex="-1" role="dialog" id="helpdesk_ticket_close_modal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Close ticket</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">&amp;times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you wish to proceed?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a role="button" class="btn btn-primary" t-att-href="'/my/ticket/close/%s/%s' % (ticket.id, ticket.access_token)">Close the ticket</a>
+                            <button type="button" class="btn btn-light" data-dismiss="modal">Discard</button>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <div t-if="ticket.team_id.allow_portal_ticket_closing and not ticket.stage_id.is_close and not ticket.closed_by_partner" class="text-center mt-5">
+                <button class="btn btn-primary mb-1 pt-1" data-target="#helpdesk_ticket_close_modal" data-toggle="modal"><small><b>Close this ticket</b></small></button>
+                <p><small>
+                    If the issue has been solved, you can close the request.
+                </small></p>
+            </div>
+
+            <div class="o_portal_messages_container mt32">
+                <h4>Message and communication history</h4>
+                <t t-call="portal.message_thread">
+                    <t t-set="token" t-value="ticket.access_token"/>
+                    <t t-set="object" t-value="ticket"/>
+                    <t t-set="pid" t-value="pid"/>
+                    <t t-set="hash" t-value="hash"/>
+                    <t t-set="disable_composer" t-value="ticket.stage_id.is_close"/>
+                </t>
+            </div>
+		
+		
+		
+		</t>
+		
 		</xpath>
-		<xpath expr="//span[@t-field='ticket.stage_id.name']" position="replace">
-		   <span t-field="ticket.stage_id.name_for_customer" class=" badge badge-pill badge-info" title="Current stage of this ticket"/>
-		</xpath>
+		
+		
+		
 	</template>
 </odoo>
