@@ -14,23 +14,12 @@
 	
 				<t t-call="syd_custom.waiting_tickets"/>
 				
-				<br></br>
-				<br></br>
-				
 				<t t-call="syd_custom.progress_tickets"/>
-				
-				<br></br>
-				<br></br>
 				
 				<t t-call="syd_custom.open_tickets"/>
 				
-				<br></br>
-				<br></br>			
-				
 				<t t-call="syd_custom.closed_tickets"/>
 				
-				<br></br>
-				<br></br>
 		
 				<t t-call="syd_custom.reject_tickets"/>
 				
@@ -42,8 +31,8 @@
 	</template>
 
 	<template id="portal_table_custom" name="My Custom Portal Table">
-		<div t-attf-class="table-responsive border rounded border-top-0 #{classes if classes else ''}">
-			<table class="table rounded mb-0 bg-white o_portal_my_doc_table">
+		<div t-attf-class="table-responsive" style="font-family:Raleway;font-size:14px;">
+			<table class="table table-borderless bg-white">
 				<t t-raw="0" />
 			</table>
 		</div>
@@ -56,20 +45,18 @@
 				<!--Intestazione fissa -->
 				<thead>
 					<tr>
-						<th class="text-right">Ref</th>
-						<th class="w-100">Description</th>
-						<th />
-						<th>Creation Date</th>
-						<th>Environment</th>
-						<th>Level</th>
+						<th class="text-right" style="width:10%">Ref</th>
+						<th class="w-100" style="width:60%">Description</th>
+						<th style="width:10%">Creation Date</th>
+						<th style="width:10%">Environment</th>
+						<th style="width:10%">Level</th>
 
-						<th class="text-center">Status</th>
 					</tr>
 				</thead>
 
 				<!-- Rendering degli elementi -->
 				<t t-foreach="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Rejected')" t-as="ticket">
-					<tr>
+					<tr style="border-bottom:1px solid #f0f0f0">
 						<td class="text-right">
 							<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
 								<small>#</small>
@@ -81,7 +68,6 @@
 								<span t-field="ticket.name" />
 							</a>
 						</td>
-						<td />
 						<td class="text-left">
 							<span t-field="ticket.create_date" />
 						</td>
@@ -94,9 +80,7 @@
 						<td class="text-left">
 							<span t-field="ticket.level" />
 						</td>
-						<td class="text-center">
-							<span class="badge badge-pill badge-info" t-field="ticket.stage_id.name_for_customer" />
-						</td>
+						
 					</tr>
 
 					<t />
@@ -110,14 +94,12 @@
 				<!--Intestazione fissa -->
 				<thead>
 					<tr>
-						<th class="text-right">Ref</th>
-						<th class="w-100">Description</th>
-						<th />
-						<th>Creation Date</th>
-						<th>Environment</th>
-						<th>Level</th>
+						<th class="text-right" style="width:10%">Ref</th>
+						<th class="w-100" style="width:60%">Description</th>
+						<th style="width:10%">Creation Date</th>
+						<th style="width:10%">Environment</th>
+						<th style="width:10%">Level</th>
 
-						<th class="text-center">Status</th>
 					</tr>
 				</thead>
 
@@ -135,7 +117,6 @@
 								<span t-field="ticket.name" />
 							</a>
 						</td>
-						<td />
 						<td class="text-left">
 							<span t-field="ticket.create_date" />
 						</td>
@@ -148,9 +129,7 @@
 						<td class="text-left">
 							<span t-field="ticket.level" />
 						</td>
-						<td class="text-center">
-							<span class="badge badge-pill badge-info" t-field="ticket.stage_id.name_for_customer" />
-						</td>
+						
 					</tr>
 
 					<t />
@@ -164,14 +143,12 @@
 <!-- 				Intestazione fissa -->
 				<thead>
 					<tr>
-						<th class="text-right">Ref</th>
-						<th class="w-100">Description</th>
-						<th />
-						<th>Creation Date</th>
-						<th>Environment</th>
-						<th>Level</th>
+						<th class="text-right" style="width:10%">Ref</th>
+						<th class="w-100" style="width:60%">Description</th>
+						<th style="width:10%">Creation Date</th>
+						<th style="width:10%">Environment</th>
+						<th style="width:10%">Level</th>
 
-						<th class="text-center">Status</th>
 					</tr>
 				</thead>
 
@@ -192,7 +169,6 @@
 						<td />
 						<td class="text-left">
 							<span t-field="ticket.create_date" />
-						</td>
 						<td class="text-left">
 							<span t-field="ticket.environment_id.name" />
 							<t t-if="ticket.fixing">
@@ -202,9 +178,7 @@
 						<td class="text-left">
 							<span t-field="ticket.level" />
 						</td>
-						<td class="text-center">
-							<span class="badge badge-pill badge-info" t-field="ticket.stage_id.name_for_customer" />
-						</td>
+						
 					</tr>
 
 					<t />
@@ -218,14 +192,12 @@
 				<!--Intestazione fissa -->
 				<thead>
 					<tr>
-						<th class="text-right">Ref</th>
-						<th class="w-100">Description</th>
-						<th />
-						<th>Creation Date</th>
-						<th>Environment</th>
-						<th>Level</th>
+						<th class="text-right" style="width:10%">Ref</th>
+						<th class="w-100" style="width:60%">Description</th>
+						<th style="width:10%">Creation Date</th>
+						<th style="width:10%">Environment</th>
+						<th style="width:10%">Level</th>
 
-						<th class="text-center">Status</th>
 					</tr>
 				</thead>
 
@@ -243,7 +215,6 @@
 								<span t-field="ticket.name" />
 							</a>
 						</td>
-						<td />
 						<td class="text-left">
 							<span t-field="ticket.create_date" />
 						</td>
@@ -256,9 +227,7 @@
 						<td class="text-left">
 							<span t-field="ticket.level" />
 						</td>
-						<td class="text-center">
-							<span class="badge badge-pill badge-info" t-field="ticket.stage_id.name_for_customer" />
-						</td>
+						
 					</tr>
 
 					<t />
@@ -272,14 +241,12 @@
 				<!--Intestazione fissa -->
 				<thead>
 					<tr>
-						<th class="text-right">Ref</th>
-						<th class="w-100">Description</th>
-						<th />
-						<th>Creation Date</th>
-						<th>Environment</th>
-						<th>Level</th>
+						<th class="text-right" style="width:10%">Ref</th>
+						<th class="w-100" style="width:60%">Description</th>
+						<th style="width:10%">Creation Date</th>
+						<th style="width:10%">Environment</th>
+						<th style="width:10%">Level</th>
 
-						<th class="text-center">Status</th>
 					</tr>
 				</thead>
 
@@ -297,7 +264,6 @@
 								<span t-field="ticket.name" />
 							</a>
 						</td>
-						<td />
 						<td class="text-left">
 							<span t-field="ticket.create_date" />
 						</td>
@@ -310,9 +276,7 @@
 						<td class="text-left">
 							<span t-field="ticket.level" />
 						</td>
-						<td class="text-center">
-							<span class="badge badge-pill badge-info" t-field="ticket.stage_id.name_for_customer" />
-						</td>
+						
 					</tr>
 
 					<t />
