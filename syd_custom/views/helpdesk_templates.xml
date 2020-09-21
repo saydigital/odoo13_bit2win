@@ -245,7 +245,7 @@
 		name="syd_custom_tickets_followup_inherit" priority="42">
 		
 		<xpath expr="//t[@t-call='portal.portal_layout']" position="replace">
-		
+		  <t t-call="portal.portal_layout">
 			<t t-set="wrapwrap_classes" t-value="'o_portal_bg_dark'"/>
 
             <t t-set="o_portal_fullwidth_alert" groups="helpdesk.group_helpdesk_user">
@@ -400,7 +400,7 @@
 		
 		
 		
-		
+		</t>
 		
 		</xpath>
 		
