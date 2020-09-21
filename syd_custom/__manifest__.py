@@ -9,6 +9,7 @@
     'website': "http://www.saydigital.it",
     'category' : 'Website',
     'depends': [
+                'portal',
                 'helpdesk',
                 'analytic',
                 'website_helpdesk',

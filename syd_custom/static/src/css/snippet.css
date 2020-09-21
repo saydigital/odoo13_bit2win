@@ -1,0 +1,47 @@
+.t_open {
+	background-color:#2E4057;
+	opacity: 1; 
+	font: normal normal bold 40px/47px Raleway;
+	letter-spacing: 0px;
+	color: #FFFAFA;
+}
+
+.t_progress {
+	background-color:#C69606;
+	opacity: 1; 
+	font: normal normal bold 40px/47px Raleway;
+	letter-spacing: 0px;
+	color: #FFFAFA;
+}
+
+.t_waiting {
+	background-color:#BA1200;
+	opacity: 1; 
+	font: normal normal bold 40px/47px Raleway;
+	letter-spacing: 0px;
+	color: #FFFAFA;
+}
+
+.t_closed {
+	background-color:#01998D;
+	opacity: 1; 
+	font: normal normal bold 40px/47px Raleway;
+	letter-spacing: 0px;
+	color: #FFFAFA;
+}
+
+.t_reject {
+	background-color:#7D6F86;
+	opacity: 1; 
+	font: normal normal bold 40px/47px Raleway;
+	letter-spacing: 0px;
+	color: #FFFAFA;
+}
+
+.t_all {
+	background-color:#65706B;
+	opacity: 1; 
+	font: normal normal bold 40px/47px Raleway;
+	letter-spacing: 0px;
+	color: #FFFAFA;
+}
