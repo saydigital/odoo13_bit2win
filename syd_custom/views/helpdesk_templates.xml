@@ -255,20 +255,21 @@
             </t>
 
             <t t-call="portal.portal_record_layout">
-                <t t-set="card_header">
+                <t t-set="card_body">
                 	<div class="row">
-                		<div class="col-md-12">
-                		  <small class="text-muted"> <span>Ticket </span> (#<span t-field="ticket.id"/>)
+                		<div class="col-md-12" style="font-family:Raleway;">
+                		  <small class="text-muted"> <span>Ticket </span> #<span t-field="ticket.id"/> - 
 						 <span>Created </span> <strong  t-field="ticket.create_date" t-options='{"widget": "date"}'/>
-                		 <span class="badge badge-danger" t-field="ticket.ticket_type_id.name"><i class="fa fa-exclamation-triangle"></i></span>
-                		<span class="badge badge-info" t-field="ticket.stage_id.name_for_customer"></span>
+                		
                 			
                 			</small>
+                			 <span class="badge badge-danger" t-field="ticket.ticket_type_id.name"><i class="fa fa-exclamation-triangle"></i></span>
+                		<span class="badge badge-info" t-field="ticket.stage_id.name_for_customer"></span>
                 		</div>
                 	</div>
                 	<div class="row">
                 		<div class="col-md-10">
-                			<h5 class="mb-1 mb-md-0">
+                			<h5 class="mb-1 mb-md-0" style="font-family:Raleway;font-size:22px;">
                                 <span t-field="ticket.name"/>
                                 
                             </h5>
@@ -284,11 +285,10 @@
                 		
                 	</div>
                     
-                </t>
-                <t t-set="card_body">
+                
                      
                     
-                    <div class="row mb-4" t-if="ticket.partner_id">
+                    <div class="row mb-4"  style="font-family:Raleway;font-size:14px;">
                         <div class="col-lg-12">
                             <div class="row">
                                 <div class="col flex-grow-0 pr-3">
@@ -304,20 +304,20 @@
                         	<span>Type of Contract:</span><strong t-field="ticket.team_id.name"/>
                         </div>
                     </div>
-                   <div class="row mb-4">
-	                   	<div class="col-md-1">
+                   <div class="row mb-4" style="font-family:Raleway;font-size:12px;">
+	                   	<div class="col-md-2">
 	                   		<span>Environment</span><br />
 	                   		<strong t-field="ticket.environment_id.name" />
 							<t t-if="ticket.fixing">
 								<span class="badge badge-pill badge-warning">Fixing</span>
 							</t>
 	                   	</div>
-	                   <div class="col-md-1">
+	                   <div class="col-md-2">
 	                   		<span>Bit2Win Release</span><br />
 	                   		<strong t-field="ticket.release_id.name" />
 							
 	                   	</div>
-	                   	<div class="col-md-1">
+	                   	<div class="col-md-2">
 	                   		<span>Severity Level</span><br />
 	                   		<t t-if="ticket.priority=='0'" >
 									0 - Cosmetic
@@ -333,26 +333,26 @@
 							</t>
 							
 	                   	</div>
-	                   	<div class="col-md-1">
+	                   	<div class="col-md-2">
 	                   		<span>Impact</span><br />
 	                   		<strong t-field="ticket.impact" />
 							
 	                   	</div>
                    </div>
-                   <div class="row mb-4">
-	                   	<div class="col-md-2">
+                   <div class="row mb-4" style="font-family:Raleway;font-size:12px;">
+	                   	<div class="col-md-3">
 	                   		<span>User who found the problem:</span><br />
 	                   		<strong t-field="ticket.user_who_found" />
 							
 	                   	</div>
-	                   <div class="col-md-2">
+	                   <div class="col-md-3">
 	                   		<span>On Date:</span><br />
 	                   		<strong  t-field="ticket.create_date" t-options='{"widget": "date"}'/>
 
 							
 	                   	</div>
 	                </div>
-                    <div class="row mb-4">
+                    <div class="row mb-4" style="font-family:Raleway;font-size:12px;">
                     	<div class="col-md-12">
                         	<small><span class="col-lg-2">Description:</span></small><br />
                         	<div class="col-lg-12" t-field="ticket.description" style="background-color:#c0c0c0"/>
