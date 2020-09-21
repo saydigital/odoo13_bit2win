@@ -166,9 +166,9 @@
 								<span t-field="ticket.name" />
 							</a>
 						</td>
-						<td />
 						<td class="text-left">
 							<span t-field="ticket.create_date" />
+					</td>
 						<td class="text-left">
 							<span t-field="ticket.environment_id.name" />
 							<t t-if="ticket.fixing">
