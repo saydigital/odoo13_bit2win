@@ -254,9 +254,11 @@
                 </t>
             </t>
 			<style>
-				.card {
-					border-top:1px !important;
+				
+				.card.border-top-0 {
+					border-top:1px solid rgba(0, 0, 0, 0.125) !important;
 				}
+			
 			</style>
             <t t-call="portal.portal_record_layout">
             	<t t-set="card_header" />
@@ -305,7 +307,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-10 offset-lg-3">
+                        <div class="col-lg-10" style="margin-left: 47px; padding-left: 1.25em;">
                         	<span>Type of Contract:</span><strong t-field="ticket.team_id.name"/>
                         </div>
                     </div>
