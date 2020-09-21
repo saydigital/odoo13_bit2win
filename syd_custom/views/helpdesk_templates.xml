@@ -320,6 +320,7 @@
 	                   	</div>
 	                   	<div class="col-md-2">
 	                   		<span>Severity Level</span><br />
+	                   		<strong>
 	                   		<t t-if="ticket.priority=='0'" >
 									0 - Cosmetic
 							</t>
@@ -332,7 +333,7 @@
 							<t t-if="ticket.priority=='3'" >
 									3 - Critical
 							</t>
-							
+							</strong>
 	                   	</div>
 	                   	<div class="col-md-2">
 	                   		<span>Impact</span><br />
