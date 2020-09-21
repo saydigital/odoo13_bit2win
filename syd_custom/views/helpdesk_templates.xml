@@ -253,7 +253,11 @@
                     <t t-set="backend_url" t-value="'/web#model=helpdesk.ticket&amp;id=%s&amp;view_type=form' % (ticket.id)"/>
                 </t>
             </t>
-
+			<style>
+				.card {
+					border-top:1px !important;
+				}
+			</style>
             <t t-call="portal.portal_record_layout">
             	<t t-set="card_header" />
                 <t t-set="card_body">
