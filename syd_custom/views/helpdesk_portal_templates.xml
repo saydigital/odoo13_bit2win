@@ -14,23 +14,12 @@
 	
 				<t t-call="syd_custom.waiting_tickets"/>
 				
-				<br></br>
-				<br></br>
-				
 				<t t-call="syd_custom.progress_tickets"/>
-				
-				<br></br>
-				<br></br>
 				
 				<t t-call="syd_custom.open_tickets"/>
 				
-				<br></br>
-				<br></br>			
-				
 				<t t-call="syd_custom.closed_tickets"/>
 				
-				<br></br>
-				<br></br>
 		
 				<t t-call="syd_custom.reject_tickets"/>
 				
@@ -42,8 +31,8 @@
 	</template>
 
 	<template id="portal_table_custom" name="My Custom Portal Table">
-		<div t-attf-class="table-responsive border rounded border-top-0 #{classes if classes else ''}">
-			<table class="table rounded mb-0 bg-white o_portal_my_doc_table">
+		<div t-attf-class="table-responsive" style="font-family:Raleway;font-size:14px;">
+			<table class="table table-borderless bg-white">
 				<t t-raw="0" />
 			</table>
 		</div>
@@ -69,7 +58,7 @@
 
 				<!-- Rendering degli elementi -->
 				<t t-foreach="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Rejected')" t-as="ticket">
-					<tr>
+					<tr >
 						<td class="text-right">
 							<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
 								<small>#</small>
