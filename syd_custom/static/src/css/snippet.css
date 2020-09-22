@@ -5,6 +5,10 @@
 	letter-spacing: 0px;
 	color: #FFFAFA;
 }
+ .color-open{
+   	background: #2E4057; 
+ }
+ 
 
 .t_progress {
 	background-color:#C69606;
@@ -13,6 +17,10 @@
 	letter-spacing: 0px;
 	color: #FFFAFA;
 }
+ .color-progress{
+   	background: #C69606; 
+ }
+ 
 
 .t_waiting {
 	background-color:#BA1200;
@@ -21,6 +29,10 @@
 	letter-spacing: 0px;
 	color: #FFFAFA;
 }
+ .color-waiting{
+   	background: #BA1200; 
+ }
+ 
 
 .t_closed {
 	background-color:#01998D;
@@ -29,6 +41,10 @@
 	letter-spacing: 0px;
 	color: #FFFAFA;
 }
+ .color-closed{
+   	background: #01998D; 
+ }
+
 
 .t_reject {
 	background-color:#7D6F86;
@@ -37,6 +53,10 @@
 	letter-spacing: 0px;
 	color: #FFFAFA;
 }
+.color-reject{
+   	background: #7D6F86; 
+ }
+
 
 .t_all {
 	background-color:#65706B;
@@ -45,3 +65,12 @@
 	letter-spacing: 0px;
 	color: #FFFAFA;
 }
+.color-all{
+   	background: #65706B; 
+ }
+
+ .radius {
+	border-radius: 50px 50px;
+  	width: 30px;
+  	height: 30px;    
+  }
