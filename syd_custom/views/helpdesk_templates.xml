@@ -14,6 +14,9 @@
 				</h2>
 				<div id="wrap" class="oe_structure oe_empty">
 					<div class="row justify-content-center">
+						<div class="oe_structure" id="oe_structure_before_form"/>
+
+						
 						<section id="forms" class="col-xl-9">
 
 							<form id="helpdesk_ticket_form" action="/website_form/" method="post"
@@ -245,7 +248,11 @@
 		name="syd_custom_tickets_followup_inherit" priority="42">
 		
 		<xpath expr="//t[@t-call='portal.portal_layout']" position="replace">
+		   
+		  <div class="oe_structure" id="oe_structure_before_followup"/>
+		  
 		  <t t-call="portal.portal_layout">
+		  
 			<t t-set="wrapwrap_classes" t-value="'o_portal_bg_dark'"/>
 
             <t t-set="o_portal_fullwidth_alert" groups="helpdesk.group_helpdesk_user">
@@ -261,6 +268,7 @@
 			
 			</style>
             <t t-call="portal.portal_record_layout">
+            	
             	<t t-set="card_header" />
                 <t t-set="card_body">
                 	<div class="row">
@@ -328,16 +336,16 @@
 	                   		<span>Severity Level</span><br />
 	                   		<strong>
 	                   		<t t-if="ticket.priority=='0'" >
-									0 - Cosmetic
+									1 - Cosmetic
 							</t>
 							<t t-if="ticket.priority=='1'" >
-									1 - Minimal
+									2 - Minimal
 							</t>
 							<t t-if="ticket.priority=='2'" >
-									2 - Major
+									3 - Major
 							</t>
 							<t t-if="ticket.priority=='3'" >
-									3 - Critical
+									4 - Critical
 							</t>
 							</strong>
 	                   	</div>
