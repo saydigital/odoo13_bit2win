@@ -252,7 +252,7 @@
 		  <div class="oe_structure" id="oe_structure_before_followup"/>
 		  
 		  <t t-call="portal.portal_layout">
-		  
+		  <div class="oe_structure" id="oe_structure_after_header_followup"/>
 			<t t-set="wrapwrap_classes" t-value="'o_portal_bg_dark'"/>
 
             <t t-set="o_portal_fullwidth_alert" groups="helpdesk.group_helpdesk_user">
