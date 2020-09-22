@@ -72,7 +72,7 @@
 						<h1 id="all">
 						</h1>
 						<h4>
-							<a href="/my/tickets?filterby=all">
+							<a href="/my/tickets">
 								<font style="color: rgb(255, 255, 255);">All</font>
 							</a>
 						</h4>
