@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	
+
+	<template id="syd_custom.ticket_submit" name="Helpdesk: Submit a Ticket">
+		<t name="Helpdesk" priority="29" t-name="website.helpdesk">
+			<t t-call="website.layout">
+
+				<t t-set="additional_title">Ticket</t>
+				<h2 t-if="team" class="text-center text-muted">
+					<span>
+						<t t-esc="team.name" />
+					</span>
+				</h2>
+				<div id="wrap" class="oe_structure oe_empty">
+					<div class="row justify-content-center">
+						<div class="oe_structure" id="oe_structure_before_form"/>
+
+						
+						<section id="forms" class="col-xl-9">
+
+							<form id="helpdesk_ticket_form" action="/website_form/" method="post"
+								class="s_website_form container-fluid mt32" enctype="multipart/form-data" data-model_name="helpdesk.ticket"
+								data-success_page="/your-ticket-has-been-submitted" data-editable-form="false" hide-change-model="true">
+								    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <input type="hidden" name="partner_created_id" t-att-value="request.env.user.partner_id.id"/>
+								
+								<div class="container ">
+									<div>
+										<div>
+											<t t-if="system_integrator">
+												<div id="contract_form" class="form-group row form-field col-xl-12">
+													<div class="col-xl-12" id="container_contract">
+														<div>
+															<label class="col-form-label" for="contract">Contracts</label>
+														</div>
+														<div>
+															<select name="contract" class="form-control" autocomplete="on">
+																<option selected="selected" disabled="True" value="selected"> -- Select -- </option>
+
+																<t t-foreach="contracts or []" t-as="contract">
+																	<option t-att-value="contract[0]">
+																		<t t-esc="contract[1]" />
+																	</option>
+																</t>
+															</select>
+														</div>
+													</div>
+												</div>
+											</t>
+										</div>
+									</div>
+
+									<div class="form-group row form-field col-xl-12">
+										<div class="col-xl-6" id="container_ticket_type">
+											<div>
+												<label class="col-form-label" for="ticket_type_id">Question or Issue</label>
+											</div>
+											<div>
+												<select id="ticket_type_id" required="True" name="ticket_type_id" class="form-control"
+													onChange="hideSeverityLevels(this)">
+													<option selected="selected" disabled="True" value="selected">-- Select --</option>
+													<t t-foreach="types or []" t-as="i">
+														<option t-att-value="i[0]">
+															<t t-esc="i[1]" />
+														</option>
+													</t>
+												</select>
+											</div>
+										</div>
+
+										<div class="col-xl-6" id="container_environment">
+											<div>
+												<label class="col-form-label" for="environment_id">Environment (configurabile)</label>
+											</div>
+
+											<div>
+												<select id="select_environment" name="environment_id" class="form-control" autocomplete="on">
+													<option selected="selected" disabled="True" value="selected">-- Select --</option>
+													<t t-foreach="environment or []" t-as="p">
+														<option t-att-value="p[0]">
+															<t t-esc="p[1]" />
+														</option>
+													</t>
+												</select>
+											</div>
+										</div>
+									</div>
+
+
+									<div class="form-group row form-field col-xl-12">
+										<div class="col-xl-4" id="container_environment_desc">
+											<div>
+												<label class="col-form-label" for="environment_id_desc">Environment Id</label>
+											</div>
+											<div>
+												<input class="form-control o_website_form_input" name="environment_id_desc" id="environment_id_desc" />
+											</div>
+										</div>
+
+										<div class="col-xl-4" id="container_priority">
+											<div>
+												<label class="col-form-label" for="priority">
+													Severity Level
+													<i class="fa fa-info-circle" data-html="true" data-toggle="modal" data-target="#get_so" />
+												</label>
+											</div>
+											<div>
+												<select name="priority" id="select_severity" class="form-control" autocomplete="on">
+													<option selected="selected" disabled="True" value="selected">-- Select --</option>
+													<t t-foreach="priority or []" t-as="sl">
+														<option t-att-value="sl[0]">
+															<t t-esc="sl[1]" />
+														</option>
+													</t>
+												</select>
+
+											</div>
+										</div>
+
+										<div class="col-xl-4" id="container_impact">
+											<div>
+												<label class="col-form-label" for="impact">Impact</label>
+											</div>
+											<div>
+												<select id="impact_id" name="impact" class="form-control" autocomplete="on" required="False">
+													<option selected="selected" disabled="True" value="selected">-- Select --</option>
+													<t t-foreach="impact or []" t-as="i">
+														<option t-att-value="i[0]">
+															<t t-esc="i[1]" />
+														</option>
+													</t>
+
+												</select>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group row form-field col-xl-12">
+										<div class="col-xl-4" id="container_granted">
+											<div>
+												<label class="col-form-label" for="granted_user">Granted User</label>
+											</div>
+											<div>
+												<input class="form-control o_website_form_input" name="granted_user" id="granted_user" />
+											</div>
+										</div>
+										<div class="col-xl-4" id="container_user_who_found">
+											<div>
+												<label class="col-form-label" for="user_who_found">Business User</label>
+											</div>
+											<div>
+												<input class="form-control o_website_form_input" name="user_who_found" id="user_who_found" />
+											</div>
+										</div>
+
+
+										<div class="col-xl-4" id="container_release_id">
+											<div>
+												<label class="col-form-label" for="release_id">Bit2win Release</label>
+											</div>
+											<div>
+												<select id="release_id" name="release_id" class="form-control" autocomplete="on">
+													<option selected="selected" disabled="True" value="selected">-- Select --</option>
+
+													<t t-foreach="release or []" t-as="rel">
+														<option t-att-value="rel[0]">
+															<t t-esc="rel[1]" />
+														</option>
+													</t>
+												</select>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group row form-field col-xl-12">
+										<div class="col-xl-12" id="container_subject">
+											<div>
+												<label class="col-form-label" for="name">Subject</label>
+											</div>
+											<div>
+												<input type="text" class="form-control o_website_form_input" name="name" id="subject" />
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group row form-field col-xl-12">
+										<div class="col-xl-9" id="container_description">
+											<div>
+												<label class="col-form-label" for="description">Description</label>
+											</div>
+											<div>
+												<textarea class="form-control o_website_form_input" name="description" id="description" />
+											</div>
+										</div>
+
+										<div class="col-xl-3" id="container_attachments">
+											<div>
+												<label class="col-form-label" for="attachments">Attachment(s)</label>
+											</div>
+											<div>
+												<input type="file" name="attachments" class="form-control o_website_form_input" multiple="true"
+													accept="image/*,application/pdf,video/*" />
+											</div>
+										</div>
+									</div>
+									<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+										aria-hidden="true" id="get_so">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content text-center">
+												<p>
+													<strong>Severity Level</strong>
+													<br />
+													1-Critical: System unavailability condition or Software ineffectiveness with production environment impact
+													<br />
+
+													2-Major: High business condition impact, which could put at risk production environment
+													<br />
+													3-Minor: Limited impact on Business condition, with most of the Software functions still usable
+													<br />
+													4-Cosmetic: System fault without impact on Business condition
+													<br />
+												</p>
+
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<div class="offset-lg-3 offset-md-4 col-md-8 col-lg-7">
+											<!-- <input type="submit" id="send_button_id" value="Send" name="send_button" class="btn btn-primary btn-lg"/> -->
+
+											<button type="submit" class="btn btn-primary btn-lg o_website_form_send o_default_snippet_text"
+												id="button_send" name="button_send">Send</button>
+											<span id="o_website_form_result"></span>
+										</div>
+									</div>
+								</div>
+							</form>
+						</section>
+					</div>
+				</div>
+			</t>
+		</t>
+	</template>
+
+	<template id="syd_custom.tickets_followup" inherit_id="helpdesk.tickets_followup"
+		name="syd_custom_tickets_followup_inherit" priority="42">
+		
+		<xpath expr="//t[@t-call='portal.portal_layout']" position="replace">
+		   
+		  <div class="oe_structure" id="oe_structure_before_followup"/>
+		  
+		  <t t-call="portal.portal_layout">
+		  
+			<t t-set="wrapwrap_classes" t-value="'o_portal_bg_dark'"/>
+
+            <t t-set="o_portal_fullwidth_alert" groups="helpdesk.group_helpdesk_user">
+                <t t-call="portal.portal_back_in_edit_mode">
+                    <t t-set="backend_url" t-value="'/web#model=helpdesk.ticket&amp;id=%s&amp;view_type=form' % (ticket.id)"/>
+                </t>
+            </t>
+			<style>
+				
+				.card.border-top-0 {
+					border-top:1px solid rgba(0, 0, 0, 0.125) !important;
+				}
+			
+			</style>
+            <t t-call="portal.portal_record_layout">
+            	
+            	<t t-set="card_header" />
+                <t t-set="card_body">
+                	<div class="row">
+                		<div class="col-md-12" style="font-family:Raleway;">
+                		  <small class="text-muted"> <span>Ticket </span> #<span t-field="ticket.id"/> - 
+						 <span>Created </span> <strong  t-field="ticket.create_date" t-options='{"widget": "date"}'/>
+                		
+                			
+                			</small>
+                			 <span class="badge badge-danger" t-field="ticket.ticket_type_id.name"><i class="fa fa-exclamation-triangle"></i></span>
+                		<span class="badge badge-info" t-field="ticket.stage_id.name_for_customer"></span>
+                		</div>
+                	</div>
+                	<div class="row">
+                		<div class="col-md-10">
+                			<h5 class="mb-1 mb-md-0" style="font-family:Raleway;font-size:22px;">
+                                <span t-field="ticket.name"/>
+                                
+                            </h5>
+                		
+                		</div>
+                		<div class="col-md-2">
+                			<t t-call="website_mail.follow">
+                                <t t-set="email" t-value="request.env.user.partner_id.email"/>
+                                <t t-set="object" t-value="ticket"/>
+                                <t t-set="icons_design" t-value="True"/>
+                            </t>
+                		</div>
+                		
+                	</div>
+                    
+                
+                     
+                    
+                    <div class="row mb-4"  style="font-family:Raleway;font-size:14px;">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col flex-grow-0 pr-3">
+                                    <img t-if="ticket.partner_id.image_1024" class="rounded-circle o_portal_contact_img" t-attf-src="data:image/png;base64,#{ticket.partner_id.image_1024}" alt="Contact"/>
+                                    <img t-else="" class="rounded-circle o_portal_contact_img" src="/web/static/src/img/user_menu_avatar.png" alt="Contact"/>
+                                </div>
+                                <div class="col pl-sm-0">
+                                    <div t-field="ticket.partner_id" t-options='{"widget": "contact", "fields": ["name", "email"], "no_marker": true}'/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-10" style="margin-left: 47px; padding-left: 1.25em;">
+                        	<span>Type of Contract:</span><strong t-field="ticket.team_id.name"/>
+                        </div>
+                    </div>
+                   <div class="row mb-4" style="font-family:Raleway;font-size:12px;">
+	                   	<div class="col-md-2">
+	                   		<span>Environment</span><br />
+	                   		<strong t-field="ticket.environment_id.name" />
+							<t t-if="ticket.fixing">
+								<span class="badge badge-pill badge-warning">Fixing</span>
+							</t>
+	                   	</div>
+	                   <div class="col-md-2">
+	                   		<span>Bit2Win Release</span><br />
+	                   		<strong t-field="ticket.release_id.name" />
+							
+	                   	</div>
+	                   	<div class="col-md-2">
+	                   		<span>Severity Level</span><br />
+	                   		<strong>
+	                   		<t t-if="ticket.priority=='0'" >
+									1 - Cosmetic
+							</t>
+							<t t-if="ticket.priority=='1'" >
+									2 - Minimal
+							</t>
+							<t t-if="ticket.priority=='2'" >
+									3 - Major
+							</t>
+							<t t-if="ticket.priority=='3'" >
+									4 - Critical
+							</t>
+							</strong>
+	                   	</div>
+	                   	<div class="col-md-2">
+	                   		<span>Impact</span><br />
+	                   		<strong t-field="ticket.impact" />
+							
+	                   	</div>
+                   </div>
+                   <div class="row mb-4" style="font-family:Raleway;font-size:12px;">
+	                   	<div class="col-md-3">
+	                   		<span>User who found the problem:</span><br />
+	                   		<strong t-field="ticket.user_who_found" />
+							
+	                   	</div>
+	                   <div class="col-md-3">
+	                   		<span>On Date:</span><br />
+	                   		<strong  t-field="ticket.create_date" t-options='{"widget": "date"}'/>
+
+							
+	                   	</div>
+	                </div>
+                    <div class="row mb-4" style="font-family:Raleway;font-size:12px;">
+                    	<div class="col-md-12">
+                        	<small><span class="col-lg-2">Description:</span></small><br />
+                        	<div class="col-lg-12" t-field="ticket.description" style="background-color:#D8DDE6;border-radius: 4px;opacity:0.82"/>
+                        </div>
+                    </div>
+                </t>
+            </t>
+
+
+            <div t-if="ticket.team_id.allow_portal_ticket_closing and not ticket.stage_id.is_close and not ticket.closed_by_partner" class="modal" tabindex="-1" role="dialog" id="helpdesk_ticket_close_modal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Close ticket</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">&amp;times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you wish to proceed?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a role="button" class="btn btn-primary" t-att-href="'/my/ticket/close/%s/%s' % (ticket.id, ticket.access_token)">Close the ticket</a>
+                            <button type="button" class="btn btn-light" data-dismiss="modal">Discard</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div t-if="ticket.team_id.allow_portal_ticket_closing and not ticket.stage_id.is_close and not ticket.closed_by_partner" class="text-center mt-5">
+                <button class="btn btn-primary mb-1 pt-1" data-target="#helpdesk_ticket_close_modal" data-toggle="modal"><small><b>Close this ticket</b></small></button>
+                <p><small>
+                    If the issue has been solved, you can close the request.
+                </small></p>
+            </div>
+
+            <div class="o_portal_messages_container mt32">
+                <h4>Message and communication history</h4>
+                <t t-call="portal.message_thread">
+                    <t t-set="token" t-value="ticket.access_token"/>
+                    <t t-set="object" t-value="ticket"/>
+                    <t t-set="pid" t-value="pid"/>
+                    <t t-set="hash" t-value="hash"/>
+                    <t t-set="disable_composer" t-value="ticket.stage_id.is_close"/>
+                </t>
+            </div>
+		
+		
+		
+		</t>
+		
+		</xpath>
+		
+		
+		
+	</template>
+</odoo>

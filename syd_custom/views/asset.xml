@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!-- Added the SCSS & JS files in assets fontend-->    
+	<template id="assets_frontend" inherit_id="web_editor.assets_frontend" name="New ticket controller" priority="15">
+        <xpath expr="//script[last()]" position="after">
+            <script type="text/javascript" src="/syd_custom/static/src/js/new_ticket.js"></script>
+            
+            <link rel="stylesheet" href="/syd_custom/static/src/css/snippet.css"/>
+        </xpath>
+    </template>
+    
+          
+    <template id="assets_backend" inherit_id="web.assets_backend" name="assets">
+        <xpath expr="//link[last()]" position="after">
+        	<link rel="stylesheet" href="/syd_custom/static/src/css/snippet.css"/>
+        </xpath>
+    </template> 
+</odoo>

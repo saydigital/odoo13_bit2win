@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="place_into_bar" inherit_id="website.snippets" name="Ticket counter bar">
+		<xpath expr="//div[@id='snippet_structure']/div[hasclass('o_panel_body')]" position="inside">
+			<t t-snippet="syd_custom.snippet_testimonial" t-thumbnail="/theme_tutorial/static/src/img/ui/snippet_thumb.jpg" />
+		</xpath>
+	</template>
+
+	<template id="snippet_testimonial" name="Ticket Counter">
+		<section class="s_text_image pt32 pb32">
+			<div class="container">
+				<div class="row align-items-stretch">
+					<div class="t_open pt16 pb16 bg-beta col-lg-2">
+						<h1 id="open">
+						</h1>
+						<h4>
+							<a href="/my/tickets?filterby=open">
+								<font style="color: rgb(255, 255, 255);">Open</font>
+							</a>
+						</h4>
+
+					</div>
+					<div class="pt16 pb16 col-lg-2 t_progress">
+						<h1 id="progress">
+						</h1>
+						<h4>
+							<a href="/my/tickets?filterby=progress">
+								<font style="color: rgb(255, 255, 255);">
+									Work in
+									<br />
+									progess
+								</font>
+							</a>
+
+						</h4>
+					</div>
+					<div class="pt16 pb16 col-lg-2 t_waiting">
+						<h1 id="waiting_answer">
+						</h1>
+						<h4>
+							<a href="/my/tickets?filterby=waiting">
+								<font style="color: rgb(255, 255, 255);">
+									Waiting for
+									<br />
+									answer
+								</font>
+							</a>
+						</h4>
+					</div>
+
+					<div class="pt16 pb16 col-lg-2 t_closed">
+						<h1 id="closed">
+						</h1>
+						<h4>
+							<a href="/my/tickets?filterby=closed">
+								<font style="color: rgb(255, 255, 255);">Closed</font>
+							</a>
+						</h4>
+					</div>
+
+					<div class="pt16 pb16 col-lg-2 t_reject">
+						<h1 id="rejected">
+						</h1>
+						<h4>
+							<a href="/my/tickets?filterby=rejected">
+								<font style="color: rgb(255, 255, 255);">Rejected</font>
+							</a>
+						</h4>
+					</div>
+
+					<div class="pt16 pb16 col-lg-2 t_all">
+						<h1 id="all">
+						</h1>
+						<h4>
+							<a href="/my/tickets">
+								<font style="color: rgb(255, 255, 255);">All</font>
+							</a>
+						</h4>
+					</div>
+
+				</div>
+			</div>
+		</section>
+	</template>
+</odoo>

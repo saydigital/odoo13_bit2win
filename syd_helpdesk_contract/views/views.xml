@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+       <record model="ir.ui.view" id="view_ticket_ext">
+		         <field name="name">helpdesk.ticket.contract</field>
+		        <field name="model">helpdesk.ticket</field>
+		        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+		        
+		        <field name="arch" type="xml">
+		         <xpath expr="//field[@name='ticket_type_id']" position="after">
+		         		<field name="contract_id" />
+		         		<field name="final_customer_id" />
+		         </xpath>
+		        
+		        
+		        </field>
+		     </record>
+		     
+		 <record model="ir.ui.view" id="view_ticket_contact_ext">
+		 	 <field name="name">res.partner.contract</field>
+		        <field name="model">res.partner</field>
+		        <field name="inherit_id" ref="base.view_partner_form"/>
+		         <field name="arch" type="xml">
+		 		 <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+				    <page  string="Helpdesk">
+				      
+				        <group >
+				          <field name="is_system_integrator" />
+				          <field name="helpdesk_analytic_account_ids" widget="many2many_tags"/>
+				        </group>
+				      
+				    </page>
+				  </xpath>
+		 </field>
+		 </record>
+		     
+		  <record model="ir.ui.view" id="view_analytic_ext">
+		         <field name="name">account.analytic.account.contract</field>
+		        <field name="model">account.analytic.account</field>
+		        <field name="inherit_id" ref="analytic.view_account_analytic_account_form"/>
+		        
+		        <field name="arch" type="xml">
+		         <xpath expr="//field[@name='partner_id']" position="after">
+		         		<field name="date_start" />
+		         		<field name="date_end" />
+		         		<field name="final_customer_id" />
+		         		<field name="helpdesk_team_id" />
+		         </xpath>
+		        
+		        
+		        </field>
+		     </record>
+		     
+		     
+		    <record model="ir.ui.view" id="view_sale_order">
+		         <field name="name">sale.order.form</field>
+		        <field name="model">sale.order</field>
+		        <field name="inherit_id" ref="sale.view_order_form"/>
+		        
+		        <field name="arch" type="xml">
+		         <xpath expr="//page[@name='order_lines']" position="after">
+		         		<page string="Helpdesk Contract">
+		         		<group>
+			         		<field name="date_start" />
+			         		<field name="date_end" />
+			         		<field name="helpdesk_team_id" />
+		         		</group>
+		         		</page>
+		         </xpath>
+		        
+		        
+		        </field>
+		     </record>
+    </data>
+</odoo>

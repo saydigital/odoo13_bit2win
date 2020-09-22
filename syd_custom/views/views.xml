@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="view_ticket_ext">
+			<field name="name">helpdesk.ticket.ext</field>
+			<field name="model">helpdesk.ticket</field>
+			<field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form" />
+
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='ticket_type_id']" position="after">
+					
+					<field name="reason_why_id" />
+					<field name="release_id" />
+					
+					<field name="impact" />
+					<field name="date_fix" attrs="{'invisible': [('fixing', '=', False)]}"/>
+				</xpath>
+				<xpath expr="//field[@name='partner_email']" position="after">
+					<field name="reported_by" />
+					<field name="access_granted" />
+					<field name="user_who_found" />
+					<field name="partner_created_id" />
+				</xpath>
+				<xpath  expr="/form[1]/sheet[1]/div[1]"  position="before">
+        		<field name="level" invisible="1"/>
+        		 <widget name="web_ribbon" title="LEVEL 1" bg_color="bg-danger" attrs="{'invisible': [('level', '!=', '1')]}"/>
+				 <widget name="web_ribbon" title="LEVEL 2" bg_color="bg-danger" attrs="{'invisible': [('level', '!=', '2')]}"/>
+        </xpath>
+        
+        <xpath expr="//button[@name='assign_ticket_to_self']" position="after">
+        			                    <button name="set_level_1" string="Set Level 1" type="object"  groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('level', '=', '1')]}"/>
+        			                    <button name="set_level_2" string="Set Level 2" type="object"  groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('level', '=', '2')]}"/>
+        								<button name="set_pay_attention" string="Pay Attention" type="object" class="oe_highlight" groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('pay_attention', '=', True)]}"/>
+										<button name="no_pay_attention" string="Situation Normal" type="object" class="oe_highlight" groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('pay_attention', '=', False)]}"/>
+										<button name="%(syd_custom_wizard_fix_act)d" string="Fixing" type="action"  groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('fixing', '=', True)]}"/>
+										<button name="set_no_fixing" string="Not Fixing" type="object"  groups="helpdesk.group_helpdesk_user" attrs="{'invisible': [('fixing', '=', False)]}"/>
+										
+        
+        </xpath>
+        
+        
+        <xpath expr="//div[@name='button_box']" position="after">
+					<field name="pay_attention" invisible="1" />
+					<div attrs="{'invisible':[('pay_attention','=',False)]}">
+						<span style="background-color:red;color:white;padding:4px;">Pay Attention</span>
+					</div>
+					<field name="fixing" invisible="1" />
+					<div attrs="{'invisible':[('fixing','=',False)]}">
+						<span style="background-color:green;color:white;padding:4px;">Fixing</span>
+					</div>
+       			</xpath>
+       			
+       			
+        
+			</field>
+		</record>
+
+		<record id="helpdesk_ticket_view_kanban_inherit" model="ir.ui.view">
+			<field name="name">helpdesk.ticket.kanban</field>
+			<field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_kanban" />
+			<field name="model">helpdesk.ticket</field>
+			<field name="arch" type="xml">
+				<xpath expr="//div[hasclass('oe_kanban_content')]" position="inside">
+					<field name="team_id" />
+				</xpath>
+			</field>
+		</record>
+	</data>
+	
+    <record id="helpdesk_ticket_action_main_my_home" model="ir.actions.act_window">
+        <field name="name">Tickets</field>
+        <field name="res_model">helpdesk.ticket</field>
+        <field name="view_mode">kanban,tree,form,activity</field>
+        <field name="search_view_id" ref="helpdesk.helpdesk_tickets_view_search"/>
+        <field name="context">{'search_default_my_ticket': True, 'from_home': True}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first ticket.
+                </p><p>To get things done, use activities and status on tickets.<br/>
+                Chat in real time or by email to collaborate efficiently.
+            </p>
+        </field>
+    </record>
+        
+        <record model="ir.ui.view" id="view_ticket_contact_ext">
+		 	 <field name="name">res.partner.ext</field>
+		        <field name="model">res.partner</field>
+		        <field name="inherit_id" ref="syd_helpdesk_contract.view_ticket_contact_ext"/>
+		         <field name="arch" type="xml">
+		 		 <xpath expr="//field[@name='is_system_integrator']" position="after">
+				   
+				          <field name="reported_by" />
+				        
+				  </xpath>
+		 </field>
+		 </record>
+        
+        
+        <record model="ir.ui.view" id="view_ticket_stage_ext">
+        		<field name="name">helpdesk.stage.form</field>
+        		<field name="model">helpdesk.stage</field>
+		        <field name="inherit_id" ref="helpdesk.helpdesk_stage_view_form"/>
+		         <field name="arch" type="xml">
+		 		 <xpath expr="//field[@name='fold']" position="after">
+				   			<field name="name_for_customer" />
+				          <field name="flag_before_email" />
+				        	<field name="flag_after_email" />
+				  </xpath>
+		 		</field>
+		 </record>
+          
+    <menuitem id="helpdesk_ticket_menu_my_home" name="Home" action="helpdesk_ticket_action_main_my_home"
+        sequence="4" parent="helpdesk.menu_helpdesk_root"/>
+        
+        
+		
+              
+              
+               	<record model="ir.ui.view" id="helpdesk_release_tree">
+				      <field name="name">helpdesk.release</field>
+				      <field name="model">helpdesk.release</field>
+				      <field name="arch" type="xml">
+				        <tree editable="bottom">
+				        	<field name="sequence" widget="handle"/>
+				            <field name="name"/>
+				          
+				        </tree>
+				      </field>
+				    </record>
+				
+				
+				    <record model="ir.actions.act_window" id="helpdesk_release_act">
+				      <field name="name">Release</field>
+				      <field name="res_model">helpdesk.release</field>
+				      <field name="view_mode">tree</field>
+				    </record>
+				
+
+
+
+    <menuitem name="Release" id="helpdesk_release_menu" parent="helpdesk.helpdesk_menu_config"
+              action="helpdesk_release_act"/>
+              
+              
+               	<record model="ir.ui.view" id="helpdesk_reported_tree">
+				      <field name="name">helpdesk.reported</field>
+				      <field name="model">helpdesk.reported</field>
+				      <field name="arch" type="xml">
+				        <tree editable="bottom">
+				        	<field name="sequence" widget="handle"/>
+				            <field name="name"/>
+				          
+				        </tree>
+				      </field>
+				    </record>
+				
+				
+				    <record model="ir.actions.act_window" id="helpdesk_reported_act">
+				      <field name="name">Reported</field>
+				      <field name="res_model">helpdesk.reported</field>
+				      <field name="view_mode">tree</field>
+				    </record>
+				
+
+
+
+    <menuitem name="Reported" id="helpdesk_reported_menu" parent="helpdesk.helpdesk_menu_config"
+              action="helpdesk_reported_act"/>
+        
+</odoo>
