@@ -21,7 +21,6 @@
 
 				<t t-call="syd_custom.closed_tickets" />
 
-
 				<t t-call="syd_custom.reject_tickets" />
 
 				<div t-if="pager" class="o_portal_pager text-center">
@@ -32,7 +31,7 @@
 	</template>
 
 	<template id="portal_table_custom" name="My Custom Portal Table">
-		<div t-attf-class="table-responsive" style="font-family:Raleway;font-size:14px;">
+		<div t-attf-class="table-responsive" style="font-size:14px;">
 			<table class="table table-borderless bg-white">
 				<t t-raw="0" />
 			</table>
@@ -172,7 +171,6 @@
 					<th colspan="2">OPEN</th>
 				</tr>
 			</thead>
-
 			<thead>
 				<tr>
 					<th />
