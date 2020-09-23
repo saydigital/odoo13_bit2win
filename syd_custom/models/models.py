@@ -3,7 +3,7 @@
 from odoo import models, fields, api
 from odoo.exceptions import UserError, ValidationError
 
-TICKET_FIELDS = ['partner_created_id', 'environment_id_desc', 'name', 'release_id', 'reported_by', 'access_granted', 'level', 'environment_id', 'description', 'contract_id', 'partner_id', 'partner_created_id', 'user_who_found', 'impact', 'ticket_type_id', 'priority', 'granted_user', 'module']
+TICKET_FIELDS = ['partner_created_id', 'environment_id_desc', 'name', 'release_id', 'reported_by', 'access_granted', 'level', 'environment_id', 'description', 'contract_id', 'partner_id', 'partner_created_id', 'user_who_found', 'impact', 'ticket_type_id', 'priority', 'granted_user', 'module', 'package']
 
 
 class ResPartner(models.Model):
@@ -27,6 +27,12 @@ class HelpdeskRelease(models.Model):
     name = fields.Char('Release')
     sequence = fields.Integer('Sequence')
                     
+class HelpdeskPackage(models.Model):
+    _name = "helpdesk.package"
+    _description = "package"
+    
+    name = fields.Char('Package')
+    sequence = fields.Integer('Sequence')                    
 
 class HelpdeskStage(models.Model):
     _inherit = 'helpdesk.stage'
@@ -40,6 +46,7 @@ class HelpdeskTicket(models.Model):
     _inherit = "helpdesk.ticket"            
        
     user_who_found = fields.Text(string="User who found the problem", tracking=True)
+    origin = fields.Text(string="Origin", tracking=True)
     partner_created_id = fields.Many2one('res.partner', string="Reported by", tracking=True, default=lambda self: self.env.user.partner_id.id)
     impact = fields.Selection([('0', 'Blocking'), ('1', 'Non Blocking')], default="0", tracking=True)
     access_granted = fields.Boolean('Access Granted', tracking=True)
@@ -49,6 +56,7 @@ class HelpdeskTicket(models.Model):
     pay_attention = fields.Boolean('Pay Attention', tracking=True)
     reason_why_id = fields.Char('Reason', tracking=True)
     release_id = fields.Many2one('helpdesk.release', 'Release', tracking=True)
+    package_id = fields.Many2one('helpdesk.package', 'Package', tracking=True)
     reported_by = fields.Many2one('helpdesk.reported', 'Reported by role', related="partner_id.reported_by", tracking=True)
     environment_id_desc = fields.Text(string="Environment Description", tracking=True)
     date_fix = fields.Date('Planned Fix Date', tracking=True)
@@ -102,7 +110,8 @@ class HelpdeskTicket(models.Model):
         model = self.env['ir.model'].sudo().search([('model', '=', 'helpdesk.ticket')])
         model.website_form_access = True
         self.env['ir.model.fields'].sudo().formbuilder_whitelist('helpdesk.ticket', TICKET_FIELDS)
-    
+
+    @api.model
     def create(self, vals):
         tickets = super(HelpdeskTicket, self).create(vals)
         for ticket in tickets:
