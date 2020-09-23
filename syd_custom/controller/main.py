@@ -25,27 +25,28 @@ class WebsiteForm(WebsiteForm):
                 priority += [(pid,'Major')]
             if pid == '3':
                 priority += [(pid,'Critical')]
+                
         environment_ids = request.env['helpdesk.environment'].search([(1,'=',1)])
         environments = []
         for e in environment_ids:
             environments += [(e.id,e.name)]
         
-        
         impact = []
         impact = request.env['helpdesk.ticket']._fields['impact'].selection 
         
+        module = []            
+        module = request.env['helpdesk.ticket']._fields['module'].selection 
+
         release_version_ids = request.env['helpdesk.release'].search([(1,'=',1)])
         releases = []
-
         for e in release_version_ids:
             releases += [(e.id,e.name)]
             
         reported_by_ids = request.env['helpdesk.reported'].search([(1,'=',1)])
         reported = []            
-        
         for e in reported_by_ids:
-            reported += [(e.id,e.name)]        
-        
+            reported += [(e.id,e.name)]
+
         type_ids = request.env['helpdesk.ticket.type'].search([(1,'=',1)])
         types = []
         for t in type_ids:
@@ -62,7 +63,8 @@ class WebsiteForm(WebsiteForm):
                                                                       'impact':impact, 
                                                                       'release': releases, 
                                                                       'reported_by': reported, 
-                                                                      'reason_why': reason_why_id
+                                                                      'reason_why': reason_why_id, 
+                                                                      'module': module
                                                                       })
 
     
