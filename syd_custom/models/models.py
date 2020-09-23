@@ -1,17 +1,15 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
-from odoo.exceptions import UserError,ValidationError
+from odoo.exceptions import UserError, ValidationError
 
-TICKET_FIELDS = ['partner_created_id','environment_id_desc','name','release_id','reported_by','access_granted','level','environment_id','description','contract_id','partner_id','partner_created_id','user_who_found','impact','ticket_type_id','priority','granted_user']
+TICKET_FIELDS = ['partner_created_id', 'environment_id_desc', 'name', 'release_id', 'reported_by', 'access_granted', 'level', 'environment_id', 'description', 'contract_id', 'partner_id', 'partner_created_id', 'user_who_found', 'impact', 'ticket_type_id', 'priority', 'granted_user', 'module']
 
 
 class ResPartner(models.Model):
     _inherit = "res.partner"
     
-    reported_by = fields.Many2one('helpdesk.reported','Helpdesk Role')
-    
-    
+    reported_by = fields.Many2one('helpdesk.reported', 'Helpdesk Role')
     
     
 class HelpdeskReported(models.Model):
@@ -36,23 +34,26 @@ class HelpdeskStage(models.Model):
     name_for_customer = fields.Char('Name for customer')
     flag_before_email = fields.Boolean('Flag before email')   
     flag_after_email = fields.Boolean('Flag after email')
+
             
 class HelpdeskTicket(models.Model):
     _inherit = "helpdesk.ticket"            
        
-    user_who_found = fields.Text(string="User who found the problem",tracking=True)
-    partner_created_id= fields.Many2one('res.partner',string="Reported by",tracking=True,default=lambda self: self.env.user.partner_id.id)
-    impact = fields.Selection([('0','Blocking'),('1','Non Blocking')],default="0",tracking=True)
-    access_granted = fields.Boolean('Access Granted',tracking=True)
-    granted_user = fields.Text(string="Granted User",tracking=True)
-    level = fields.Selection([('1','Level 1'),('2','Level 2')],default="1",tracking=True)
-    fixing = fields.Boolean('Fixing',tracking=True)
-    pay_attention = fields.Boolean('Pay Attention',tracking=True)
-    reason_why_id = fields.Char('Reason',tracking=True)
-    release_id = fields.Many2one('helpdesk.release','Release',tracking=True)
-    reported_by = fields.Many2one('helpdesk.reported','Reported by role',related="partner_id.reported_by",tracking=True)
-    environment_id_desc = fields.Text(string="Environment Description",tracking=True)
-    date_fix = fields.Date('Planned Fix Date',tracking=True)
+    user_who_found = fields.Text(string="User who found the problem", tracking=True)
+    partner_created_id = fields.Many2one('res.partner', string="Reported by", tracking=True, default=lambda self: self.env.user.partner_id.id)
+    impact = fields.Selection([('0', 'Blocking'), ('1', 'Non Blocking')], default="0", tracking=True)
+    access_granted = fields.Boolean('Access Granted', tracking=True)
+    granted_user = fields.Text(string="Granted User", tracking=True)
+    level = fields.Selection([('1', 'Level 1'), ('2', 'Level 2')], default="1", tracking=True)
+    fixing = fields.Boolean('Fixing', tracking=True)
+    pay_attention = fields.Boolean('Pay Attention', tracking=True)
+    reason_why_id = fields.Char('Reason', tracking=True)
+    release_id = fields.Many2one('helpdesk.release', 'Release', tracking=True)
+    reported_by = fields.Many2one('helpdesk.reported', 'Reported by role', related="partner_id.reported_by", tracking=True)
+    environment_id_desc = fields.Text(string="Environment Description", tracking=True)
+    date_fix = fields.Date('Planned Fix Date', tracking=True)
+    module = fields.Selection([('0', 'Core'), ('1', 'Bulk order'), ('2', 'E-signature'), ('3', 'Archetypes'), ('4', 'Store'), ('5', 'Zuora connector'), ('6', 'Sapisu-connector'),
+                               ('7', 'Utility'), ('8', 'Cost-simulator'), ('9', 'Cost-simulator'), ('10', 'External-catalog'), ('11', 'Flow'), ('12', 'Loyalty'), ('13', 'Cart-api'), ('14', 'Ssymphony')], default="0", tracking=True)
 
     @api.returns('mail.message', lambda value: value.id)
     def message_post(self, *,
@@ -68,16 +69,15 @@ class HelpdeskTicket(models.Model):
                      attachments=attachments, attachment_ids=attachment_ids,
                      add_sign=add_sign, record_name=record_name,
                      **kwargs)
-        if  self._is_user_from_frontend() and bool(message_type=='comment') and bool(subtype=='mt_comment') and self.stage_id.flag_before_email:
-            stage_id = self.env['helpdesk.stage'].search([('flag_after_email','=',True)],limit=1)
+        if  self._is_user_from_frontend() and bool(message_type == 'comment') and bool(subtype == 'mt_comment') and self.stage_id.flag_before_email:
+            stage_id = self.env['helpdesk.stage'].search([('flag_after_email', '=', True)], limit=1)
             if stage_id:
                 self.stage_id = stage_id.id
         return message
     
     def _is_user_from_frontend(self):
-        #if 1 user is from backend
-        return ( bool(8 in self.env.user.groups_id.ids))
-    
+        # if 1 user is from backend
+        return (bool(8 in self.env.user.groups_id.ids))
     
     def set_level_1(self):
         self.write({'level':'1'})
@@ -101,10 +101,9 @@ class HelpdeskTicket(models.Model):
     def website_writable(self):
         model = self.env['ir.model'].sudo().search([('model', '=', 'helpdesk.ticket')])
         model.website_form_access = True
-        self.env['ir.model.fields'].sudo().formbuilder_whitelist('helpdesk.ticket',TICKET_FIELDS)
+        self.env['ir.model.fields'].sudo().formbuilder_whitelist('helpdesk.ticket', TICKET_FIELDS)
     
-    
-    def create(self,vals):
+    def create(self, vals):
         tickets = super(HelpdeskTicket, self).create(vals)
         for ticket in tickets:
             if ticket.partner_created_id.id != ticket.partner_id.id:
@@ -118,4 +117,4 @@ class HelpdeskTicket(models.Model):
             search_domain = [(True, '=', True)]
             return stages.search(search_domain, order=order)
 
-        return super(HelpdeskTicket,self)._read_group_stage_ids(stages, domain, order)
+        return super(HelpdeskTicket, self)._read_group_stage_ids(stages, domain, order)
