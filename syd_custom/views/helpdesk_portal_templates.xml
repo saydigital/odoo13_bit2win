@@ -288,7 +288,7 @@
 					<th>
 						<div class="radius color-waiting"></div>
 					</th>
-					<th>WAITING FOR CUSTOMER</th>
+					<th colspan="2">WAITING FOR CUSTOMER</th>
 				</tr>
 			</thead>
 			<thead>
