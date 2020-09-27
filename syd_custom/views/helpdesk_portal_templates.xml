@@ -31,8 +31,10 @@
 	</template>
 
 	<template id="portal_table_custom" name="My Custom Portal Table">
-		<div t-attf-class="table-responsive" style="font-size:14px;">
-			<table class="table table-borderless bg-white">
+		<div t-attf-class="table-responsive" style="font-size:14px;position:relative">
+		
+		
+			<table class="table table-borderless bg-white border-middle" >
 				<t t-raw="0" />
 			</table>
 		</div>
@@ -44,22 +46,19 @@
 			t-call="syd_custom.portal_table_custom">
 
 			<!-- Intestazione fissa -->
+			<div>
+				
+						<div class="radius t_reject" ></div>
+					<span style="font-size:15px;">REJECT</span>
+			</div>
 			<thead>
 				<tr>
-					<th>
-						<div class="radius t_reject"></div>
-					</th>
-					<th colspan="2">REJECT</th>
-				</tr>
-			</thead>
-			<thead>
-				<tr>
-					<th />
-					<th class="text-right" style="width:10%">Ref</th>
-					<th class="w-100" style="width:60%">Description</th>
-					<th style="width:10%">Creation Date</th>
-					<th style="width:10%">Environment</th>
-					<th style="width:10%">Level</th>
+					
+					<th  style="width:10%">REF NUM</th>
+					<th style="width:55%">DESCRIPTION</th>
+					<th style="width:20%">CREATION DATE</th>
+					<th style="width:15%">ENVIRONMENT</th>
+					
 
 				</tr>
 			</thead>
@@ -67,8 +66,8 @@
 			<!-- Rendering degli elementi -->
 			<t t-foreach="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Rejected')" t-as="ticket">
 				<tr style="border-bottom:1px solid #f0f0f0">
-					<td />
-					<td class="text-right">
+					
+					<td >
 						<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
 							<small>#</small>
 							<t t-esc="ticket.id" />
@@ -88,10 +87,7 @@
 							<span class="badge badge-pill badge-warning">Fixing</span>
 						</t>
 					</td>
-					<td class="text-left">
-						<span t-field="ticket.level" />
-					</td>
-
+					
 				</tr>
 
 				<t />
@@ -104,22 +100,19 @@
 			t-call="syd_custom.portal_table_custom">
 
 			<!-- Intestazione fissa -->
-			<thead>
-				<tr>
-					<th>
+			<div>
+				
 						<div class="radius color-closed"></div>
-					</th>
-					<th colspan="2">CLOSED</th>
-				</tr>
-			</thead>
+					<span style="font-size:15px;">CLOSED</span>
+			</div>
+			
 			<thead>
 				<tr>
-					<th />
-					<th class="text-right" style="width:10%">Ref</th>
-					<th class="w-100" style="width:60%">Description</th>
-					<th style="width:10%">Creation Date</th>
-					<th style="width:10%">Environment</th>
-					<th style="width:10%">Level</th>
+					
+					<th  style="width:10%">REF NUM</th>
+					<th style="width:55%">DESCRIPTION</th>
+					<th style="width:20%">CREATION DATE</th>
+					<th style="width:15%">ENVIRONMENT</th>
 
 				</tr>
 			</thead>
@@ -127,8 +120,8 @@
 			<!-- Rendering degli elementi -->
 			<t t-foreach="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Closed')" t-as="ticket">
 				<tr>
-					<td />
-					<td class="text-right">
+					
+					<td >
 						<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
 							<small>#</small>
 							<t t-esc="ticket.id" />
@@ -148,9 +141,7 @@
 							<span class="badge badge-pill badge-warning">Fixing</span>
 						</t>
 					</td>
-					<td class="text-left">
-						<span t-field="ticket.level" />
-					</td>
+					
 
 				</tr>
 
@@ -162,23 +153,19 @@
 	<template id="open_tickets" name="My Custom Portal Table">
 		<t t-if="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Open')"
 			t-call="syd_custom.portal_table_custom">
-
-			<thead>
-				<tr>
-					<th>
+			<div>
+				
 						<div class="radius color-open"></div>
-					</th>
-					<th colspan="2">OPEN</th>
-				</tr>
-			</thead>
+					<span style="font-size:15px;">OPEN</span>
+			</div>
+			
 			<thead>
 				<tr>
-					<th />
-					<th class="text-right" style="width:10%">Ref</th>
-					<th class="w-100" style="width:60%">Description</th>
-					<th style="width:10%">Creation Date</th>
-					<th style="width:10%">Environment</th>
-					<th style="width:10%">Level</th>
+					
+				<th  style="width:10%">REF NUM</th>
+					<th style="width:55%">DESCRIPTION</th>
+					<th style="width:20%">CREATION DATE</th>
+					<th style="width:15%">ENVIRONMENT</th>
 
 				</tr>
 			</thead>
@@ -186,8 +173,8 @@
 			<!-- Rendering degli elementi -->
 			<t t-foreach="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Open')" t-as="ticket">
 				<tr>
-					<td />
-					<td class="text-right">
+					
+					<td >
 						<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
 							<small>#</small>
 							<t t-esc="ticket.id" />
@@ -207,9 +194,7 @@
 							<span class="badge badge-pill badge-warning">Fixing</span>
 						</t>
 					</td>
-					<td class="text-left">
-						<span t-field="ticket.level" />
-					</td>
+					
 
 				</tr>
 
@@ -223,22 +208,19 @@
 			t-call="syd_custom.portal_table_custom">
 
 			<!-- Intestazione fissa -->
-			<thead>
-				<tr>
-					<th>
+			<div>
+				
 						<div class="radius color-progress"></div>
-					</th>
-					<th colspan="2">WORK IN PROGRESS</th>
-				</tr>
-			</thead>
+					<span style="font-size:15px;">WORK IN PROGRESS</span>
+			</div>
+			
 			<thead>
 				<tr>
-					<th />
-					<th class="text-right" style="width:10%">Ref</th>
-					<th class="w-100" style="width:60%">Description</th>
-					<th style="width:10%">Creation Date</th>
-					<th style="width:10%">Environment</th>
-					<th style="width:10%">Level</th>
+					
+					<th  style="width:10%">REF NUM</th>
+					<th style="width:55%">DESCRIPTION</th>
+					<th style="width:20%">CREATION DATE</th>
+					<th style="width:15%">ENVIRONMENT</th>
 
 				</tr>
 			</thead>
@@ -246,8 +228,8 @@
 			<!-- Rendering degli elementi -->
 			<t t-foreach="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Work in progress')" t-as="ticket">
 				<tr>
-					<td />
-					<td class="text-right">
+					
+					<td >
 						<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
 							<small>#</small>
 							<t t-esc="ticket.id" />
@@ -267,9 +249,7 @@
 							<span class="badge badge-pill badge-warning">Fixing</span>
 						</t>
 					</td>
-					<td class="text-left">
-						<span t-field="ticket.level" />
-					</td>
+					
 
 				</tr>
 
@@ -283,22 +263,19 @@
 			t-call="syd_custom.portal_table_custom">
 
 			<!-- Intestazione fissa -->
-			<thead>
-				<tr>
-					<th>
+			<div>
+				
 						<div class="radius color-waiting"></div>
-					</th>
-					<th>WAITING FOR CUSTOMER</th>
-				</tr>
-			</thead>
+					<span style="font-size:15px;">WAITING FOR CUSTOMER</span>
+			</div>
+			
 			<thead>
 				<tr>
-					<th />
-					<th class="text-right" style="width:10%">Ref</th>
-					<th class="w-100" style="width:60%">Description</th>
-					<th style="width:10%">Creation Date</th>
-					<th style="width:10%">Environment</th>
-					<th style="width:10%">Level</th>
+					
+					<th  style="width:10%">REF NUM</th>
+					<th style="width:55%">DESCRIPTION</th>
+					<th style="width:20%">CREATION DATE</th>
+					<th style="width:15%">ENVIRONMENT</th>
 
 				</tr>
 			</thead>
@@ -307,8 +284,8 @@
 			<t t-foreach="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Waiting for customer')"
 				t-as="ticket">
 				<tr>
-					<td />
-					<td class="text-right">
+					
+					<td >
 						<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
 							<small>#</small>
 							<t t-esc="ticket.id" />
@@ -328,9 +305,7 @@
 							<span class="badge badge-pill badge-warning">Fixing</span>
 						</t>
 					</td>
-					<td class="text-left">
-						<span t-field="ticket.level" />
-					</td>
+				
 
 				</tr>
 

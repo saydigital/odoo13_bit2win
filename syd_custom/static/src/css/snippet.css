@@ -70,7 +70,29 @@
  }
 
  .radius {
-	border-radius: 50px 50px;
-  	width: 30px;
-  	height: 30px;    
+	border-radius: 0px 50px 50px 0px;
+    width: 30px;
+    height: 20px;  
+    float: left;margin-right: 10px;
   }
+#wrapwrap.o_portal {
+	background-color:white!important;
+	
+}
+
+table.border-middle tr {
+	border-bottom:1px solid #BCBCBC!important;
+}
+
+table.border-middle tr:last-child {
+	border-bottom:0!important;
+}
+table.border-middle tr th 
+{
+	color:#BCBCBC!important;
+	font-weight:normal;
+}
+
+table.border-middle th:first-child , table.border-middle td:first-child{
+	padding-left: 40px;
+}
