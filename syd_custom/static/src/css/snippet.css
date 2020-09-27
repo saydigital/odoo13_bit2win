@@ -70,7 +70,12 @@
  }
 
  .radius {
-	border-radius: 50px 50px;
-  	width: 30px;
-  	height: 30px;    
+	border-radius: 0px 50px 50px 0px;
+    width: 30px;
+    height: 20px;  
+    float: left;margin-right: 10px;
   }
+#wrapwrap.o_portal {
+	background-color:white!important;
+	
+}
