@@ -13,6 +13,7 @@
 					<field name="release_id" />
 					
 					<field name="impact" />
+					<field name="module" />
 					<field name="date_fix" attrs="{'invisible': [('fixing', '=', False)]}"/>
 				</xpath>
 				<xpath expr="//field[@name='partner_email']" position="after">
