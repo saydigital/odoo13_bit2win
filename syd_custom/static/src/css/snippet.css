@@ -84,9 +84,13 @@ table.border-middle thead,table.border-middle tbody {
 	
 }
 table.border-middle tr {
-	border-bottom:1px solid #c0c0c0;
+	border-bottom:1px solid #BCBCBC!important;
 }
 
-table.border-middle tr_last-child {
-	border-bottom:0;
+table.border-middle tr:last-child {
+	border-bottom:0!important;
+}
+table.border-middle tr th 
+{
+	color:#BCBCBC!important;
 }
