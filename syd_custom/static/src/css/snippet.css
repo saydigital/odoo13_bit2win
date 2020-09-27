@@ -79,8 +79,8 @@
 	background-color:white!important;
 	
 }
-table.border-middle thead,table.border-middle tbody {
-	margin-left:70px;
+table.border-middle  {
+	margin-left:30px;
 	
 }
 table.border-middle tr {
@@ -93,4 +93,5 @@ table.border-middle tr:last-child {
 table.border-middle tr th 
 {
 	color:#BCBCBC!important;
+	font-weight:normal;
 }
