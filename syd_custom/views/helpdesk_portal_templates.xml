@@ -32,7 +32,7 @@
 
 	<template id="portal_table_custom" name="My Custom Portal Table">
 		<div t-attf-class="table-responsive" style="font-size:14px;">
-			<table class="table table-borderless bg-white" style="position:relative">
+			<table class="table table-borderless bg-white border-middle" style="position:relative">
 				<t t-raw="0" />
 			</table>
 		</div>
@@ -52,11 +52,11 @@
 			<thead>
 				<tr>
 					
-					<th class="text-right" style="width:10%">Ref</th>
-					<th class="w-100" style="width:60%">Description</th>
-					<th style="width:10%">Creation Date</th>
-					<th style="width:10%">Environment</th>
-					<th style="width:10%">Level</th>
+					<th class="text-right" style="width:15%">REF NUM</th>
+					<th style="width:55%">DESCRIPTION</th>
+					<th style="width:20%">CREATION DATE</th>
+					<th style="width:10%">ENVIRONMENT</th>
+					
 
 				</tr>
 			</thead>
@@ -85,10 +85,7 @@
 							<span class="badge badge-pill badge-warning">Fixing</span>
 						</t>
 					</td>
-					<td class="text-left">
-						<span t-field="ticket.level" />
-					</td>
-
+					
 				</tr>
 
 				<t />
@@ -110,11 +107,10 @@
 			<thead>
 				<tr>
 					
-					<th class="text-right" style="width:10%">Ref</th>
-					<th class="w-100" style="width:60%">Description</th>
-					<th style="width:10%">Creation Date</th>
-					<th style="width:10%">Environment</th>
-					<th style="width:10%">Level</th>
+					<th class="text-right" style="width:15%">REF NUM</th>
+					<th style="width:55%">DESCRIPTION</th>
+					<th style="width:20%">CREATION DATE</th>
+					<th style="width:10%">ENVIRONMENT</th>
 
 				</tr>
 			</thead>
@@ -143,9 +139,7 @@
 							<span class="badge badge-pill badge-warning">Fixing</span>
 						</t>
 					</td>
-					<td class="text-left">
-						<span t-field="ticket.level" />
-					</td>
+					
 
 				</tr>
 
@@ -166,11 +160,10 @@
 			<thead>
 				<tr>
 					
-					<th class="text-right" style="width:10%">Ref</th>
-					<th class="w-100" style="width:60%">Description</th>
-					<th style="width:10%">Creation Date</th>
-					<th style="width:10%">Environment</th>
-					<th style="width:10%">Level</th>
+				<th class="text-right" style="width:15%">REF NUM</th>
+					<th style="width:55%">DESCRIPTION</th>
+					<th style="width:20%">CREATION DATE</th>
+					<th style="width:10%">ENVIRONMENT</th>
 
 				</tr>
 			</thead>
@@ -199,9 +192,7 @@
 							<span class="badge badge-pill badge-warning">Fixing</span>
 						</t>
 					</td>
-					<td class="text-left">
-						<span t-field="ticket.level" />
-					</td>
+					
 
 				</tr>
 
@@ -224,11 +215,10 @@
 			<thead>
 				<tr>
 					
-					<th class="text-right" style="width:10%">Ref</th>
-					<th class="w-100" style="width:60%">Description</th>
-					<th style="width:10%">Creation Date</th>
-					<th style="width:10%">Environment</th>
-					<th style="width:10%">Level</th>
+					<th class="text-right" style="width:15%">REF NUM</th>
+					<th style="width:55%">DESCRIPTION</th>
+					<th style="width:20%">CREATION DATE</th>
+					<th style="width:10%">ENVIRONMENT</th>
 
 				</tr>
 			</thead>
@@ -257,9 +247,7 @@
 							<span class="badge badge-pill badge-warning">Fixing</span>
 						</t>
 					</td>
-					<td class="text-left">
-						<span t-field="ticket.level" />
-					</td>
+					
 
 				</tr>
 
@@ -282,11 +270,10 @@
 			<thead>
 				<tr>
 					
-					<th class="text-right" style="width:10%">Ref</th>
-					<th class="w-100" style="width:60%">Description</th>
-					<th style="width:10%">Creation Date</th>
-					<th style="width:10%">Environment</th>
-					<th style="width:10%">Level</th>
+					<th class="text-right" style="width:15%">REF NUM</th>
+					<th style="width:55%">DESCRIPTION</th>
+					<th style="width:20%">CREATION DATE</th>
+					<th style="width:10%">ENVIRONMENT</th>
 
 				</tr>
 			</thead>
@@ -316,9 +303,7 @@
 							<span class="badge badge-pill badge-warning">Fixing</span>
 						</t>
 					</td>
-					<td class="text-left">
-						<span t-field="ticket.level" />
-					</td>
+				
 
 				</tr>
 
