@@ -49,7 +49,7 @@
 			<div>
 				
 						<div class="radius t_reject" ></div>
-					<span>REJECT</span>
+					<span style="font-size:15px;">REJECT</span>
 			</div>
 			<thead>
 				<tr>
@@ -103,7 +103,7 @@
 			<div>
 				
 						<div class="radius color-closed"></div>
-					<span>CLOSED</span>
+					<span style="font-size:15px;">CLOSED</span>
 			</div>
 			
 			<thead>
@@ -156,7 +156,7 @@
 			<div>
 				
 						<div class="radius color-open"></div>
-					<span>OPEN</span>
+					<span style="font-size:15px;">OPEN</span>
 			</div>
 			
 			<thead>
@@ -211,7 +211,7 @@
 			<div>
 				
 						<div class="radius color-progress"></div>
-					<span>WORK IN PROGRESS</span>
+					<span style="font-size:15px;">WORK IN PROGRESS</span>
 			</div>
 			
 			<thead>
@@ -266,7 +266,7 @@
 			<div>
 				
 						<div class="radius color-waiting"></div>
-					<span>WAITING FOR CUSTOMER</span>
+					<span style="font-size:15px;">WAITING FOR CUSTOMER</span>
 			</div>
 			
 			<thead>
