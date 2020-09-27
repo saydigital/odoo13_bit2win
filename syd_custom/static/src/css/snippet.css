@@ -95,3 +95,7 @@ table.border-middle tr th
 	color:#BCBCBC!important;
 	font-weight:normal;
 }
+
+table.border-middle th:first-child , table.border-middle td:first-child{
+	padding-left: 40px;
+}
