@@ -31,8 +31,10 @@
 	</template>
 
 	<template id="portal_table_custom" name="My Custom Portal Table">
-		<div t-attf-class="table-responsive" style="font-size:14px;">
-			<table class="table table-borderless bg-white border-middle" style="position:relative">
+		<div t-attf-class="table-responsive" style="font-size:14px;position:relative">
+		
+		
+			<table class="table table-borderless bg-white border-middle" >
 				<t t-raw="0" />
 			</table>
 		</div>
@@ -52,10 +54,10 @@
 			<thead>
 				<tr>
 					
-					<th class="text-right" style="width:15%">REF NUM</th>
+					<th  style="width:10%">REF NUM</th>
 					<th style="width:55%">DESCRIPTION</th>
 					<th style="width:20%">CREATION DATE</th>
-					<th style="width:10%">ENVIRONMENT</th>
+					<th style="width:15%">ENVIRONMENT</th>
 					
 
 				</tr>
@@ -65,7 +67,7 @@
 			<t t-foreach="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Rejected')" t-as="ticket">
 				<tr style="border-bottom:1px solid #f0f0f0">
 					
-					<td class="text-right">
+					<td >
 						<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
 							<small>#</small>
 							<t t-esc="ticket.id" />
@@ -107,10 +109,10 @@
 			<thead>
 				<tr>
 					
-					<th class="text-right" style="width:15%">REF NUM</th>
+					<th  style="width:10%">REF NUM</th>
 					<th style="width:55%">DESCRIPTION</th>
 					<th style="width:20%">CREATION DATE</th>
-					<th style="width:10%">ENVIRONMENT</th>
+					<th style="width:15%">ENVIRONMENT</th>
 
 				</tr>
 			</thead>
@@ -119,7 +121,7 @@
 			<t t-foreach="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Closed')" t-as="ticket">
 				<tr>
 					
-					<td class="text-right">
+					<td >
 						<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
 							<small>#</small>
 							<t t-esc="ticket.id" />
@@ -160,10 +162,10 @@
 			<thead>
 				<tr>
 					
-				<th class="text-right" style="width:15%">REF NUM</th>
+				<th  style="width:10%">REF NUM</th>
 					<th style="width:55%">DESCRIPTION</th>
 					<th style="width:20%">CREATION DATE</th>
-					<th style="width:10%">ENVIRONMENT</th>
+					<th style="width:15%">ENVIRONMENT</th>
 
 				</tr>
 			</thead>
@@ -172,7 +174,7 @@
 			<t t-foreach="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Open')" t-as="ticket">
 				<tr>
 					
-					<td class="text-right">
+					<td >
 						<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
 							<small>#</small>
 							<t t-esc="ticket.id" />
@@ -215,10 +217,10 @@
 			<thead>
 				<tr>
 					
-					<th class="text-right" style="width:15%">REF NUM</th>
+					<th  style="width:10%">REF NUM</th>
 					<th style="width:55%">DESCRIPTION</th>
 					<th style="width:20%">CREATION DATE</th>
-					<th style="width:10%">ENVIRONMENT</th>
+					<th style="width:15%">ENVIRONMENT</th>
 
 				</tr>
 			</thead>
@@ -227,7 +229,7 @@
 			<t t-foreach="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Work in progress')" t-as="ticket">
 				<tr>
 					
-					<td class="text-right">
+					<td >
 						<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
 							<small>#</small>
 							<t t-esc="ticket.id" />
@@ -270,10 +272,10 @@
 			<thead>
 				<tr>
 					
-					<th class="text-right" style="width:15%">REF NUM</th>
+					<th  style="width:10%">REF NUM</th>
 					<th style="width:55%">DESCRIPTION</th>
 					<th style="width:20%">CREATION DATE</th>
-					<th style="width:10%">ENVIRONMENT</th>
+					<th style="width:15%">ENVIRONMENT</th>
 
 				</tr>
 			</thead>
@@ -283,7 +285,7 @@
 				t-as="ticket">
 				<tr>
 					
-					<td class="text-right">
+					<td >
 						<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
 							<small>#</small>
 							<t t-esc="ticket.id" />
