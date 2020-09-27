@@ -79,3 +79,14 @@
 	background-color:white!important;
 	
 }
+table.border-middle thead,table.border-middle tbody {
+	margin-left:70px;
+	
+}
+table.border-middle tr {
+	border-bottom:1px solid #c0c0c0;
+}
+
+table.border-middle tr_last-child {
+	border-bottom:0;
+}
