@@ -71,7 +71,7 @@
 
 										<div class="col-xl-6" id="container_environment">
 											<div>
-												<label class="col-form-label" for="environment_id">Environment (configurabile)</label>
+												<label class="col-form-label" for="environment_id">Environment</label>
 											</div>
 
 											<div>
@@ -91,7 +91,7 @@
 									<div class="form-group row form-field col-xl-12">
 										<div class="col-xl-4" id="container_environment_desc">
 											<div>
-												<label class="col-form-label" for="environment_id_desc">Environment Id</label>
+												<label class="col-form-label" for="environment_id_desc">Org Id</label>
 											</div>
 											<div>
 												<input class="form-control o_website_form_input" name="environment_id_desc" id="environment_id_desc" />
