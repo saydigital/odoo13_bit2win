@@ -19,7 +19,7 @@
 				</xpath>
 				<xpath expr="//field[@name='partner_email']" position="after">
 					<field name="reported_by" />
-					<field name="access_granted" />
+					<field name="granted_user" />
 					<field name="user_who_found" />
 					<field name="partner_created_id" />
 				</xpath>
