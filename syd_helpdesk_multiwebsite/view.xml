@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+		
+	
+	<record
+		id="helpdesk_team_view_form_inherit_website_helpdesk_form_inherit"
+		model="ir.ui.view">
+		<field name="name">helpdesk.helpdesk_team_view_form_inherit</field>
+		<field name="inherit_id" ref="helpdesk.helpdesk_team_view_form" />
+		<field name="model">helpdesk.team</field>
+		<field name="inherit_id" ref="helpdesk.helpdesk_team_view_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//div[@id='after-sales']" position="after">
+				<h2>Website</h2>
+				<div id="website_id_div">
+					<group>
+						<field name="website_id" />
+					</group>
+				</div>
+			</xpath>
+		</field>
+	</record>
+</odoo>
