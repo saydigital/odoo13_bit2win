@@ -10,7 +10,8 @@ class ResPartner(models.Model):
     _inherit = "res.partner"
     
     reported_by = fields.Many2one('helpdesk.reported', 'Helpdesk Role')
-    
+    #administrative_user = fields.Boolean('Administrative user')
+
     
 class HelpdeskReported(models.Model):
     _name = "helpdesk.reported"
@@ -45,12 +46,11 @@ class HelpdeskStage(models.Model):
 class HelpdeskTicket(models.Model):
     _inherit = "helpdesk.ticket"            
        
-    user_who_found = fields.Text(string="User who found the problem", tracking=True)
+    user_who_found = fields.Char(string="Business User", tracking=True)
     origin = fields.Text(string="Origin", tracking=True)
     partner_created_id = fields.Many2one('res.partner', string="Reported by", tracking=True, default=lambda self: self.env.user.partner_id.id)
     impact = fields.Selection([('0', 'Blocking'), ('1', 'Non Blocking')], default="0", tracking=True)
-    access_granted = fields.Boolean('Access Granted', tracking=True)
-    granted_user = fields.Text(string="Granted User", tracking=True)
+    granted_user = fields.Char(string="Granted User", tracking=True)
     level = fields.Selection([('1', 'Level 1'), ('2', 'Level 2')], default="1", tracking=True)
     fixing = fields.Boolean('Fixing', tracking=True)
     pay_attention = fields.Boolean('Pay Attention', tracking=True)

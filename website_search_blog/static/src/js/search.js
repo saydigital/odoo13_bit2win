@@ -25,7 +25,7 @@ $(function() {
             });
         },
         select:function(suggestion,term,item){
-            window.location.href= "/blog/our-blog-1/post/"+term.item.id
+            window.location.href= "/blog/cpq-2/post/"+term.item.id
         },
         minLength: 1
     });
