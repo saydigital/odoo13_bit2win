@@ -1,11 +1,11 @@
 # -*- encoding: utf-8 -*-
 
 {'name': 'Website for Helpdesk Ticket',
- 'version': '0.1',
+ 'version': '0.2',
  'author': "Rapsodoo",
  'maintainer': 'Rapsodoo',
  'category': 'base',   
- 'depends': ['helpdesk','website'],
+ 'depends': ['helpdesk','website','mail'],
  'description': """
                 Website for Ticket (url)
                 """,
