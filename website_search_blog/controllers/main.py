@@ -20,7 +20,11 @@
 ###################################################################################
 
 import json
-
+import werkzeug
+import itertools
+import pytz
+import babel.dates
+from collections import OrderedDict
 from odoo.addons.http_routing.models.ir_http import slug, unslug
 from odoo.addons.website.controllers.main import QueryURL
 from odoo.addons.website_blog.controllers.main import WebsiteBlog
@@ -38,7 +42,7 @@ class BlogInherit(WebsiteBlog):
                  '''/blog/<model("blog.blog"):blog>/tag/<string:tag>/page/<int:page>''',
                  '''/blog/search_content''',
                  ], type='http', auth="public", website=True, csrf=False)
-    def blog(self, blog=None, tag=None, page=1, **opt):
+    def blog_custom(self, blog=None, tag=None, page=1, **opt):
         """function related to blog display"""
         date_begin, date_end, state = opt.get('date_begin'), opt.get('date_end'), opt.get('state')
         published_count, unpublished_count = 0, 0
@@ -152,3 +156,34 @@ class BlogInherit(WebsiteBlog):
         except:
             name = {'name': 'None', 'value': 'None'}
         return json.dumps(name)
+    
+    
+    @http.route([
+        '/tag/<string:tag>'
+    ], type='http', auth="public", website=True)
+    def blog(self, blog=None, tag=None, page=1, **opt):
+        Blog = request.env['blog.blog']
+        if blog and not blog.can_access_from_current_website():
+            raise werkzeug.exceptions.NotFound()
+
+        blogs = Blog.search(request.website.website_domain(), order="create_date asc, id asc")
+
+        if not blog and len(blogs) == 1:
+            return werkzeug.utils.redirect('/blog/%s' % slug(blogs[0]), code=302)
+
+        date_begin, date_end, state = opt.get('date_begin'), opt.get('date_end'), opt.get('state')
+
+        values = self._prepare_blog_values(blogs=blogs, blog=blog, date_begin=date_begin, date_end=date_end, tags=tag, state=state, page=page)
+
+        # in case of a redirection need by `_prepare_blog_values` we follow it
+        if isinstance(values, werkzeug.wrappers.Response):
+            return values
+
+        if blog:
+            values['main_object'] = blog
+            values['edit_in_backend'] = True
+            values['blog_url'] = QueryURL('', ['blog', 'tag'], blog=blog, tag=tag, date_begin=date_begin, date_end=date_end)
+        else:
+            values['blog_url'] = QueryURL('/blog', ['tag'], date_begin=date_begin, date_end=date_end)
+
+        return request.render("website_blog.blog_post_short", values)
