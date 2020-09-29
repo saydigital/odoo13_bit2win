@@ -54,7 +54,7 @@
 									<div class="form-group row form-field col-xl-12">
 										<div class="col-xl-6" id="container_ticket_type">
 											<div>
-												<label class="col-form-label" for="ticket_type_id">Question or Issue</label>
+												<label class="col-form-label" for="ticket_type_id">Type of Request</label>
 											</div>
 											<div>
 												<select id="ticket_type_id" required="True" name="ticket_type_id" class="form-control"
