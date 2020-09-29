@@ -19,6 +19,8 @@ class HelpdeskTeam(models.Model):
 class HelpdeskTicket(models.Model):
     _inherit = 'helpdesk.ticket'    
     
+    website_id = fields.Many2one('website',string="Website",related="team_id.website_id",store=True)
+    
     def _compute_access_url(self):
         super(HelpdeskTicket, self)._compute_access_url()
         for ticket in self:
