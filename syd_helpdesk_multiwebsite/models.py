@@ -13,7 +13,7 @@ from odoo.tools.safe_eval import safe_eval
 class HelpdeskTeam(models.Model):
     _inherit = 'helpdesk.team'
     
-    website_id = fields.Many2one('website.website',string="Website")
+    website_id = fields.Many2one('website',string="Website")
     
 
 class HelpdeskTicket(models.Model):
