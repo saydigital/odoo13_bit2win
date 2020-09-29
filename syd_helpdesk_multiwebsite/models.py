@@ -23,4 +23,4 @@ class HelpdeskTicket(models.Model):
         super(HelpdeskTicket, self)._compute_access_url()
         for ticket in self:
             if ticket.team_id and ticket.team_id.website_id and ticket.team_id.website_id.domain:
-                ticket.access_url = '%s/my/ticket/%s' % (ticket.team_id.website_id.domain,ticket.id)   
+                ticket.access_url = 'https://%s/my/ticket/%s' % (ticket.team_id.website_id.domain,ticket.id)   
