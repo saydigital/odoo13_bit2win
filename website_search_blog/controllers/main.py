@@ -159,7 +159,7 @@ class BlogInherit(WebsiteBlog):
     
     
     @http.route([
-        '/tag/<string:tag>'
+        '/tag/<string:tag>', '/blog/tag/<string:tag>'
     ], type='http', auth="public", website=True)
     def blog(self, blog=None, tag=None, page=1, **opt):
         Blog = request.env['blog.blog']
