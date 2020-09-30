@@ -35,11 +35,10 @@ from odoo.http import request
 
 class BlogInherit(WebsiteBlog):
     """Override class WebsiteBlog"""
+
     @http.route(['/blog',
                  '''/blog/<model("blog.blog", "[('website_id', 'in', (False, current_website_id))]"):blog>''',
                  '''/blog/<model("blog.blog"):blog>/page/<int:page>''',
-                 '''/blog/<model("blog.blog"):blog>/tag/<string:tag>''',
-                 '''/blog/<model("blog.blog"):blog>/tag/<string:tag>/page/<int:page>''',
                  '''/blog/search_content''',
                  ], type='http', auth="public", website=True, csrf=False)
     def blog_custom(self, blog=None, tag=None, page=1, **opt):
@@ -157,9 +156,9 @@ class BlogInherit(WebsiteBlog):
             name = {'name': 'None', 'value': 'None'}
         return json.dumps(name)
     
-    
     @http.route([
-        '/tag/<string:tag>', '/blog/tag/<string:tag>'
+        '/tag/<string:tag>', '/blog/tag/<string:tag>', '/blog/<model("blog.blog"):blog>/tag/<string:tag>',
+                 '/blog/<model("blog.blog"):blog>/tag/<string:tag>/page/<int:page>'
     ], type='http', auth="public", website=True)
     def blog(self, blog=None, tag=None, page=1, **opt):
         Blog = request.env['blog.blog']
@@ -172,7 +171,13 @@ class BlogInherit(WebsiteBlog):
             return werkzeug.utils.redirect('/blog/%s' % slug(blogs[0]), code=302)
 
         date_begin, date_end, state = opt.get('date_begin'), opt.get('date_end'), opt.get('state')
-
+        
+        
+        #patch
+        blog=None
+        
+        
+        
         values = self._prepare_blog_values(blogs=blogs, blog=blog, date_begin=date_begin, date_end=date_end, tags=tag, state=state, page=page)
 
         # in case of a redirection need by `_prepare_blog_values` we follow it
