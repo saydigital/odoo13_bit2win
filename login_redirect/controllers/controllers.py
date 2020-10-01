@@ -17,7 +17,7 @@ class Website(Home):
         if(request.session.uid != None):  # User Auth
             homepage = request.website.menu_id.url_logged 
             
-            if homepage and request.env.user.has_group('base.portal_user') and homepage != '/':
+            if homepage and request.env.user.has_group('base.group_portal') and homepage != '/':
                 return request.env['ir.http'].reroute(homepage)
         # End custom fix 
         
