@@ -1,27 +1,39 @@
 <odoo>
 	<data>
-		<record id="website_pages_form_view_redirect" model="ir.ui.view">
-			<field name="name">login_redirect.website_pages_form_view_redirect</field>
-			<field name="inherit_id" ref="website.website_pages_form_view" />
-			<field name="model">website.page</field>
+<!-- 		<record id="website_pages_form_view_redirect" model="ir.ui.view"> -->
+<!-- 			<field name="name">login_redirect.website_pages_form_view_redirect</field> -->
+<!-- 			<field name="inherit_id" ref="website.website_pages_form_view" /> -->
+<!-- 			<field name="model">website.page</field> -->
 
-			<field name="arch" type="xml">
-				<xpath expr="//field[@name='url']" position="after">
-                    <field name="url_logged"/>
-				</xpath>
-			</field>
-		</record>
+<!-- 			<field name="arch" type="xml"> -->
+<!-- 				<xpath expr="//field[@name='url']" position="after"> -->
+<!--                     <field name="url_logged"/> -->
+<!-- 				</xpath> -->
+<!-- 			</field> -->
+<!-- 		</record> -->
 		
-		<record id="website_pages_tree_view_redirect" model="ir.ui.view">
-			<field name="name">login_redirect.website_pages_tree_view</field>
-			<field name="inherit_id" ref="website.website_pages_tree_view" />
-			<field name="model">website.page</field>
+<!-- 		<record id="website_pages_tree_view_redirect" model="ir.ui.view"> -->
+<!-- 			<field name="name">login_redirect.website_pages_tree_view</field> -->
+<!-- 			<field name="inherit_id" ref="website.website_pages_tree_view" /> -->
+<!-- 			<field name="model">website.page</field> -->
+
+<!-- 			<field name="arch" type="xml"> -->
+<!-- 				<xpath expr="//field[@name='url']" position="after"> -->
+<!--                     <field name="url_logged"/> -->
+<!-- 				</xpath> -->
+<!-- 			</field> -->
+<!-- 		</record>	 -->
+		
+		<record id="menu_tree_redirect" model="ir.ui.view">
+			<field name="name">login_redirect.menu_tree</field>
+			<field name="inherit_id" ref="website.menu_tree" />
+			<field name="model">website.menu</field>
 
 			<field name="arch" type="xml">
 				<xpath expr="//field[@name='url']" position="after">
                     <field name="url_logged"/>
 				</xpath>
 			</field>
-		</record>		
+		</record>			
 	</data>
 </odoo>

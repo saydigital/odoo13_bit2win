@@ -13,17 +13,16 @@ class Website(Home):
     @http.route('/', type='http', auth="public", website=True)
     def index(self, **kw):
         
+        # TODO: Check if user is Portal!!
+        if(request.session.uid != None):  # User Auth
+            homepage = request.website.menu_id.url_logged 
+            
+            if homepage and request.env.user.has_group('base.group_user') and homepage != '/':
+                return request.env['ir.http'].reroute(homepage)
+        # End custom fix 
         
-        #NOT WORKING!
-        if(request.session.uid != None): #Auth user TO-DO user from Support? 
-            homepage = request.env['website.page'].search([ ('url', '=', '/home-support') ]) 
-        else: 
-            homepage = request.env['website.page'].search([ ('id', '=', '4') ]) 
-
-
-
-        #if homepage and (homepage.sudo().is_visible or request.env.user.has_group('base.group_user')) and homepage.url != '/':
-        if homepage and (homepage.sudo().is_visible or request.env.user.has_group('base.group_user')):
+        homepage = request.website.homepage_id
+        if homepage and (homepage.sudo().is_visible or request.env.user.has_group('base.group_user')) and homepage.url != '/':
             return request.env['ir.http'].reroute(homepage.url)
 
         website_page = request.env['ir.http']._serve_page()
