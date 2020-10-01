@@ -1,0 +1,17 @@
+<odoo>
+	<data>
+
+		
+		<record id="after_login_redirect" model="ir.ui.view">
+			<field name="name">website.after_login</field>
+			<field name="inherit_id" ref="website.view_website_form" />
+			<field name="model">website</field>
+
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='domain']" position="after">
+                    <field name="url_afterlogin"/>
+				</xpath>
+			</field>
+		</record>			
+	</data>
+</odoo>
