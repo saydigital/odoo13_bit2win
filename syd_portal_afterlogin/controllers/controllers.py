@@ -13,7 +13,7 @@ class NewAuthSignupHome(AuthSignupHome):
         ensure_db()
         response = super(NewAuthSignupHome, self).web_login(*args, **kw)
         
-        if request.httprequest.method == 'GET' and request.session.uid and not request.params.get('redirect') and request.website.url_afterlogin:
+        if request.session.uid and not request.params.get('redirect') and request.website.url_afterlogin:
             # Redirect if already logged in and redirect param is present
             return http.redirect_with_hash(request.website.url_afterlogin)
         return response
