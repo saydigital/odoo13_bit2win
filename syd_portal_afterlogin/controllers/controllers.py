@@ -3,7 +3,7 @@
 from odoo import http
 from odoo.http import request
 from odoo.addons.auth_signup.controllers.main import AuthSignupHome
-
+from odoo.addons.web.controllers.main import ensure_db, Home
 
 
 class NewAuthSignupHome(AuthSignupHome):
