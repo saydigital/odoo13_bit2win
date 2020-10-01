@@ -1,0 +1,15 @@
+<odoo>
+	<data>
+		<record id="menu_tree_redirect" model="ir.ui.view">
+			<field name="name">login_redirect.menu_tree</field>
+			<field name="inherit_id" ref="website.menu_tree" />
+			<field name="model">website.menu</field>
+
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='url']" position="after">
+					<field name="url_logged" />
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>
