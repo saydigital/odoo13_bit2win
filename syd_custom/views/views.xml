@@ -17,6 +17,11 @@
 					<field name="module" />
 					<field name="date_fix" attrs="{'invisible': [('fixing', '=', False)]}"/>
 				</xpath>
+				
+				<xpath expr="//field[@name='priority']" position="before">
+		         		<field name="environment_id_desc" />
+		        </xpath>				
+				
 				<xpath expr="//field[@name='partner_email']" position="after">
 					<field name="reported_by" />
 					<field name="granted_user" />
