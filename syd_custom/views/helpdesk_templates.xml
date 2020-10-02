@@ -54,7 +54,9 @@
 									<div class="form-group row form-field col-xl-12">
 										<div class="col-xl-6" id="container_ticket_type">
 											<div>
-												<label class="col-form-label" for="ticket_type_id">Type of Request</label>
+												<label class="col-form-label" for="ticket_type_id">Type of Request
+													<i class="fa fa-info-circle" data-html="true" data-toggle="modal" data-target="#type_request_tooltip" />
+												</label>
 											</div>
 											<div>
 												<select id="ticket_type_id" required="True" name="ticket_type_id" class="form-control"
@@ -71,7 +73,9 @@
 
 										<div class="col-xl-6" id="container_environment">
 											<div>
-												<label class="col-form-label" for="environment_id">Environment</label>
+												<label class="col-form-label" for="environment_id">Environment
+													<i class="fa fa-info-circle" data-html="true" data-toggle="modal" data-target="#environment_tooltip" />
+												</label>
 											</div>
 
 											<div>
@@ -91,7 +95,9 @@
 									<div class="form-group row form-field col-xl-12">
 										<div class="col-xl-4" id="container_environment_desc">
 											<div>
-												<label class="col-form-label" for="environment_id_desc">Org Id</label>
+												<label class="col-form-label" for="environment_id_desc">Org Id
+													<i class="fa fa-info-circle" data-html="true" data-toggle="modal" data-target="#org_id_tooltip" />
+												</label>
 											</div>
 											<div>
 												<input class="form-control o_website_form_input" name="environment_id_desc" id="environment_id_desc" />
@@ -102,7 +108,7 @@
 											<div>
 												<label class="col-form-label" for="priority">
 													Severity Level
-													<i class="fa fa-info-circle" data-html="true" data-toggle="modal" data-target="#get_so" />
+													<i class="fa fa-info-circle" data-html="true" data-toggle="modal" data-target="#severity_level_tooltip" />
 												</label>
 											</div>
 											<div>
@@ -120,7 +126,9 @@
 
 										<div class="col-xl-4" id="container_impact">
 											<div>
-												<label class="col-form-label" for="impact">Impact</label>
+												<label class="col-form-label" for="impact">Impact
+													<i class="fa fa-info-circle" data-html="true" data-toggle="modal" data-target="#impact_tooltip" />
+												</label>
 											</div>
 											<div>
 												<select id="impact_id" name="impact" class="form-control" autocomplete="on" required="False">
@@ -139,7 +147,9 @@
 									<div class="form-group row form-field col-xl-12">
 										<div class="col-xl-4" id="container_granted">
 											<div>
-												<label class="col-form-label" for="granted_user">Granted User</label>
+												<label class="col-form-label" for="granted_user">Granted User
+													<i class="fa fa-info-circle" data-html="true" data-toggle="modal" data-target="#granted_user_tooltip" />
+												</label>
 											</div>
 											<div>
 												<input class="form-control o_website_form_input" name="granted_user" id="granted_user" />
@@ -147,7 +157,9 @@
 										</div>
 										<div class="col-xl-4" id="container_user_who_found">
 											<div>
-												<label class="col-form-label" for="user_who_found">Business User</label>
+												<label class="col-form-label" for="user_who_found">Business User
+													<i class="fa fa-info-circle" data-html="true" data-toggle="modal" data-target="#business_user_tooltip" />
+												</label>
 											</div>
 											<div>
 												<input class="form-control o_website_form_input" name="user_who_found" id="user_who_found" />
@@ -157,7 +169,9 @@
 
 										<div class="col-xl-4" id="container_release_id">
 											<div>
-												<label class="col-form-label" for="release_id">Bit2win Release</label>
+												<label class="col-form-label" for="release_id">Bit2win Release
+													<i class="fa fa-info-circle" data-html="true" data-toggle="modal" data-target="#release_tooltip" />
+												</label>
 											</div>
 											<div>
 												<select id="release_id" name="release_id" class="form-control" autocomplete="on">
@@ -176,7 +190,9 @@
 									<div class="form-group row form-field col-xl-12">
 										<div class="col-xl-8" id="container_subject">
 											<div>
-												<label class="col-form-label" for="name">Subject</label>
+												<label class="col-form-label" for="name">Subject
+													<i class="fa fa-info-circle" data-html="true" data-toggle="modal" data-target="#subject_tooltip" />
+												</label>
 											</div>
 											<div>
 												<input type="text" class="form-control o_website_form_input" name="name" id="subject" />
@@ -185,8 +201,8 @@
 
 										<div class="col-xl-4" id="container_module">
 											<div>
-												<label class="col-form-label" for="module">
-													Module
+												<label class="col-form-label" for="module">Module
+													<i class="fa fa-info-circle" data-html="true" data-toggle="modal" data-target="#module_tooltip" />
 												</label>
 											</div>
 											<div>
@@ -205,7 +221,9 @@
 									<div class="form-group row form-field col-xl-12">
 										<div class="col-xl-9" id="container_description">
 											<div>
-												<label class="col-form-label" for="description">Description</label>
+												<label class="col-form-label" for="description">Description
+													<i class="fa fa-info-circle" data-html="true" data-toggle="modal" data-target="#description_tooltip" />
+												</label>
 											</div>
 											<div>
 												<textarea class="form-control o_website_form_input" name="description" id="description" />
@@ -223,7 +241,7 @@
 										</div>
 									</div>
 									<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-										aria-hidden="true" id="get_so">
+										aria-hidden="true" id="severity_level_tooltip">
 										<div class="modal-dialog modal-lg">
 											<div class="modal-content text-center">
 												<p>
@@ -243,6 +261,146 @@
 											</div>
 										</div>
 									</div>
+									
+									<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+										aria-hidden="true" id="type_request_tooltip">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content text-center">
+												<p>
+													<strong>Type of Request</strong>
+													<br />
+													Indicate if the topic that best fit your request is an Issue, a Question or a Configuration.
+												</p>
+
+											</div>
+										</div>
+									</div>									
+
+									<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+										aria-hidden="true" id="environment_tooltip">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content text-center">
+												<p>
+													<strong>Environment</strong>
+													<br />
+													Select the environment where you are having the problem: Development/Test, UAT, Production.
+												</p>
+
+											</div>
+										</div>
+									</div>	
+
+									<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+										aria-hidden="true" id="org_id_tooltip">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content text-center">
+												<p>
+													<strong>Org ID</strong>
+													<br />
+													Specify your Salesforce Org ID.
+												</p>
+
+											</div>
+										</div>
+									</div>	
+
+									<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+										aria-hidden="true" id="impact_tooltip">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content text-center">
+												<p>
+													<strong>Impact</strong>
+													<br />
+													Specify if the issue is Blocking or Non Blocking. 
+												</p>
+
+											</div>
+										</div>
+									</div>	
+
+									<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+										aria-hidden="true" id="granted_user_tooltip">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content text-center">
+												<p>
+													<strong>Granted User</strong>
+													<br />
+													Share with us the Granted User.
+												</p>
+
+											</div>
+										</div>
+									</div>	
+
+									<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+										aria-hidden="true" id="business_user_tooltip">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content text-center">
+												<p>
+													<strong>Business User</strong>
+													<br />
+													Indicate the Business User that is encountered the problem.
+												</p>
+
+											</div>
+										</div>
+									</div>	
+
+									<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+										aria-hidden="true" id="release_tooltip">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content text-center">
+												<p>
+													<strong>Bit2win Release</strong>
+													<br />
+													Select the bit2win Release installed in the environment where you are reporting the problem.
+												</p>
+											</div>
+										</div>
+									</div>	
+
+									<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+										aria-hidden="true" id="subject_tooltip">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content text-center">
+												<p>
+													<strong>Subject</strong>
+													<br />
+													Write a short description with information specific to your issue.
+												</p>
+											</div>
+										</div>
+									</div>	
+
+									<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+										aria-hidden="true" id="module_tooltip">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content text-center">
+												<p>
+													<strong>Module</strong>
+													<br />
+													Select the bit2win Module that is causing the issue.
+												</p>
+											</div>
+										</div>
+									</div>	
+
+									<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+										aria-hidden="true" id="description_tooltip">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content">
+												<p>
+													<strong>Description</strong>
+													<br />
+													<ol>
+													  <li>A detailed explanation of the issue you are encountering, including as much detail as possible.</li>
+													  <li>Detailed Steps to Repeat so that the our support team can troubleshoot the issue.</li>
+													  <li>The result you are getting and what you expected to happen.</li>
+													</ol>
+												</p>
+											</div>
+										</div>
+									</div>	
 
 									<div class="form-group row">
 										<div class="offset-lg-3 offset-md-4 col-md-8 col-lg-7">
