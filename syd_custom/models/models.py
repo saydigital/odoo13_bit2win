@@ -58,7 +58,7 @@ class HelpdeskTicket(models.Model):
     release_id = fields.Many2one('helpdesk.release', 'Release', tracking=True)
     package_id = fields.Many2one('helpdesk.package', 'Package', tracking=True)
     reported_by = fields.Many2one('helpdesk.reported', 'Reported by role', related="partner_id.reported_by", tracking=True)
-    environment_id_desc = fields.Text(string="Environment Description", tracking=True)
+    environment_id_desc = fields.Char(string="Org ID", tracking=True)
     date_fix = fields.Date('Planned Fix Date', tracking=True)
     module = fields.Selection([('0', 'Core'), ('1', 'Bulk order'), ('2', 'E-signature'), ('3', 'Archetypes'), ('4', 'Store'), ('5', 'Zuora connector'), ('6', 'Sapisu-connector'),
                                ('7', 'Utility'), ('8', 'Cost-simulator'), ('9', 'Cost-simulator'), ('10', 'External-catalog'), ('11', 'Flow'), ('12', 'Loyalty'), ('13', 'Cart-api'), ('14', 'Ssymphony')], default="0", tracking=True)
