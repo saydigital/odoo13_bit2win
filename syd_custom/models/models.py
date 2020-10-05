@@ -3,7 +3,7 @@
 from odoo import models, fields, api
 from odoo.exceptions import UserError, ValidationError
 
-TICKET_FIELDS = ['partner_created_id', 'environment_id_desc', 'name', 'release_id', 'reported_by', 'access_granted', 'level', 'environment_id', 'description', 'contract_id', 'partner_id', 'partner_created_id', 'user_who_found', 'impact', 'ticket_type_id', 'priority', 'granted_user', 'module', 'package']
+TICKET_FIELDS = ['partner_created_id', 'environment_id_desc', 'name', 'release_id', 'reported_by', 'access_granted', 'level', 'environment_id', 'description', 'contract_id', 'partner_id', 'partner_created_id', 'user_who_found', 'impact', 'ticket_type_id', 'priority', 'granted_user', 'module', 'package','team_id']
 
 
 class ResPartner(models.Model):
@@ -16,6 +16,7 @@ class ResPartner(models.Model):
 class HelpdeskReported(models.Model):
     _name = "helpdesk.reported"
     _description = "Reported"
+    _order = 'sequence'
     
     name = fields.Char('Reported')
     sequence = fields.Integer('Sequence')
@@ -24,6 +25,7 @@ class HelpdeskReported(models.Model):
 class HelpdeskRelease(models.Model):
     _name = "helpdesk.release"
     _description = "Release"
+    _order = 'sequence'
     
     name = fields.Char('Release')
     sequence = fields.Integer('Sequence')
@@ -32,6 +34,7 @@ class HelpdeskRelease(models.Model):
 class HelpdeskPackage(models.Model):
     _name = "helpdesk.package"
     _description = "package"
+    _order = 'sequence'
     
     name = fields.Char('Package')
     sequence = fields.Integer('Sequence')                    
