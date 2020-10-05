@@ -16,7 +16,8 @@
                 'sale',
                 'syd_environment_sla',
                 'syd_helpdesk_contract',
-                'website'
+                'website', 
+                'rating'
                 ],
     'data':[
         'data/data.xml',
@@ -25,6 +26,7 @@
         'views/views.xml',
         'views/asset.xml',
         'views/snippet.xml',
+        'views/rating_template.xml',
         'views/helpdesk_portal_templates.xml',
         'security/ir.model.access.csv'
     ],

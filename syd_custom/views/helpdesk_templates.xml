@@ -54,7 +54,8 @@
 									<div class="form-group row form-field col-xl-12">
 										<div class="col-xl-6" id="container_ticket_type">
 											<div>
-												<label class="col-form-label" for="ticket_type_id">Type of Request
+												<label class="col-form-label" for="ticket_type_id">
+													Type of Request
 													<i class="fa fa-info-circle" data-html="true" data-toggle="modal" data-target="#type_request_tooltip" />
 												</label>
 											</div>
@@ -73,7 +74,8 @@
 
 										<div class="col-xl-6" id="container_environment">
 											<div>
-												<label class="col-form-label" for="environment_id">Environment
+												<label class="col-form-label" for="environment_id">
+													Environment
 													<i class="fa fa-info-circle" data-html="true" data-toggle="modal" data-target="#environment_tooltip" />
 												</label>
 											</div>
@@ -95,7 +97,8 @@
 									<div class="form-group row form-field col-xl-12">
 										<div class="col-xl-4" id="container_environment_desc">
 											<div>
-												<label class="col-form-label" for="environment_id_desc">Org Id
+												<label class="col-form-label" for="environment_id_desc">
+													Org Id
 													<i class="fa fa-info-circle" data-html="true" data-toggle="modal" data-target="#org_id_tooltip" />
 												</label>
 											</div>
@@ -126,7 +129,8 @@
 
 										<div class="col-xl-4" id="container_impact">
 											<div>
-												<label class="col-form-label" for="impact">Impact
+												<label class="col-form-label" for="impact">
+													Impact
 													<i class="fa fa-info-circle" data-html="true" data-toggle="modal" data-target="#impact_tooltip" />
 												</label>
 											</div>
@@ -147,7 +151,8 @@
 									<div class="form-group row form-field col-xl-12">
 										<div class="col-xl-4" id="container_granted">
 											<div>
-												<label class="col-form-label" for="granted_user">Granted User
+												<label class="col-form-label" for="granted_user">
+													Granted User
 													<i class="fa fa-info-circle" data-html="true" data-toggle="modal" data-target="#granted_user_tooltip" />
 												</label>
 											</div>
@@ -157,7 +162,8 @@
 										</div>
 										<div class="col-xl-4" id="container_user_who_found">
 											<div>
-												<label class="col-form-label" for="user_who_found">Business User
+												<label class="col-form-label" for="user_who_found">
+													Business User
 													<i class="fa fa-info-circle" data-html="true" data-toggle="modal" data-target="#business_user_tooltip" />
 												</label>
 											</div>
@@ -169,7 +175,8 @@
 
 										<div class="col-xl-4" id="container_release_id">
 											<div>
-												<label class="col-form-label" for="release_id">Bit2win Release
+												<label class="col-form-label" for="release_id">
+													Bit2win Release
 													<i class="fa fa-info-circle" data-html="true" data-toggle="modal" data-target="#release_tooltip" />
 												</label>
 											</div>
@@ -190,7 +197,8 @@
 									<div class="form-group row form-field col-xl-12">
 										<div class="col-xl-8" id="container_subject">
 											<div>
-												<label class="col-form-label" for="name">Subject
+												<label class="col-form-label" for="name">
+													Subject
 													<i class="fa fa-info-circle" data-html="true" data-toggle="modal" data-target="#subject_tooltip" />
 												</label>
 											</div>
@@ -201,7 +209,8 @@
 
 										<div class="col-xl-4" id="container_module">
 											<div>
-												<label class="col-form-label" for="module">Module
+												<label class="col-form-label" for="module">
+													Module
 													<i class="fa fa-info-circle" data-html="true" data-toggle="modal" data-target="#module_tooltip" />
 												</label>
 											</div>
@@ -221,7 +230,8 @@
 									<div class="form-group row form-field col-xl-12">
 										<div class="col-xl-9" id="container_description">
 											<div>
-												<label class="col-form-label" for="description">Description
+												<label class="col-form-label" for="description">
+													Description
 													<i class="fa fa-info-circle" data-html="true" data-toggle="modal" data-target="#description_tooltip" />
 												</label>
 											</div>
@@ -261,7 +271,7 @@
 											</div>
 										</div>
 									</div>
-									
+
 									<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
 										aria-hidden="true" id="type_request_tooltip">
 										<div class="modal-dialog modal-lg">
@@ -274,7 +284,7 @@
 
 											</div>
 										</div>
-									</div>									
+									</div>
 
 									<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
 										aria-hidden="true" id="environment_tooltip">
@@ -288,7 +298,7 @@
 
 											</div>
 										</div>
-									</div>	
+									</div>
 
 									<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
 										aria-hidden="true" id="org_id_tooltip">
@@ -302,7 +312,7 @@
 
 											</div>
 										</div>
-									</div>	
+									</div>
 
 									<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
 										aria-hidden="true" id="impact_tooltip">
@@ -311,12 +321,12 @@
 												<p>
 													<strong>Impact</strong>
 													<br />
-													Specify if the issue is Blocking or Non Blocking. 
+													Specify if the issue is Blocking or Non Blocking.
 												</p>
 
 											</div>
 										</div>
-									</div>	
+									</div>
 
 									<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
 										aria-hidden="true" id="granted_user_tooltip">
@@ -330,7 +340,7 @@
 
 											</div>
 										</div>
-									</div>	
+									</div>
 
 									<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
 										aria-hidden="true" id="business_user_tooltip">
@@ -344,7 +354,7 @@
 
 											</div>
 										</div>
-									</div>	
+									</div>
 
 									<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
 										aria-hidden="true" id="release_tooltip">
@@ -357,7 +367,7 @@
 												</p>
 											</div>
 										</div>
-									</div>	
+									</div>
 
 									<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
 										aria-hidden="true" id="subject_tooltip">
@@ -370,7 +380,7 @@
 												</p>
 											</div>
 										</div>
-									</div>	
+									</div>
 
 									<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
 										aria-hidden="true" id="module_tooltip">
@@ -383,7 +393,7 @@
 												</p>
 											</div>
 										</div>
-									</div>	
+									</div>
 
 									<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
 										aria-hidden="true" id="description_tooltip">
@@ -393,14 +403,14 @@
 													<strong>Description</strong>
 													<br />
 													<ol>
-													  <li>A detailed explanation of the issue you are encountering, including as much detail as possible.</li>
-													  <li>Detailed Steps to Repeat so that the our support team can troubleshoot the issue.</li>
-													  <li>The result you are getting and what you expected to happen.</li>
+														<li>A detailed explanation of the issue you are encountering, including as much detail as possible.</li>
+														<li>Detailed Steps to Repeat so that the our support team can troubleshoot the issue.</li>
+														<li>The result you are getting and what you expected to happen.</li>
 													</ol>
 												</p>
 											</div>
 										</div>
-									</div>	
+									</div>
 
 									<div class="form-group row">
 										<div class="offset-lg-3 offset-md-4 col-md-8 col-lg-7">
@@ -424,15 +434,15 @@
 		name="syd_custom_tickets_followup_inherit" priority="42">
 
 		<xpath expr="//t[@t-call='portal.portal_layout']" position="replace">
-		   
-		  <div class="oe_structure" id="oe_structure_before_followup"/>
-		  
-		  <t t-call="portal.portal_layout">
-		  <div class="oe_structure" id="oe_structure_after_header_followup"/>
-			<t t-set="wrapwrap_classes" t-value="'o_portal_bg_dark'"/>
+
+			<div class="oe_structure" id="oe_structure_before_followup" />
+
+			<t t-call="portal.portal_layout">
+				<div class="oe_structure" id="oe_structure_after_header_followup" />
+				<t t-set="wrapwrap_classes" t-value="'o_portal_bg_dark'" />
 
 
-			
+
 
 				<t t-set="o_portal_fullwidth_alert" groups="helpdesk.group_helpdesk_user">
 					<t t-call="portal.portal_back_in_edit_mode">

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="syd_custom.rating_external_page_submit" 
+			  inherit_id="rating.rating_external_page_submit" 
+			  name="Rating Page Submit" 
+			  priority="42">
+		<xpath expr="//t[@t-if='rating.rated_partner_id']" position="replace">
+		
+		</xpath>
+	</template>
+</odoo>
