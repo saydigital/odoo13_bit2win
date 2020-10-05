@@ -16,7 +16,8 @@
                 'sale',
                 'syd_environment_sla',
                 'syd_helpdesk_contract',
-                'website'
+                'website', 
+                'rating'
                 ],
     'data':[
         'data/data.xml',
