@@ -16,6 +16,7 @@ class ResPartner(models.Model):
 class HelpdeskReported(models.Model):
     _name = "helpdesk.reported"
     _description = "Reported"
+    _order = 'sequence'
     
     name = fields.Char('Reported')
     sequence = fields.Integer('Sequence')
@@ -24,6 +25,7 @@ class HelpdeskReported(models.Model):
 class HelpdeskRelease(models.Model):
     _name = "helpdesk.release"
     _description = "Release"
+    _order = 'sequence'
     
     name = fields.Char('Release')
     sequence = fields.Integer('Sequence')
@@ -31,6 +33,7 @@ class HelpdeskRelease(models.Model):
 class HelpdeskPackage(models.Model):
     _name = "helpdesk.package"
     _description = "package"
+    _order = 'sequence'
     
     name = fields.Char('Package')
     sequence = fields.Integer('Sequence')                    
