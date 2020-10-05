@@ -10,7 +10,7 @@ class ResPartner(models.Model):
     _inherit = "res.partner"
     
     reported_by = fields.Many2one('helpdesk.reported', 'Helpdesk Role')
-    #administrative_user = fields.Boolean('Administrative user')
+    # administrative_user = fields.Boolean('Administrative user')
 
     
 class HelpdeskReported(models.Model):
@@ -27,6 +27,7 @@ class HelpdeskRelease(models.Model):
     
     name = fields.Char('Release')
     sequence = fields.Integer('Sequence')
+
                     
 class HelpdeskPackage(models.Model):
     _name = "helpdesk.package"
@@ -34,6 +35,7 @@ class HelpdeskPackage(models.Model):
     
     name = fields.Char('Package')
     sequence = fields.Integer('Sequence')                    
+
 
 class HelpdeskStage(models.Model):
     _inherit = 'helpdesk.stage'
@@ -61,7 +63,7 @@ class HelpdeskTicket(models.Model):
     environment_id_desc = fields.Char(string="Org ID", tracking=True)
     date_fix = fields.Date('Planned Fix Date', tracking=True)
     module = fields.Selection([('0', 'Core'), ('1', 'Bulk order'), ('2', 'E-signature'), ('3', 'Archetypes'), ('4', 'Store'), ('5', 'Zuora connector'), ('6', 'Sapisu-connector'),
-                               ('7', 'Utility'), ('8', 'Cost-simulator'), ('9', 'Cost-simulator'), ('10', 'External-catalog'), ('11', 'Flow'), ('12', 'Loyalty'), ('13', 'Cart-api'), ('14', 'Ssymphony')], default="0", tracking=True)
+                               ('7', 'Utility'), ('8', 'Cost-simulator'), ('9', 'External-catalog'), ('10', 'Flow'), ('11', 'Loyalty'), ('12', 'Cart-api'), ('13', 'Symphony')], default="0", tracking=True)
 
     @api.returns('mail.message', lambda value: value.id)
     def message_post(self, *,

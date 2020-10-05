@@ -93,9 +93,9 @@ function setParamsForQuestion(e){
 		document.getElementById('select_environment').removeAttribute("required"); 
 		
 		document.getElementById('select_severity').options[1].style.display = 'inline-block'; 
-		document.getElementById('select_severity').options[2].style.display = 'none'; 
-		document.getElementById('select_severity').options[3].style.display = 'inline-block'; 
-		document.getElementById('select_severity').options[4].style.display = 'none'; 
+		document.getElementById('select_severity').options[2].style.display = 'inline-block'; 
+		document.getElementById('select_severity').options[3].style.display = 'none'; 
+		document.getElementById('select_severity').options[4].style.display = 'none';
 		document.getElementById('select_severity').removeAttribute("required"); 
 		
 		document.getElementById('container_environment_desc').classList.remove('o_website_form_required');

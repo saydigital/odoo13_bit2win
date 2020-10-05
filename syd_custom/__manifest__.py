@@ -25,6 +25,7 @@
         'views/views.xml',
         'views/asset.xml',
         'views/snippet.xml',
+        'views/rating_template.xml',
         'views/helpdesk_portal_templates.xml',
         'security/ir.model.access.csv'
     ],
