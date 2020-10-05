@@ -35,7 +35,7 @@
 															<label class="col-form-label" for="contract">Contracts</label>
 														</div>
 														<div>
-															<select name="contract" class="form-control" autocomplete="on">
+															<select name="contract_id" class="form-control" autocomplete="on">
 																<option selected="selected" disabled="True" value="selected"> -- Select -- </option>
 
 																<t t-foreach="contracts or []" t-as="contract">

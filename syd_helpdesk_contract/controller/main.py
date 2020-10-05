@@ -24,17 +24,17 @@ class WebsiteForm(WebsiteForm):
 
     @http.route('/website_form/<string:model_name>', type='http', auth="user", methods=['POST'], website=True)
     def website_form(self, model_name, **kwargs):
-       
-        partner_id = request.env.user.partner_id 
-        if partner_id.is_system_integrator:
-            contract = request.env['account.analytic.account'].sudo().browse(int(kwargs.get('contract')))
-            request.params['partner_id'] = contract.partner_id.id
-        else:
-            contract = partner_id._get_contract()
-            request.params['partner_id'] = partner_id.id
-        if contract:
-            request.params['contract_id'] = contract.id
-            request.params['team_id'] = contract.helpdesk_team_id.id
-            request.params['partner_created_id']=partner_id.id
+        if model_name =='helpdesk.ticket':
+            partner_id = request.env.user.partner_id 
+            if partner_id.is_system_integrator:
+                contract = request.env['account.analytic.account'].sudo().browse(int(kwargs.get('contract_id')))
+                request.params['partner_id'] = contract.partner_id.id
+            else:
+                contract = partner_id._get_contract()
+                request.params['partner_id'] = partner_id.id
+            if contract:
+                request.params['contract_id'] = contract.id
+                request.params['team_id'] = contract.helpdesk_team_id.id
+                request.params['partner_created_id']=partner_id.id
                 
         return super(WebsiteForm, self).website_form(model_name, **kwargs)
