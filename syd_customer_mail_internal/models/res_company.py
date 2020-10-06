@@ -5,8 +5,8 @@ from odoo.exceptions import UserError, ValidationError
 
 
 
-class ResPartner(models.Model):
-    _inherit = "res.partner"
+class ResCompany(models.Model):
+    _inherit = "res.company"
     
     email_internal = fields.Char('Internal Email for Customer')
 

@@ -1,15 +1,13 @@
 <odoo>
   <data>
   
-  	  <record model="ir.ui.view" id="view_partner_ext">
-		 	 <field name="name">res.partner.ext</field>
-		        <field name="model">res.partner</field>
-		        <field name="inherit_id" ref="base.view_partner_form"/>
+  	  <record model="ir.ui.view" id="view_company_ext">
+		 	 <field name="name">res.company.ext</field>
+		        <field name="model">res.company</field>
+		        <field name="inherit_id" ref="base.view_company_form"/>
 		         <field name="arch" type="xml">
 		 		 <xpath expr="//field[@name='email']" position="after">
-				   	<group>
 				          <field name="email_internal" />
-				        </group>
 				  </xpath>
 		 </field>
 		 </record>
