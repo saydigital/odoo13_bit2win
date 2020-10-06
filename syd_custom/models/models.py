@@ -9,7 +9,6 @@ class ResPartner(models.Model):
     _inherit = "res.partner"
     
     reported_by = fields.Many2one('helpdesk.reported', 'Helpdesk Role')
-    is_administrative_user = fields.Boolean('Administrative user', default=False)
    
 class HelpdeskReported(models.Model):
     _name = "helpdesk.reported"
