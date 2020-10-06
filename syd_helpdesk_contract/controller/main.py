@@ -22,7 +22,7 @@ class WebsiteForm(WebsiteForm):
                                                                       'system_integrator':partner_id.is_system_integrator,
                                                                       })
 
-    @http.route('/website_form/<string:model_name>', type='http', auth="user", methods=['POST'], website=True)
+    @http.route('/website_form/<string:model_name>', type='http', auth="public", methods=['POST'], website=True)
     def website_form(self, model_name, **kwargs):
         if model_name =='helpdesk.ticket':
             partner_id = request.env.user.partner_id 
