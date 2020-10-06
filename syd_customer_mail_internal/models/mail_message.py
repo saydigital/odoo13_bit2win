@@ -16,4 +16,4 @@ class Message(models.Model):
         for values in values_list:
            if self._is_user_from_frontend() and self.env.user.company_id.email_internal:
             values['email_from'] =  tools.formataddr((self.env.user.name, self.env.user.company_id.email_internal))
-        super(Message, self).create(values_list)
+        return super(Message, self).create(values_list)
