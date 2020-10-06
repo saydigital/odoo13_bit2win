@@ -5,7 +5,7 @@ from odoo import models, fields, api
 class ResPartner(models.Model):
     _inherit = "res.partner"
     
-    #is_administrative_user = fields.Boolean('Administrative user', default=False)
+    is_administrative_user = fields.Boolean('Administrative user', default=False)
     
 class AnalyticAccount(models.Model):
     _inherit ="account.analytic.account"
