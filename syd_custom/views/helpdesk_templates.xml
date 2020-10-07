@@ -236,7 +236,7 @@
 												</label>
 											</div>
 											<div>
-												<textarea class="form-control o_website_form_input" name="description" id="description" />
+												<textarea rows="8" class="form-control o_website_form_input" name="description" id="description" />
 											</div>
 										</div>
 
