@@ -27,7 +27,7 @@
 				      
 				        <group >
 				          <field name="is_system_integrator" />
-<!-- 				          <field name="is_administrative_user" /> -->
+				          <field name="is_administrative_user" />
 				          <field name="helpdesk_analytic_account_ids" widget="many2many_tags"/>
 				        </group>
 				      

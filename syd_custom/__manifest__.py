@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': "Custom B2W",
-    'version': '0.1.7',
+    'version': '0.1.8',
     'license': 'Other proprietary',
     'summary': """Helpdesk Extended
     """,
