@@ -4,3 +4,4 @@
 from . import main
 from . import ticketCounter
 from . import portal
+from . import rating
