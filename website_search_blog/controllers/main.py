@@ -157,8 +157,11 @@ class BlogInherit(WebsiteBlog):
         return json.dumps(name)
     
     @http.route([
-        '/tag/<string:tag>', '/blog/tag/<string:tag>', '/blog/<model("blog.blog"):blog>/tag/<string:tag>',
-                 '/blog/<model("blog.blog"):blog>/tag/<string:tag>/page/<int:page>'
+        '/tag/<string:tag>', 
+        '/blog/page/<int:page>',
+        '/blog/tag/<string:tag>', 
+        '/blog/<model("blog.blog"):blog>/tag/<string:tag>',
+        '/blog/<model("blog.blog"):blog>/tag/<string:tag>/page/<int:page>'
     ], type='http', auth="public", website=True)
     def blog(self, blog=None, tag=None, page=1, **opt):
         Blog = request.env['blog.blog']
@@ -173,10 +176,8 @@ class BlogInherit(WebsiteBlog):
         date_begin, date_end, state = opt.get('date_begin'), opt.get('date_end'), opt.get('state')
         
         
-        #patch
+        #patch, we want to see all article when click on TAG
         blog=None
-        
-        
         
         values = self._prepare_blog_values(blogs=blogs, blog=blog, date_begin=date_begin, date_end=date_end, tags=tag, state=state, page=page)
 
