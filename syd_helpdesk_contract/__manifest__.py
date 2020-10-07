@@ -3,7 +3,7 @@
 
 {
     'name': "Helpdesk Contract",
-    'version': '0.0.1.2',
+    'version': '0.0.1.4',
     'license': 'Other proprietary',
     'summary': """Helpdesk Extended
     """,

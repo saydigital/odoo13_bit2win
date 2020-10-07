@@ -32,9 +32,9 @@
 
 	<template id="portal_table_custom" name="My Custom Portal Table">
 		<div t-attf-class="table-responsive" style="font-size:14px;position:relative">
-		
-		
-			<table class="table table-borderless bg-white border-middle" >
+
+
+			<table class="table table-borderless bg-white border-middle">
 				<t t-raw="0" />
 			</table>
 		</div>
@@ -44,33 +44,31 @@
 	<template id="reject_tickets" name="My Custom Portal Table">
 		<t t-if="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Rejected')"
 			t-call="syd_custom.portal_table_custom">
-
-			<!-- Intestazione fissa -->
 			<div>
-				
-						<div class="radius t_reject" ></div>
-					<span style="font-size:15px;">REJECT</span>
+				<div class="radius t_reject"></div>
+				<span style="font-size:15px;">REJECT</span>
 			</div>
 			<thead>
 				<tr>
-					
-					<th  style="width:10%">REF NUM</th>
-					<th style="width:55%">DESCRIPTION</th>
+					<th style="width:10%">REF NUM</th>
+					<th style="width:20%">CUSTOMER</th>
+					<th style="width:35%">DESCRIPTION</th>
 					<th style="width:20%">CREATION DATE</th>
 					<th style="width:15%">ENVIRONMENT</th>
-					
-
 				</tr>
 			</thead>
 
-			<!-- Rendering degli elementi -->
 			<t t-foreach="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Rejected')" t-as="ticket">
 				<tr style="border-bottom:1px solid #f0f0f0">
-					
-					<td >
+					<td>
 						<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
 							<small>#</small>
 							<t t-esc="ticket.id" />
+						</a>
+					</td>
+					<td>
+						<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
+							<span t-field="ticket.partner_created_id" />
 						</a>
 					</td>
 					<td>
@@ -87,9 +85,7 @@
 							<span class="badge badge-pill badge-warning">Fixing</span>
 						</t>
 					</td>
-					
 				</tr>
-
 				<t />
 			</t>
 		</t>
@@ -99,32 +95,32 @@
 		<t t-if="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Closed')"
 			t-call="syd_custom.portal_table_custom">
 
-			<!-- Intestazione fissa -->
 			<div>
-				
-						<div class="radius color-closed"></div>
-					<span style="font-size:15px;">CLOSED</span>
+				<div class="radius color-closed"></div>
+				<span style="font-size:15px;">CLOSED</span>
 			</div>
-			
+
 			<thead>
 				<tr>
-					
-					<th  style="width:10%">REF NUM</th>
-					<th style="width:55%">DESCRIPTION</th>
+					<th style="width:10%">REF NUM</th>
+					<th style="width:20%">CUSTOMER</th>
+					<th style="width:35%">DESCRIPTION</th>
 					<th style="width:20%">CREATION DATE</th>
 					<th style="width:15%">ENVIRONMENT</th>
-
 				</tr>
 			</thead>
 
-			<!-- Rendering degli elementi -->
 			<t t-foreach="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Closed')" t-as="ticket">
 				<tr>
-					
-					<td >
+					<td>
 						<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
 							<small>#</small>
 							<t t-esc="ticket.id" />
+						</a>
+					</td>
+					<td>
+						<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
+							<span t-field="ticket.partner_created_id" />
 						</a>
 					</td>
 					<td>
@@ -141,7 +137,7 @@
 							<span class="badge badge-pill badge-warning">Fixing</span>
 						</t>
 					</td>
-					
+
 
 				</tr>
 
@@ -154,30 +150,31 @@
 		<t t-if="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Open')"
 			t-call="syd_custom.portal_table_custom">
 			<div>
-				
-						<div class="radius color-open"></div>
-					<span style="font-size:15px;">OPEN</span>
+				<div class="radius color-open"></div>
+				<span style="font-size:15px;">OPEN</span>
 			</div>
-			
+
 			<thead>
 				<tr>
-					
-				<th  style="width:10%">REF NUM</th>
-					<th style="width:55%">DESCRIPTION</th>
+					<th style="width:10%">REF NUM</th>
+					<th style="width:20%">CUSTOMER</th>
+					<th style="width:35%">DESCRIPTION</th>
 					<th style="width:20%">CREATION DATE</th>
 					<th style="width:15%">ENVIRONMENT</th>
-
 				</tr>
 			</thead>
 
-			<!-- Rendering degli elementi -->
 			<t t-foreach="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Open')" t-as="ticket">
 				<tr>
-					
-					<td >
+					<td>
 						<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
 							<small>#</small>
 							<t t-esc="ticket.id" />
+						</a>
+					</td>
+					<td>
+						<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
+							<span t-field="ticket.partner_created_id" />
 						</a>
 					</td>
 					<td>
@@ -194,10 +191,7 @@
 							<span class="badge badge-pill badge-warning">Fixing</span>
 						</t>
 					</td>
-					
-
 				</tr>
-
 				<t />
 			</t>
 		</t>
@@ -209,30 +203,32 @@
 
 			<!-- Intestazione fissa -->
 			<div>
-				
-						<div class="radius color-progress"></div>
-					<span style="font-size:15px;">WORK IN PROGRESS</span>
+
+				<div class="radius color-progress"></div>
+				<span style="font-size:15px;">WORK IN PROGRESS</span>
 			</div>
-			
 			<thead>
 				<tr>
-					
-					<th  style="width:10%">REF NUM</th>
-					<th style="width:55%">DESCRIPTION</th>
+					<th style="width:10%">REF NUM</th>
+					<th style="width:20%">CUSTOMER</th>
+					<th style="width:35%">DESCRIPTION</th>
 					<th style="width:20%">CREATION DATE</th>
 					<th style="width:15%">ENVIRONMENT</th>
-
 				</tr>
 			</thead>
 
-			<!-- Rendering degli elementi -->
 			<t t-foreach="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Work in progress')" t-as="ticket">
 				<tr>
-					
-					<td >
+
+					<td>
 						<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
 							<small>#</small>
 							<t t-esc="ticket.id" />
+						</a>
+					</td>
+					<td>
+						<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
+							<span t-field="ticket.partner_created_id" />
 						</a>
 					</td>
 					<td>
@@ -249,10 +245,7 @@
 							<span class="badge badge-pill badge-warning">Fixing</span>
 						</t>
 					</td>
-					
-
 				</tr>
-
 				<t />
 			</t>
 		</t>
@@ -262,33 +255,33 @@
 		<t t-if="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Waiting for customer')"
 			t-call="syd_custom.portal_table_custom">
 
-			<!-- Intestazione fissa -->
 			<div>
-				
-						<div class="radius color-waiting"></div>
-					<span style="font-size:15px;">WAITING FOR CUSTOMER</span>
+				<div class="radius color-waiting"></div>
+				<span style="font-size:15px;">WAITING FOR CUSTOMER</span>
 			</div>
-			
+
 			<thead>
 				<tr>
-					
-					<th  style="width:10%">REF NUM</th>
-					<th style="width:55%">DESCRIPTION</th>
+					<th style="width:10%">REF NUM</th>
+					<th style="width:20%">CUSTOMER</th>
+					<th style="width:35%">DESCRIPTION</th>
 					<th style="width:20%">CREATION DATE</th>
 					<th style="width:15%">ENVIRONMENT</th>
-
 				</tr>
 			</thead>
 
-			<!-- Rendering degli elementi -->
 			<t t-foreach="tickets.filtered(lambda self: self.stage_id.name_for_customer == 'Waiting for customer')"
 				t-as="ticket">
 				<tr>
-					
-					<td >
+					<td>
 						<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
 							<small>#</small>
 							<t t-esc="ticket.id" />
+						</a>
+					</td>
+					<td>
+						<a t-attf-href="/helpdesk/ticket/#{ticket.id}">
+							<span t-field="ticket.partner_created_id" />
 						</a>
 					</td>
 					<td>
@@ -305,10 +298,7 @@
 							<span class="badge badge-pill badge-warning">Fixing</span>
 						</t>
 					</td>
-				
-
 				</tr>
-
 				<t />
 			</t>
 		</t>
