@@ -2,7 +2,7 @@
 <odoo>
     <data noupdate="1">
     
-        <delete model="ir.rule" id="helpdesk.helpdesk_portal_ticket_rule"/>
+<!--         <delete model="ir.rule" id="helpdesk.helpdesk_portal_ticket_rule"/> -->
     
         <record id="syd_helpdesk_contract.helpdesk_portal_ticket_rule" model="ir.rule">
             <field name="name">Tickets: portal users: portal or following</field>
