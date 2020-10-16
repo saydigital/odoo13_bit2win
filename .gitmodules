@@ -1,0 +1,4 @@
+[submodule "odoo_FE"]
+	path = odoo_FE
+	url = git@github.com:saydigital/odoo_FE.git
+    branch = 13_bit2win
