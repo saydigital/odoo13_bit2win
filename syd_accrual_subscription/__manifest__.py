@@ -12,8 +12,8 @@
     'category' : 'Account',
     'depends': [
                 'account',
-                'sale_subscription'
-                
+                'sale_subscription',
+                'syd_accrual_helper'
                 ],
     'data':[
        
