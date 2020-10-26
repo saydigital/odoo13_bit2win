@@ -13,6 +13,8 @@ class Instance(models.Model):
      
     def align_lead_instance(self,lead_id):
         external_company_id = self._get_external_company_id()
+        if not external_company_id:
+            raise ValidationError(_('Company hash error'))
         if lead_id.external_id:
             ids = self._get_lead(lead_id,external_company_id)
             if ids:

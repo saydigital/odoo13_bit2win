@@ -69,7 +69,7 @@ Budgets
 	<menuitem
         id="consolidated_menu_root"
         name="Consolidated"
-        web_icon="syd_consolidated_budget,static/description/icon.png"
+        web_icon="syd_consolidated_base,description/icon.png"
         sequence="101"/>
 	
    <menuitem
