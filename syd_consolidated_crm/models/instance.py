@@ -40,7 +40,7 @@ class Instance(models.Model):
             ids = models.execute_kw(self.database, self.uid, self.password,
             'crm.stage', 'search',
             [[
-              ['name', '=', lead_id.stage_id.consolidated_stage_name]
+              ['name', '=', lead_id.stage_id.consolidated_stage_name if lead_id.stage_id.consolidated_stage_name else lead_id.stage_id.name]
               ]])
             return ids
     
