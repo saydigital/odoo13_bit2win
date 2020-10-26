@@ -45,7 +45,7 @@ class Instance(models.Model):
     def _prepare_lead_field(self,lead_id,external_company_id):
         vals = {
             'name' : lead_id.name,
-            'planned_revenue': lead_id.planned_revenue,
+            
             'probability': lead_id.probability,
             'date_deadline':lead_id.date_deadline,
             'partner_name':lead_id.partner_name,
@@ -56,6 +56,15 @@ class Instance(models.Model):
             'referred':lead_id.referred,
             'user_name':lead_id.user_id.name
         }
+        self._version()
+        if self.external_version == "14.0":
+            vals.update({
+                         'extected_revenue': lead_id.planned_revenue,
+                         })
+        else:
+            vals.update({
+                         'planned_revenue': lead_id.planned_revenue,
+                         })
         ids = self._get_lead_stage(lead_id)
         if ids:
             vals.update({ 

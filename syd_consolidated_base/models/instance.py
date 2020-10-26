@@ -27,14 +27,14 @@ class Instance(models.Model):
     password = fields.Char('Password')
     database = fields.Char('Database')
     uid = fields.Integer('UID')
-    
+    external_version = fields.Char('External Version')
     
 #### External     
     
     def test_connection(self):
         self.ensure_one()
         self._authenticate()
-            
+        self._version()    
         
     
     def _authenticate(self):
@@ -45,6 +45,11 @@ class Instance(models.Model):
         return uid
     
     
+    def _version(self):
+        common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(url))
+        res = common.version()
+        self.external_version = res['server_version']
+        
     def _get_external_company_id(self):
         self.ensure_one()
         models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(self.url))
