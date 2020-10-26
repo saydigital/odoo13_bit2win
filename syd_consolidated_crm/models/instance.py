@@ -51,6 +51,7 @@ class Instance(models.Model):
             'partner_name':lead_id.partner_name,
             'contact_name':lead_id.contact_name,
             'mobile':lead_id.mobile,
+            'email_from':lead_id.email_from,
             'description':lead_id.description,
             'function':lead_id.function,
             'referred':lead_id.referred,
