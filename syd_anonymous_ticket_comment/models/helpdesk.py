@@ -28,7 +28,7 @@ class HelpdeskTicket(models.Model):
                      add_sign=add_sign, record_name=record_name,
                      **kwargs)
         
-        if self._is_user_from_backend() & bool(message_type=='comment') & bool(subtype=='mail.mt_comment'):
+        if self._is_user_from_backend() and bool(message_type=='comment') and bool(subtype=='mail.mt_comment' or subtype=='mt_comment'):
             message.communication_user_id = self.env.user.partner_id
             
             #Log the message
