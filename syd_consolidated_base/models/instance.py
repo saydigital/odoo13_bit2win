@@ -46,9 +46,10 @@ class Instance(models.Model):
     
     
     def _version(self):
-        common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(url))
+        self.ensure_one()
+        common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(self.url))
         res = common.version()
-        self.external_version = res['server_version']
+        self.external_version = res['server_serie']
         
     def _get_external_company_id(self):
         self.ensure_one()
