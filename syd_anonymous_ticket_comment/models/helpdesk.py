@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models, _
+import logging
+
+_logger = logging.getLogger(__name__)
 
 class HelpdeskTeam(models.Model):
     _inherit = "helpdesk.team"
@@ -17,8 +20,8 @@ class HelpdeskTicket(models.Model):
                      attachments=None, attachment_ids=None,
                      add_sign=True, record_name=False,
                      **kwargs):
-        
-        if self._is_user_from_backend() & bool(message_type=='comment') & bool(subtype=='mail.mt_comment'):
+        _logger.info('Message %d %s %s ' % (self.id,message_type,subtype))
+        if self._is_user_from_backend()  and bool(message_type=='comment') and bool(subtype=='mail.mt_comment' or subtype=='mt_comment'):
             author_id = self.team_id.communication_user_id.id #invert user
         
         message = super(HelpdeskTicket, self).message_post(body=body, subject=subject, message_type=message_type,
