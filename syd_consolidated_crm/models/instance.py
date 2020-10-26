@@ -59,7 +59,7 @@ class Instance(models.Model):
         self._version()
         if self.external_version == "14.0":
             vals.update({
-                         'extected_revenue': lead_id.planned_revenue,
+                         'expected_revenue': lead_id.planned_revenue,
                          })
         else:
             vals.update({
