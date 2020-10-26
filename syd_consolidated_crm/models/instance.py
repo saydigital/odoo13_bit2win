@@ -17,7 +17,7 @@ class Instance(models.Model):
             ids = self._get_lead(lead_id,external_company_id)
             if ids:
                 id = ids[0]
-                self._update_lead(lead_id,id)
+                self._update_lead(lead_id,id,external_company_id)
                 return id
         return self._create_lead(lead_id,external_company_id)
         
@@ -89,7 +89,7 @@ class Instance(models.Model):
         return id
         
        
-    def _update_lead(self,lead_id,external_lead_id):
+    def _update_lead(self,lead_id,external_lead_id,external_company_id):
         self.ensure_one()
         models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(self.url))
         vals = self._prepare_lead_field(lead_id,external_company_id)
