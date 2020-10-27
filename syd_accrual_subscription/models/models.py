@@ -18,7 +18,8 @@ class SaleSubscription(models.Model):
                                                                        'debit_credit':'credit',
                                                                        'bring_origin_to_0':False,
                                                                        'post':True,
-                                                                       'divide':'monthly' != self.recurring_rule_type
+                                                                       'divide':'monthly' != self.recurring_rule_type,
+                                                                       'analytic_account_id':self.analytic_account_id.id,
                                                                        })
         action = self.env['ir.actions.act_window'].for_xml_id('syd_accrual_helper', 'action_accrual_helper')
         action['domain'] = [('id','=',wizard.id)]
@@ -42,13 +43,14 @@ class AccountMove(models.Model):
                                                                                    'account_id':i.account_id.id,
                                                                                    'type':'monthly',
                                                                                    'amount':i.price_subtotal,
+                                                                                   'analytic_account_id':i.analytic_account_id.id,
                                                                                    'debit_credit':'credit',
                                                                                    'bring_origin_to_0':True,
                                                                                    'post':True,
                                                                                    'divide':'monthly' != i.subscription_id.recurring_rule_type
                                                                                    
                                                                                    })
-                    wizard.generate()
+
             else:
                 return super(AccountMove,self).generate_monthly_accrual()
         

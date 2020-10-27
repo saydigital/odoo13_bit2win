@@ -13,6 +13,8 @@ class Instance(models.Model):
      
     def align_lead_instance(self,lead_id):
         external_company_id = self._get_external_company_id()
+        if not external_company_id:
+            raise ValidationError(_('Company hash error'))
         if lead_id.external_id:
             ids = self._get_lead(lead_id,external_company_id)
             if ids:
@@ -38,7 +40,7 @@ class Instance(models.Model):
             ids = models.execute_kw(self.database, self.uid, self.password,
             'crm.stage', 'search',
             [[
-              ['name', '=', lead_id.stage_id.consolidated_stage_name]
+              ['name', '=', lead_id.stage_id.consolidated_stage_name if lead_id.stage_id.consolidated_stage_name else lead_id.stage_id.name]
               ]])
             return ids
     
