@@ -62,8 +62,7 @@ class AccrualHelperWizard(models.TransientModel):
                                     'type':'entry',
                                     'line_ids':[(0,0,{
                                                       'credit':self.amount,
-                                                       'account_id':self.account_id.id,
-                                                      'account_id':self.env.user.company_id.temp_expense_account_id.id,
+                                                      'account_id':self.account_id.id,
                                                       'name':'Accrual to 0 of %s'%origin_id.display_name
                                                       }),
                                                 (0,0,{
@@ -111,12 +110,12 @@ class AccrualHelperWizard(models.TransientModel):
                                 'journal_id':self.journal_id.id,
                                 'type':'entry',
                                 'line_ids':[(0,0,{
-                                                  'credit':amount_accrued,
-                                                  'account_id':self.env.user.company_id.temp_income_account_id.id,
+                                                  'debit':amount_accrued,
+                                                  'account_id':self.env.user.company_id.temp_expense_account_id.id,
                                                   'name':'/'
                                                   }),
                                             (0,0,{
-                                                  'debit':amount_accrued,
+                                                  'credit':amount_accrued,
                                                   'account_id':self.account_id.id,
                                                   'name':'Accrual of %s'%origin_id.display_name,
                                                    'analytic_account_id':self.analytic_account_id.id
