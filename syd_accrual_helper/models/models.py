@@ -71,3 +71,26 @@ class AccountMove(models.Model):
         action['res_id'] = wizard.id
         
         return action
+    
+    
+class AccountMoveLine(models.Model):
+    _name = "account.move.line"  
+    
+    def generate_monthly_accrual(self):
+        wizard = self.env['syd_accrual_helper.accrual_wizard'].create({
+                                                                       'origin_id':self.move_id.id,
+                                                                       'origin_model':'account.move',
+                                                                       'type':'monthly',
+                                                                       'debit_credit':'credit' if self.move_id.type  in ('out_invoice', 'in_refund') else 'debit',
+                                                                       'bring_origin_to_0':True,
+                                                                       'post':True,
+                                                                       'amount':self.amount_total_signed if self.move_id.type not in ('out_invoice', 'in_refund','in_invoice', 'out_refund') else self.price_subtotal,
+                                                                       'date':self.move_id.date,
+                                                                       'analytic_account_id':self.analytic_account_id.id,
+                                                                       'account_id':self.account_id.id if self.move_id.type in ('out_invoice', 'in_refund','in_invoice', 'out_refund') else self.account_id.id,
+                                                                       })
+        action = self.env['ir.actions.act_window'].for_xml_id('syd_accrual_helper', 'action_accrual_helper')
+        action['domain'] = [('id','=',wizard.id)]
+        action['res_id'] = wizard.id
+        
+        return action
