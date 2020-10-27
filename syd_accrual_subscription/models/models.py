@@ -46,7 +46,7 @@ class AccountMove(models.Model):
                                                                                    'analytic_account_id':i.analytic_account_id.id,
                                                                                    'debit_credit':'credit',
                                                                                    'bring_origin_to_0':True,
-                                                                                   'post':True,
+                                                                                   'post':False,
                                                                                    'divide':'monthly' != i.subscription_id.recurring_rule_type
                                                                                    
                                                                                    })
