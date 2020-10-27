@@ -3,7 +3,7 @@
 
 {
     'name': "Accrual Subscription",
-    'version': '0.0.2',
+    'version': '0.0.3',
     'license': 'Other proprietary',
     'summary': """Accrual Subscription
     """,
