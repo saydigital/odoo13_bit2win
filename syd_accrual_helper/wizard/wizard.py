@@ -63,7 +63,8 @@ class AccrualHelperWizard(models.TransientModel):
                                     'line_ids':[(0,0,{
                                                       'credit':self.amount,
                                                       'account_id':self.account_id.id,
-                                                      'name':'Accrual to 0 of %s'%origin_id.display_name
+                                                      'name':'Accrual to 0 of %s'%origin_id.display_name,
+                                                       'analytic_account_id':self.analytic_account_id.id
                                                       }),
                                                 (0,0,{
                                                       'debit':self.amount,
@@ -91,7 +92,8 @@ class AccrualHelperWizard(models.TransientModel):
                                                 (0,0,{
                                                       'debit':self.amount,
                                                       'account_id':self.account_id.id,
-                                                      'name':'Accrual to 0 of %s'%origin_id.display_name
+                                                      'name':'Accrual to 0 of %s'%origin_id.display_name,
+                                                       'analytic_account_id':self.analytic_account_id.id
                                                       })
                                                 
                                                 
