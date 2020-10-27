@@ -74,7 +74,7 @@ class AccountMove(models.Model):
     
     
 class AccountMoveLine(models.Model):
-    _name = "account.move.line"  
+    _inherit = "account.move.line"  
     
     def generate_monthly_accrual(self):
         wizard = self.env['syd_accrual_helper.accrual_wizard'].create({
