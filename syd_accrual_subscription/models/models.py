@@ -19,7 +19,7 @@ class SaleSubscription(models.Model):
                                                                        'bring_origin_to_0':False,
                                                                        'post':True,
                                                                        'divide':'monthly' != self.recurring_rule_type,
-                                                                       'analytic_account_id':self.analytic_account_id.id,
+                                                                       'analytic_account_id':self.analytic_account_id.id
                                                                        })
         action = self.env['ir.actions.act_window'].for_xml_id('syd_accrual_helper', 'action_accrual_helper')
         action['domain'] = [('id','=',wizard.id)]
