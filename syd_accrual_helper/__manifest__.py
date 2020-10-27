@@ -3,7 +3,7 @@
 
 {
     'name': "Accrual Helper",
-    'version': '0.0.2',
+    'version': '0.0.3',
     'license': 'Other proprietary',
     'summary': """Accrual Helper
     """,

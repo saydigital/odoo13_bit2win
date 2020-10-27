@@ -10,7 +10,7 @@ class Company(models.Model):
     
     temp_income_account_id = fields.Many2one('account.account','Temp Income Account')
     temp_expense_account_id = fields.Many2one('account.account','Temp Expense Account')
-    journal_accrual_id = fields.Many2one('account.journal','Journal')
+    journal_accrual_id = fields.Many2one('account.journal','Journal for Accruals')
     
     
 class AccrualHelper(models.AbstractModel):
