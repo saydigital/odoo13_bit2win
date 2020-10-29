@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+		<record id="timesheet_view_grid_by_employee_notify_validation" model="ir.ui.view">
+            <field name="name">account.analytic.line.grid.employee.notify_validation</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="timesheet_grid.timesheet_view_grid_by_project"/>
+            <field name="priority">10</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='unit_amount']" position="after">
+                    <button type="object"  class="btn-primary" name="action_notify_timesheet" string="Notify" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+    
+    
+       
+        	<record id="hr_timesheet.menu_timesheets_reports" model="ir.ui.menu">
+		<field name="groups_id" eval="[(6,0, [ref('hr_timesheet.group_hr_timesheet_approver')])]"/>
+ 
+	</record>
+	<!--  All timesheets visible -->
+	<record id="hr_timesheet.timesheet_menu_activity_all" model="ir.ui.menu">
+		<field name="groups_id" eval="[(6,0,[ref('hr_timesheet.group_hr_timesheet_approver')])]"/>
+
+	</record>
+	<record id="hr_timesheet.menu_timesheets_reports_timesheet" model="ir.ui.menu">
+		<field name="groups_id" eval="[(6,0,[ref('hr_timesheet.group_hr_timesheet_approver')])]"/>
+
+	</record>
+</odoo>
