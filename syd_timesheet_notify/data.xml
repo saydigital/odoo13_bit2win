@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="mail_timesheet_submitted" model="mail.activity.type">
+            <field name="name">Timesheet Submitted</field>
+            <field name="icon">fa-user-clock</field>
+            <field name="res_model_id" ref="hr.model_hr_employee"></field>
+        </record>
+    </data>
+</odoo>
