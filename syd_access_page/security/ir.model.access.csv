@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_syd_access_page_syd_access_page,syd_access_page.syd_access_page,model_syd_access_page_syd_access_page,base.group_user,1,1,1,1
