@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+Budgets
+-->
+	
+	
+	 <record id="crm_stage_form" model="ir.ui.view">
+         <field name="name">crm.stage.form</field>
+        <field name="model">crm.stage</field>
+        <field name="inherit_id" ref="crm.crm_stage_form"/>
+        
+            <field name="arch" type="xml">
+               <xpath expr="//field[@name='team_id']"
+                    position="after">
+                    <field name="consolidated_stage_name"  />
+                    
+                </xpath>
+            </field>
+        </record>  
+        
+        
+       <record id="crm_team_consolidated_form_view_in_crm" model="ir.ui.view">
+            <field name="name">crm.team.form.inherit</field>
+            <field name="model">crm.team</field>
+            <field name="inherit_id" ref="sales_team.crm_team_view_form"/>
+            <field name="priority">12</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='company_id']" position="after">
+                     <field name="instance_id"  />
+                </xpath>
+               
+            </field>
+        </record>
+</odoo> 
