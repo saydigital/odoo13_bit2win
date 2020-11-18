@@ -8,7 +8,14 @@ class Website(models.Model):
     _inherit = "website"
     
     url_authenticated = fields.Char('Page not auth')
+    pages_authenticated_by_page = fields.Boolean('Pages authenticated By Default', compute='_compute_visible')
 
+    def _compute_visible(self):
+        for page in self:
+            page.is_visible = page.website_published and (
+                not page.date_publish or page.date_publish < fields.Datetime.now()
+            )
+            
 class Page(models.Model):
     _inherit = "website.page"
     
