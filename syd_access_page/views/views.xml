@@ -27,11 +27,12 @@
 			<field name="inherit_id" ref="website.view_website_form" />
 			<field name="model">website</field>
 			<field name="arch" type="xml">
-				<xpath expr="//field[@name='domain']" position="after">
+				<xpath expr="//field[@name='default_lang_id']" position="after">
+					<br></br>
 					<field name="url_authenticated" />
+					<field name="pages_authenticated_by_page" />
 				</xpath>
 			</field>
 		</record>
-
 	</data>
 </odoo>
