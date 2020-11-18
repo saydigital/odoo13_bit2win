@@ -7,19 +7,18 @@ import werkzeug.utils
 class Website(models.Model):
     _inherit = "website"
     
-    url_authenticated = fields.Char('Page not auth')
-    pages_authenticated_by_page = fields.Boolean('Pages authenticated By Default', compute='_compute_visible')
-
-    def _compute_visible(self):
-        for page in self:
-            page.is_visible = page.website_published and (
-                not page.date_publish or page.date_publish < fields.Datetime.now()
-            )
+    url_authenticated = fields.Char('Page not authenticated users')
+    pages_authenticated_by_page = fields.Boolean('Pages authenticated Default')
             
 class Page(models.Model):
     _inherit = "website.page"
     
     authenticated_page = fields.Boolean('Authentication Page')
+        
+    @api.onchange('website_id')
+    @api.constrains('website_id')
+    def onchange_validate_order(self):
+        self.authenticated_page = self.website_id.pages_authenticated_by_page
 
 class Http(models.AbstractModel):
     _inherit = 'ir.http'
@@ -35,7 +34,8 @@ class Http(models.AbstractModel):
         if(page == False or request.session.uid != None 
              or request.httprequest.path == request.website.url_authenticated
              or request.httprequest.path == "/" 
-             or page_searched.authenticated_page == False):
+             or page_searched.authenticated_page == False
+             or request.website.url_authenticated == False):
             return page
         
         return werkzeug.utils.redirect(request.website.url_authenticated)
