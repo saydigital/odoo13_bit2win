@@ -26,6 +26,15 @@ class SaleSubscription(models.Model):
         action['res_id'] = wizard.id
         
         return action
+    
+    def _prepare_invoice_lines(self, fiscal_position):
+        self.ensure_one()
+        if self.date:
+            revenue_date_start = self.recurring_next_date
+            revenue_date_stop = self.date
+            return [(0, 0, self._prepare_invoice_line(line, fiscal_position, revenue_date_start, revenue_date_stop)) for line in self.recurring_invoice_line_ids]
+        else:
+            return super(SaleSubscription,self)._prepare_invoice_lines(fiscal_position)
 
 class AccountMove(models.Model):
     _inherit = "account.move"    
