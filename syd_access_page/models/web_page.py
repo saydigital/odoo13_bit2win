@@ -3,6 +3,7 @@
 from odoo import models, fields, api, _, SUPERUSER_ID
 from odoo.http import request
 import werkzeug.utils
+from email.policy import default
 
 class Website(models.Model):
     _inherit = "website"
@@ -14,11 +15,22 @@ class Page(models.Model):
     _inherit = "website.page"
     
     authenticated_page = fields.Boolean('Authentication Page')
-        
+    is_from_backend_editor = fields.Boolean('is_from_backend_editor 4', default=False)
+
+    #@api.multi  
+    def write(self,values):
+        super(Page,self).write(values)
+            
     @api.onchange('website_id')
-    @api.constrains('website_id')
     def onchange_validate_order(self):
         self.authenticated_page = self.website_id.pages_authenticated_by_page
+        self.is_from_backend_editor = True
+    
+    @api.constrains('view_id')
+    def constraint_validate_order(self):
+        if self.is_from_backend_editor == False:
+            self.authenticated_page = self.website_id.pages_authenticated_by_page
+
 
 class Http(models.AbstractModel):
     _inherit = 'ir.http'
