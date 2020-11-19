@@ -9,7 +9,7 @@
     'author': "Rapsodoo",
 
     'category': 'Uncategorized',
-    'version': '1.0',
+    'version': '2.0',
 
     'depends': ['base', 'website'],
 
