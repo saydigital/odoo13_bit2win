@@ -10,11 +10,12 @@
 
     'version': '0.1',
 
-    'depends': ['base', 'hr_contract'],
+    'depends': ['base', 'hr_contract', 'hr_payroll'],
 
     'data': [
         # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
+        'wizard/ticket_restaurant_manager_menu.xml'
     ]
 }
