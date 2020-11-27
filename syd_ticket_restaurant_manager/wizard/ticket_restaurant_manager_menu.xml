@@ -8,8 +8,8 @@
 				<div>
 					<group>
 						<field name="working_day" />
-						<field name="start_date" type="row"/>
-						<field name="end_date" type="row"/>
+						<field name="start_date_search" type="row"/>
+						<field name="end_date_search" type="row"/>
 					</group>
 				</div>
 				<button name="export" string="Export ticket restaurants" type="object" class="oe_highlight" />
