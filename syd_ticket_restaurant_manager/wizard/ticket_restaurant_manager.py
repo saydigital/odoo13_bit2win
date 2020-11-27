@@ -23,6 +23,8 @@ class ticketRestaurantManager(models.TransientModel):
     _description = "Add order lines to sales order"
     
     working_day = fields.Integer(string="Working day", required=True)
+    start_date = fields.Date('Start date')
+    end_date = fields.Date('End date')
 
     def export(self):
         filename = '{}{}{}'.format('export',datetime.datetime.now().strftime('_%Y-%m-%d_%H-%M-%S'),'.xlsx')
