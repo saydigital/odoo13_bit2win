@@ -11,6 +11,7 @@ import os
 from io import StringIO, BytesIO
 import time
 import datetime
+from datetime import datetime
 import logging
 from dateutil.parser import parse
 from odoo.exceptions import UserError
@@ -27,11 +28,11 @@ class ticketRestaurantManager(models.TransientModel):
     _description = "Add order lines to sales order"
     
     working_days = fields.Integer(string="Working days")
-    start_date_search = fields.Datetime('Start date', required=True)
-    end_date_search = fields.Datetime('End date', required=True)
+    start_date_search = fields.Date('Start date', required=True)
+    end_date_search = fields.Date('End date', required=True)
 
     def export(self):
-        filename = '{}{}{}'.format('export', datetime.datetime.now().strftime('_%Y-%m-%d_%H-%M-%S'), '.xlsx')
+        filename = '{}{}{}'.format('ticket_rest_export_', datetime.now().strftime('_%Y-%m-%d_%H-%M'), '.xlsx')
         path = os.path.join(tempfile.gettempdir(), filename)
         
         workbook = xlsxwriter.Workbook(path)
@@ -60,12 +61,8 @@ class ticketRestaurantManager(models.TransientModel):
     #Se ho almeno un confirm, error  
     
     def _generate_ticket_report(self, worksheet=False, order_sudo=False):
-        
-        # date_search > date_start (contract)
-        #            total_messages = self.env['mail.message'].search_count([('create_date', '>=',start), ('create_date', '<', end)])
 
         active_contracts = self._get_contracts_list()
-        # workdays_time = self.calculate_workdays()
 
         index = 3
         worksheet.set_column(0, 0, 30)
@@ -73,7 +70,6 @@ class ticketRestaurantManager(models.TransientModel):
         worksheet.set_column(0, 2, 30)
         
         worksheet.set_row(0, 20)
-        # worksheet.write(0, 0, "numero totale buoni pasto")  --> To Do 
         worksheet.write(0, 0, "From: " + self.start_date_search.strftime("%d/%m/%Y"))
         worksheet.write(0, 1, "To: " + self.end_date_search.strftime("%d/%m/%Y"))
         
@@ -117,7 +113,6 @@ class ticketRestaurantManager(models.TransientModel):
         if(leaves_to_approve.number_of_days > 0 ):
             raise ValidationError(_('Please, approve or refuse all the leaves requests'))
     
-            
         #aggiungere valide al controllo     
         leaves_number = self.env['hr.leave'].search([('state', '=', 'validate'), ('employee_id', '=', employee_id.id), ('date_from', '>=', self.start_date_search), ('date_to', '<=', self.end_date_search)])
         total_leaves_employee = 0   
@@ -133,4 +128,7 @@ class ticketRestaurantManager(models.TransientModel):
         if(self.working_days > 0):
             return self.working_days
         else:
-            return math.floor(contract_calendar.get_work_duration_data(self.start_date_search, self.end_date_search + timedelta(days=1))['days'])
+            datetime_start = datetime.combine(self.start_date_search, datetime.min.time())
+            datetime_end = datetime.combine(self.end_date_search, datetime.min.time())
+            
+            return math.floor(contract_calendar.get_work_duration_data(datetime_start, datetime_end + timedelta(days=1))['days'])
