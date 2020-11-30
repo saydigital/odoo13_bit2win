@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_syd_ticket_restaurant_manager_syd_ticket_restaurant_manager,syd_ticket_restaurant_manager.syd_ticket_restaurant_manager,model_syd_ticket_restaurant_manager_syd_ticket_restaurant_manager,base.group_user,1,1,1,1
