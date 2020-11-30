@@ -16,6 +16,6 @@
         # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
-        'wizard/ticket_restaurant_manager_menu.xml'
+        'wizard/ticket_restaurant_manager_menu_2.xml'
     ]
 }
