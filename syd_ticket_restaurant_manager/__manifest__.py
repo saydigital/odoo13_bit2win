@@ -8,7 +8,7 @@
 
     'author': "Rapsodoo",
 
-    'version': '1.0',
+    'version': '2.0',
 
     'depends': ['base', 'hr_contract', 'hr_payroll'],
 
@@ -16,6 +16,6 @@
         # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
-        'wizard/ticket_restaurant_manager_menu_2.xml'
+        'wizard/ticket_restaurant_manager_wizard.xml'
     ]
 }
