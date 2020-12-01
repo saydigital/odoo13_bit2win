@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-	<record model="ir.ui.view" id="wizard_export_">
+	<record model="ir.ui.view" id="ticket_restaurant_id">
 		<field name="name">wizard.ticket.restaurant.record</field>
 		<field name="model">wizard.ticket.restaurant</field>
 		<field name="arch" type="xml">
