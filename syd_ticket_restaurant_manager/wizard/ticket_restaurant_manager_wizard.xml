@@ -4,7 +4,6 @@
 		<field name="name">wizard.ticket.restaurant.record</field>
 		<field name="model">wizard.ticket.restaurant</field>
 		<field name="arch" type="xml">
-			<data>
 				<form string="Export Ticket Restaurant Report">
 					<div>
 						<group>
@@ -14,10 +13,9 @@
 						</group>
 					</div>
 					<button name="export" string="Export ticket restaurants" type="object" class="oe_highlight" />
+				
+					<footer></footer>
 				</form>
-
-				<footer />
-			</data>
 		</field>
 	</record>
 
