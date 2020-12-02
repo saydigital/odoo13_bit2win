@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record model="ir.ui.view" id="ticket_restaurant_ext">
+		<field name="name">wizard.ticket.restaurant.record</field>
+		<field name="model">wizard.ticket.restaurant</field>
+		<field name="arch" type="xml">
+				<form string="Export Ticket Restaurant Report">
+					<div>
+						<group>
+							<field name="working_days" />
+							<field name="start_date_search" type="row" />
+							<field name="end_date_search" type="row" />
+						</group>
+					</div>
+					<button name="export" string="Export ticket restaurants" type="object" class="oe_highlight" />
+				
+					<footer></footer>
+				</form>
+		</field>
+	</record>
+
+	<act_window id="launch_extract_ticket_restaurant" name="Extract ticket restaurant"
+		res_model="wizard.ticket.restaurant" view_mode="form" target="new" />
+
+	<menuitem id="menu_report_contract_employee_all_ext" name="Tickets Restaurant"
+		action="launch_extract_ticket_restaurant" parent="hr.hr_menu_hr_reports" sequence="2" />
+</odoo>

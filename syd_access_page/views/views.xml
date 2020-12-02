@@ -1,0 +1,38 @@
+<odoo>
+	<data>
+		<record id="syd_access_page_website_pages_tree_view" model="ir.ui.view">
+			<field name="name">syd_access_page.website_pages_tree_view</field>
+			<field name="inherit_id" ref="website.website_pages_tree_view" />
+			<field name="model">website.page</field>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='is_published']" position="after">
+					<field name="authenticated_page" string="Page Authenticated" />
+				</xpath>
+			</field>
+		</record>
+
+		<record id="syd_access_page_website_pages_form_view" model="ir.ui.view">
+			<field name="name">syd_access_page.website_pages_form_view</field>
+			<field name="inherit_id" ref="website.website_pages_form_view" />
+			<field name="model">website.page</field>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='is_published']" position="after">
+					<field name="authenticated_page" string="Page Authenticated" />
+				</xpath>
+			</field>
+		</record>
+
+		<record id="syd_access_page_auth" model="ir.ui.view">
+			<field name="name">syd_access_page.url_authenticated</field>
+			<field name="inherit_id" ref="website.view_website_form" />
+			<field name="model">website</field>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='default_lang_id']" position="after">
+					<br></br>
+					<field name="url_authenticated" />
+					<field name="pages_authenticated_by_page" />
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

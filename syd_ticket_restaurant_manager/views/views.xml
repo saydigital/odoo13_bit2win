@@ -1,0 +1,19 @@
+<odoo>
+	<data>
+		<record id="hr_contract_view_form_inherit" model="ir.ui.view">
+			<field name="name">res.partner.form.liste.fornitori.inheritance</field>
+			<field name="model">hr.contract</field>
+			<field name="priority">999</field>
+			<field name="inherit_id" ref="hr_contract.hr_contract_view_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//page[@name='information']" position="after">
+					<page name="benefits" string="Benefits">
+						<group>
+							<field name="has_daily_ticket_restaurant" />
+						</group>
+					</page>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>
