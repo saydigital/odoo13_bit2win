@@ -102,15 +102,15 @@ class ticketRestaurantManager(models.TransientModel):
             return "NO"
     
     def _get_contracts_list(self):
-        return self.env['hr.contract'].search([('date_start', '<=', self.start_date_search)]); 
+        return self.env['hr.contract'].search([('date_start', '<=', self.start_date_search)], order='employee_id asc') 
     
     def _calculate_employee_workdays(self, contract_calendar, employee_id):
         if(self.end_date_search == False):
             self.end_date_search = fields.Datetime.now()
             
-        leaves_to_approve = self.env['hr.leave'].search([('state', '=', 'confirm'), ('employee_id', '=', employee_id.id), ('date_from', '>=', self.start_date_search), ('date_to', '<=', self.end_date_search)])
+        leaves_to_approve = self.env['hr.leave'].search_count([('state', '=', 'confirm'), ('employee_id', '=', employee_id.id), ('date_from', '>=', self.start_date_search), ('date_to', '<=', self.end_date_search)])
 
-        if(leaves_to_approve.number_of_days > 0 ):
+        if(leaves_to_approve > 0 ):
             raise ValidationError(_('Please, approve or refuse all the leaves requests'))
     
         #aggiungere valide al controllo     
