@@ -1,2 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_consolidated_instance,consolidated.instance accountant,model_consolidated_instance,account.group_account_manager,1,1,1,1
