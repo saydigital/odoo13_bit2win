@@ -9,4 +9,4 @@ class ResPartnerBank(models.Model):
     swift_code_1 = fields.Char('Swift Code 1')
     swift_code_2 = fields.Char('Swift Code 2')
     iban = fields.Char('IBAN')
-    account_holder_name_iban = fields.Char('Account Holder Name')
+    account_name_custom = fields.Char('Account Name')
