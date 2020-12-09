@@ -10,6 +10,7 @@
 				<xpath expr="//field[@name='acc_holder_name']" position="after">
 					<field name ="swift_code_1"/>
 					<field name ="swift_code_2"/>
+					<field name ="iban" optional="hide"/>
 					<field name ="account_holder_name_iban"/>					
 				</xpath>
 			</field>
