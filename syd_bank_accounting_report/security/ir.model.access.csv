@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_syd_bank_accounting_report_syd_bank_accounting_report,syd_bank_accounting_report.syd_bank_accounting_report,model_syd_bank_accounting_report_syd_bank_accounting_report,base.group_user,1,1,1,1

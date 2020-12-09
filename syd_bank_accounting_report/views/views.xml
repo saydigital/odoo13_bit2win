@@ -1,0 +1,18 @@
+<odoo>
+	<data>
+		<record id="view_company_partner_bank_form_ext_3" model="ir.ui.view">
+			<field name="name">syd_bank_accounting_report.company.res.partner.bank.form</field>
+			<field name="inherit_id" ref="base.view_partner_bank_form" />
+			<field name="model">res.partner.bank</field>
+
+			<field name="priority">100</field>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='acc_holder_name']" position="after">
+					<field name ="swift_code_1"/>
+					<field name ="swift_code_2"/>
+					<field name ="account_holder_name_iban"/>					
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>
