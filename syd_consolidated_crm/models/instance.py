@@ -10,7 +10,27 @@ import xmlrpc.client
 
 class Instance(models.Model):
     _inherit = "consolidated.instance"
-     
+    
+    date_last_update_lead = fields.Datetime('Last Update Lead')
+    
+    
+    def align_all_lead_based_on_date(self):
+        external_company_id = self._get_external_company_id()
+        if not external_company_id:
+            raise ValidationError(_('Company hash error'))
+        if not self.date_last_update_lead:
+            raise ValidationError(_('You have to set a start date for crm update'))
+        leads = self.env['crm.lead'].search([('__last_update','>',self.date_last_update_lead), ('type','=','opportunity'),'|',('active','=',True),('active','=',False)])
+        for lead_id in leads:
+            if lead_id.external_id:
+                ids = self._get_lead(lead_id,external_company_id)
+                if ids:
+                    id = ids[0]
+                    self._update_lead(lead_id,id,external_company_id)
+            else:
+                self._create_lead(lead_id,external_company_id)
+        self.date_last_update_lead = fields.Datetime.now()
+        
     def align_lead_instance(self,lead_id):
         external_company_id = self._get_external_company_id()
         if not external_company_id:
@@ -47,7 +67,7 @@ class Instance(models.Model):
     def _prepare_lead_field(self,lead_id,external_company_id):
         vals = {
             'name' : lead_id.name,
-            
+            'active':lead_id.active,
             'probability': lead_id.probability,
             'date_deadline':lead_id.date_deadline,
             'partner_name':lead_id.partner_name,
@@ -57,7 +77,11 @@ class Instance(models.Model):
             'description':lead_id.description,
             'function':lead_id.function,
             'referred':lead_id.referred,
-            'user_name':lead_id.user_id.name
+            'user_name':lead_id.user_id.name,
+            'type':lead_id.type,
+            'competition':lead_id.competition,
+            'date':lead_id.date
+            
         }
         self._version()
         if self.external_version == "14.0":

@@ -25,7 +25,11 @@ class CrmLead(models.Model):
     
     instance_id = fields.Many2one('consolidated.instance',string="Instance",related="team_id.instance_id")
     user_name = fields.Char('User name',related="user_id.name",store=True)
-
+    final_customer_id = fields.Many2one('res.partner','Final Customer')
+    origin_partner_id = fields.Many2one('res.partner','Origin Contact')
+    competition = fields.Selection([('competition','Competition'),('tender','Tender'),('single_source','Single Source')],string="Competition")
+    date = fields.Date('Competence date',default=fields.Date.today())
+    
     def align_lead_instance(self):
         for a in self:
             a.instance_id.align_lead_instance(a)
