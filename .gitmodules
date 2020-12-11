@@ -2,3 +2,7 @@
 	path = odoo_FE
 	url = git@github.com:saydigital/odoo_FE.git
     branch = 13_bit2win
+[submodule "syd_consolidated"]
+	path = syd_consolidated
+	url = git@github.com:saydigital/syd_consolidated.git
+	branch = 13.0
