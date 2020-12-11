@@ -4,6 +4,19 @@
 Budgets
 -->
 	
+	 <record id="crm_instance_form" model="ir.ui.view">
+         <field name="name">consolidated.instance.form</field>
+        <field name="model">consolidated.instance</field>
+        <field name="inherit_id" ref="syd_consolidated_base.view_consolidated_instance_form"/>
+        
+            <field name="arch" type="xml">
+               <xpath expr="//field[@name='database']"
+                    position="after">
+                    <field name="date_last_update_lead"  />
+                    
+                </xpath>
+            </field>
+        </record>  
 	
 	 <record id="crm_stage_form" model="ir.ui.view">
          <field name="name">crm.stage.form</field>
@@ -29,6 +42,25 @@ Budgets
                 <xpath expr="//field[@name='company_id']" position="after">
                      <field name="instance_id"  />
                 </xpath>
+               
+            </field>
+        </record>
+        
+        <record id="crm_lead_form_view_in_crm" model="ir.ui.view">
+            <field name="name">crm.lead.form.inherit</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+	            <xpath expr="//field[@name='partner_id']" position="before">
+	            		<field name="date"  />
+	            </xpath>
+                <xpath expr="//field[@name='team_id']" position="after">
+                     <field name="final_customer_id"  />
+                     <field name="origin_partner_id"  />
+                     <field name="competition"  />
+                     <field name="user_name"  />
+                   </xpath>
+                
                
             </field>
         </record>
