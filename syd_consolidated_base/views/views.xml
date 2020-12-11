@@ -49,7 +49,7 @@ Budgets
 	               	 <field name="company_hash"/>
 		                <field name="url"/>
 		                <field name="username"/>
-		                <field name="password" widget="password"/>
+		                <field name="password" password="True"/>
 		                <field name="database"/>
 	               </group>
 	               
@@ -69,7 +69,7 @@ Budgets
 	<menuitem
         id="consolidated_menu_root"
         name="Consolidated"
-        web_icon="syd_consolidated_base,description/icon.png"
+        web_icon="syd_consolidated_base,static/description/icon.png"
         sequence="101"/>
 	
    <menuitem
@@ -84,7 +84,7 @@ Budgets
         parent="consolidated_menu_configuration"
         name="Instances"
         action="open_instance_form"
-        sequence="102"/>   
+        sequence="102" groups="base.group_system" />   
        
         
      

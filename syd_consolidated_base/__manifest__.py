@@ -4,6 +4,7 @@
 {
     'name': 'Consolidated Base: Entry Model',
     'category': 'Base',
+    'version': '13.0.0.1',
     'description': """
     Base module for consolidated data
 --------------------------------------------------------------
@@ -13,5 +14,4 @@
         'security/ir.model.access.csv',
         'views/views.xml'
     ]
-    
 }

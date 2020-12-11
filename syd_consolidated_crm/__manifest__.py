@@ -4,15 +4,14 @@
 {
     'name': 'Consolidated CRM',
     'category': 'Sales',
+    'version': '13.0.0.4',
     'description': """
 CRM lead centralized
 --------------------------------------------------------------
 """,
-    'depends': ['account','crm','syd_consolidated_base'],
+    'depends': ['account', 'crm', 'syd_consolidated_base'],
     'data': [
-        
         'views/crm.xml',
         'data/data.xml'
     ]
-    
 }
