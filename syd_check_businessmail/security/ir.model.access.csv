@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_syd_check_businessmail_syd_check_businessmail,syd_check_businessmail.syd_check_businessmail,model_syd_check_businessmail_syd_check_businessmail,base.group_user,1,1,1,1
