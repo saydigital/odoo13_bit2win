@@ -38,7 +38,7 @@ class Lead(models.Model):
         with open(complete_file_path) as file:
             black_list_domains = [line.rstrip() for line in file]        
         
-        if(email_address.split('@')[1].split(".")[0] in black_list_domains ):
+        if(email_address.split('@')[1] in black_list_domains ):
             return False
         else: 
             return True
