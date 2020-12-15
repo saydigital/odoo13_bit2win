@@ -1,4 +1,4 @@
 # -*- coding: utf-8 -*-
 
-from . import models
-#from . import log.txt
+from . import crm_models
+from . import mail_check_log
