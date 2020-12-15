@@ -25,13 +25,13 @@ class Lead(models.Model):
         if ('email_from' in vals):
             if(vals['email_from'] != False):
                 if(self._check_valid_mail(vals['email_from']) == False): 
-                    raise UserError("Plese, insert a corporate") 
+                    raise UserError("Plese, insert a corporate mail address") 
         
                 if(self._is_business_mail(vals['email_from']) == False): 
                     self.env["refused_email"].sudo().create({"domain_failed": self._get_mail_address_domain(vals['email_from'])})
                     self._cr.commit()
 
-                    raise UserError("Plese, insert a corporate mail") 
+                    raise UserError("Plese, insert a corporate mail address") 
         
         if ('email_cc' in vals):
             if(vals['email_cc'] != False):
