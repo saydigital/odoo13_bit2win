@@ -9,12 +9,14 @@ import os
 
 from odoo import http
 from odoo.http import request
+from odoo.addons.website_form.controllers.main import WebsiteForm
+
 
 class BusinessMailValidationMixin(models.AbstractModel):
     _name = "syd_check_businessmail.business_mail_validator_mixin"
     _description = 'Mixing for validate and check if email address is a business one'
     
-    def check_mails(self, vals):
+    def _check_mails(self, vals):
         #Have to activate the from the sales team page    
         if(self.env['crm.team'].search([('id','=', vals['team_id'])]).mail_control_active == False): 
             return True
@@ -70,6 +72,7 @@ class CrmTeam(models.Model):
     
     mail_control_active = fields.Boolean('Email control active')
 
+
 class Lead(models.Model):
     _name = "crm.lead"
     _inherit = ["crm.lead", "syd_check_businessmail.business_mail_validator_mixin"]
@@ -78,6 +81,6 @@ class Lead(models.Model):
     def create(self, vals):
         
         #check_mails return True if mails are valid but throw and exception if they don't
-        self.check_mails(vals)
+        self._check_mails(vals)
         
         return super(Lead, self).create(vals)
