@@ -7,26 +7,23 @@ import inspect
 import re
 import os
 
-class CrmTeam(models.Model):
-    _inherit = "crm.team"
-    
-    mail_control_active = fields.Boolean('Email control active')
+from odoo import http
+from odoo.http import request
 
-class Lead(models.Model):
-    _inherit = 'crm.lead'
+class BusinessMailValidationMixin(models.AbstractModel):
+    _name = "syd_check_businessmail.business_mail_validator_mixin"
+    _description = 'Mixing for validate and check if email address is a business one'
     
-    @api.model
-    def create(self, vals):
-
+    def check_mails(self, vals):
         #Have to activate the from the sales team page    
         if(self.env['crm.team'].search([('id','=', vals['team_id'])]).mail_control_active == False): 
-            return super(Lead, self).create(vals)
+            return True
         
         if ('email_from' in vals):
             if(vals['email_from'] != False):
                 if(self._check_valid_mail(vals['email_from']) == False): 
                     raise UserError("Plese, insert a corporate mail address") 
-        
+
                 if(self._is_business_mail(vals['email_from']) == False): 
                     self.env["refused_email"].sudo().create({"domain_failed": self._get_mail_address_domain(vals['email_from'])})
                     self._cr.commit()
@@ -44,10 +41,7 @@ class Lead(models.Model):
                     
                     raise UserError("Plese, insert a corporate mail in cc field")     
         
-        
         self.env["refused_email"].write({"domain_failed": "testdavide"})
-
-        return super(Lead, self).create(vals)
 
     def _is_business_mail(self, email_address):
   
@@ -70,3 +64,20 @@ class Lead(models.Model):
         
     def _get_mail_address_domain(self, email_address):
         return email_address.split('@')[1]
+
+class CrmTeam(models.Model):
+    _inherit = "crm.team"
+    
+    mail_control_active = fields.Boolean('Email control active')
+
+class Lead(models.Model):
+    _name = "crm.lead"
+    _inherit = ["crm.lead", "syd_check_businessmail.business_mail_validator_mixin"]
+
+    @api.model
+    def create(self, vals):
+        
+        #check_mails return True if mails are valid but throw and exception if they don't
+        self.check_mails(vals)
+        
+        return super(Lead, self).create(vals)
