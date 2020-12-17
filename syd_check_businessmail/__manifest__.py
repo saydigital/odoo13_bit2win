@@ -5,7 +5,7 @@
     'author': "Rapsodoo",
 
     'category': 'Uncategorized',
-    'version': '2.0',
+    'version': '3.0',
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'sales_team', 'crm'],
@@ -14,5 +14,8 @@
     'data': [
         'views/views.xml',
         'views/templates.xml',
+        'views/mail_black_list_views.xml', 
+        'security/ir.model.access.csv'
+
     ]
 }

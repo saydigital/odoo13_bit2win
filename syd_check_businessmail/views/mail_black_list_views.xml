@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<odoo>
+	<data>
+<!-- 		<record model="ir.ui.view" id="syd_check_businessmail_list"> -->
+<!-- 			<field name="model">syd_check_businessmail.refused_email</field> -->
+<!-- 			<field name="arch" type="xml"> -->
+<!-- 				<tree string="Email not in corp List"> -->
+<!-- 					<field name="date_attempt" /> -->
+<!-- 					<field name="domain_failed" /> -->
+<!-- 				</tree> -->
+<!-- 			</field> -->
+<!-- 		</record> -->
+
+		<act_window name="Email no corp List" 
+					res_model="syd_check_businessmail.refused_email"
+			        id="action_view_mailblacklisted_value" />
+
+		<menuitem id="id_menu_mail_blacklisted" 
+				   name="Email no corp List" 
+				   parent="base.menu_email"
+				   action="action_view_mailblacklisted_value" />
+
+	</data>
+</odoo>
