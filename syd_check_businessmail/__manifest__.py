@@ -5,7 +5,7 @@
     'author': "Rapsodoo",
 
     'category': 'Uncategorized',
-    'version': '3.0',
+    'version': '3.1',
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'sales_team', 'crm'],
