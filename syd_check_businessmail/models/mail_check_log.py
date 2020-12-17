@@ -9,7 +9,7 @@ import os
 
 
 class MailCheckLog(models.Model):
-    _name = "refused_email"
+    _name = "syd_check_businessmail.refused_email"
     
-    date_attempt = fields.Datetime('Date Insert Domain',default=fields.Datetime.now)
+    date_attempt = fields.Datetime('Date Insert Domain', default=fields.Datetime.now)
     domain_failed = fields.Char('Domain refused')

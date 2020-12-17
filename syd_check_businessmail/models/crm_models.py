@@ -48,7 +48,7 @@ class Lead(models.Model):
                     raise ValidationError("Please, insert a valid corporate mail address") 
 
                 if(self._is_business_mail(vals['email_from']) == False): 
-                    self.env["refused_email"].sudo().create({"domain_failed": self._get_mail_address_domain(vals['email_from'])})
+                    self.env["syd_check_businessmail.refused_email"].sudo().create({"domain_failed": self._get_mail_address_domain(vals['email_from'])})
                     self._cr.commit()
 
                     raise ValidationError("Please, insert a valid corporate mail address") 
@@ -59,7 +59,7 @@ class Lead(models.Model):
                     raise ValidationError("Please, insert a valid corporate mail address") 
         
                 if(self._is_business_mail(vals['email_cc']) == False): 
-                    self.env["refused_email"].sudo().create({"domain_failed": self._get_mail_address_domain(vals['email_cc'])})
+                    self.env["syd_check_businessmail.refused_email"].sudo().create({"domain_failed": self._get_mail_address_domain(vals['email_cc'])})
                     self._cr.commit()
                     
                     raise ValidationError("Please, insert a valid corporate mail address") 
