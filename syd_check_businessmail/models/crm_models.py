@@ -12,13 +12,6 @@ from odoo.http import request
 from odoo.addons.website_form.controllers.main import WebsiteForm
 from odoo.modules.module import get_module_resource
 
-#This email control class is also in the controller with some small difference. 
-#TO-DO: Refactor code for a unique class
-#class BusinessMailValidationMixin(models.AbstractModel):
-#    _name = "syd_check_businessmail.business_mail_validator_mixin"
-#    _description = 'Mixing for validate and check if email address is a business one'
-    
-    
 class CrmTeam(models.Model):
     _inherit = "crm.team"
     
@@ -32,8 +25,10 @@ class Lead(models.Model):
     @api.model
     def create(self, vals):
         
-        if(request.is_frontend == False):
-            self._check_mails(vals)
+        #In theory we no longer need backend control for Leads. 
+        #But I leave commented because..you never know :)
+        #if(request.is_frontend == False):
+        #    self._check_mails(vals)
         
         return super(Lead, self).create(vals)
     
