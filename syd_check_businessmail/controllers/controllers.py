@@ -39,8 +39,8 @@ class WebsiteForm(WebsiteForm):
                     raise ValidationError({"email_from": "Please, insert a valid corporate mail address"}) 
 
                 if(self._is_business_mail(vals['email_from']) == False): 
-                    self.env["syd_check_businessmail.refused_email"].sudo().create({"domain_failed": self._get_mail_address_domain(vals['email_from'])})
-                    self._cr.commit()
+                    request.env["syd_check_businessmail.refused_email"].sudo().create({"domain_failed": self._get_mail_address_domain(vals['email_from'])})
+                    request._cr.commit()
                     raise ValidationError({"email_from": "Please, insert a valid corporate mail address"}) 
         
         if ('email_cc' in vals):
@@ -49,8 +49,8 @@ class WebsiteForm(WebsiteForm):
                     raise ValidationError({"email_from": "Please, insert a valid corporate mail address in cc"}) 
         
                 if(self._is_business_mail(vals['email_cc']) == False): 
-                    self.env["syd_check_businessmail.refused_email"].sudo().create({"domain_failed": self._get_mail_address_domain(vals['email_cc'])})
-                    self._cr.commit()
+                    request.env["syd_check_businessmail.refused_email"].sudo().create({"domain_failed": self._get_mail_address_domain(vals['email_cc'])})
+                    request._cr.commit()
                     
                     raise ValidationError({"email_from": "Please, insert a valid corporate mail address in cc"}) 
         
