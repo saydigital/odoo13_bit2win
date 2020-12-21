@@ -1,0 +1,18 @@
+<odoo>
+	<data>
+		<record id="crm_team_view_form_extend" model="ir.ui.view">
+			<field name="name">crm.team.form.extend</field>
+			<field name="model">crm.team</field>
+			<field name="inherit_id" ref="sales_team.crm_team_view_form" />
+			<field name="arch" type="xml">
+                <xpath expr="//page[@name='members']" position="after">
+                	<page name="other" string="Other" >
+                		<group>
+							<field name="mail_control_active" />
+						</group>
+                	</page>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>
