@@ -25,11 +25,11 @@ class WebsiteForm(WebsiteForm):
         
     def _check_mails(self, vals):
         #Have to activate the from the sales team page 
-        if(len(request.env['crm.team']) == 0):
-            return True
+        #if(len(request.env['crm.team']) == 0):
+        #    return True
            
-        if(request.env['crm.team'].search([('id','=', vals['team_id'])]).mail_control_active == False): 
-            return True
+        #if(request.env['crm.team'].search([('id','=', vals['team_id'])]).mail_control_active == False): 
+        #    return True
         
         #if(request.env['crm.team'].search([('id','=', request.params['team_id'])]).mail_control_active)
         

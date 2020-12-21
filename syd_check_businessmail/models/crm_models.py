@@ -34,8 +34,11 @@ class Lead(models.Model):
     
     def _check_mails(self, vals):
         
-        if(self.env['crm.team'].search([('id','=', vals['team_id'])]).mail_control_active == False): 
-            return True
+        #if(len(self.env['crm.team']) == 0):
+        #    return True
+        
+        #if(self.env['crm.team'].search([('id','=', vals['team_id'])]).mail_control_active == False): 
+        #    return True
         
         if ('email_from' in vals):
             if(vals['email_from'] != False):
