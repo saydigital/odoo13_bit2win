@@ -112,7 +112,10 @@ class ticketRestaurantManager(models.TransientModel):
             actual_date_end = fields.Datetime.now()
         
         #This control are because we can have contracts that start/end in the middle of the month
-        if(actual_date_end > self.end_date_search):
+        if(actual_date_end == False):
+            actual_date_end = self.end_date_search
+            
+        elif(actual_date_end > self.end_date_search):
             actual_date_end = self.end_date_search
             
         if(actual_date_start < self.start_date_search):
