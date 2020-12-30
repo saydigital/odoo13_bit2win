@@ -8,7 +8,7 @@
 
     'author': "Rapsodoo",
 
-    'version': '4.1',
+    'version': '4.2',
 
     'depends': ['base', 'hr_contract', 'hr_payroll'],
 
