@@ -19,9 +19,9 @@
 		</field>
 	</record>
 
-	<act_window id="launch_extract_ticket_restaurant" name="Extract ticket restaurant"
+	<act_window id="launch_extract_ticket_restaurant" name="Extract ticket restaurant" groups="hr_contract.group_hr_contract_manager"
 		res_model="wizard.ticket.restaurant" view_mode="form" target="new" />
 
-	<menuitem id="menu_report_contract_employee_all_ext" name="Tickets Restaurant"
+	<menuitem id="menu_report_contract_employee_all_ext" name="Tickets Restaurant" groups="hr_contract.group_hr_contract_manager"
 		action="launch_extract_ticket_restaurant" parent="hr.hr_menu_hr_reports" sequence="2" />
 </odoo>
