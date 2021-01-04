@@ -22,6 +22,9 @@ class WebsiteSlides(WebsiteProfile):
         #PATCH FOR SLIDES
         base_url = request.env['ir.config_parameter'].sudo().get_param('web.base.url.slides.module')
         
+        if(base_url == False or base_url == None): 
+            base_url = request.env['ir.config_parameter'].sudo().get_param('web.base.url')
+        
         is_embedded = referrer_url and not bool(base_url in referrer_url) or False
         # try accessing slide, and display to corresponding template
         try:
