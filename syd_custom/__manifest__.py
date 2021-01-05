@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': "Custom B2W",
-    'version': '0.1.10',
+    'version': '0.1.12',
     'license': 'Other proprietary',
     'summary': """Helpdesk Extended
     """,
@@ -17,6 +17,7 @@
                 'syd_environment_sla',
                 'syd_helpdesk_contract',
                 'website', 
+                'website_slides', 
                 'rating'
                 ],
     'data':[
