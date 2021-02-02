@@ -6,3 +6,7 @@
 	path = syd_consolidated
 	url = git@github.com:saydigital/syd_consolidated.git
 	branch = 13.0
+[submodule "syd_payroll"]
+	path = syd_payroll
+	url = git@github.com:saydigital/syd_payroll.git
+	branch = 13.0
