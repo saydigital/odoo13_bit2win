@@ -1,17 +1,16 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "syd_subscription_custom",
+    'name': "Subscription custom",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        Subscription custom""",
 
     'description': """
-        Long description of module's purpose
+        Subscription custom
     """,
 
-    'author': "My Company",
-    'website': "http://www.yourcompany.com",
+    'author': "Rapsodoo Italia",
+    'website': "http://www.rapsodoo.it",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/10.0/odoo/addons/base/module/module_data.xml
