@@ -4,6 +4,7 @@ from odoo import models, fields, api, _, SUPERUSER_ID
 from odoo.http import request
 import werkzeug.utils
 from email.policy import default
+from werkzeug import urls
 
 class Survey(models.Model):
     _inherit = "survey.survey"
