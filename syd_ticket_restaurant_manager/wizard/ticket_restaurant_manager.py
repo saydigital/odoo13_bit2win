@@ -63,7 +63,7 @@ class ticketRestaurantManager(models.TransientModel):
     def _generate_ticket_report(self, worksheet=False, order_sudo=False):
 
         employees_contracts = self._get_contracts_list()
-
+            
         index = 3
         worksheet.set_column(0, 0, 30)
         worksheet.set_column(0, 1, 30)
@@ -95,6 +95,8 @@ class ticketRestaurantManager(models.TransientModel):
        
         return worksheet
     
+
+
     def _has_ticket_restaurant(self, hr_contract):
         if(hr_contract.has_daily_ticket_restaurant):
             return "YES"
@@ -102,7 +104,8 @@ class ticketRestaurantManager(models.TransientModel):
             return "NO"
     
     def _get_contracts_list(self):
-        return self.env['hr.contract'].search(['|',('date_end','>=',self.start_date_search),('date_end','=', None)],order='employee_id asc') 
+        domain = [('date_start','<',self.end_date_search),'|',('date_end','>=',self.start_date_search),('date_end','=', None)]
+        return self.env['hr.contract'].search(domain,order='employee_id asc')
     
     def _calculate_employee_workdays(self, contract_calendar, hr_contract):
         actual_date_end = hr_contract.date_end
