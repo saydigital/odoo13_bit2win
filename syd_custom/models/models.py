@@ -5,6 +5,14 @@ from odoo.exceptions import UserError, ValidationError
 
 TICKET_FIELDS = ['partner_created_id', 'environment_id_desc', 'name', 'release_id', 'reported_by', 'access_granted', 'level', 'environment_id', 'description', 'contract_id', 'partner_id', 'partner_created_id', 'user_who_found', 'impact', 'ticket_type_id', 'priority', 'granted_user', 'module', 'package','team_id']
 
+
+class Lead(models.Model):
+    _name = "crm.lead"
+    _inherit = ["crm.lead"]
+    
+    term_conditions = fields.Boolean('Terms And Contitions', default=False)
+    newsletter = fields.Boolean('Terms And Contitions', default=False)
+
 class ResPartner(models.Model):
     _inherit = "res.partner"
     
