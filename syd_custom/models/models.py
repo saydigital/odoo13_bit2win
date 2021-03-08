@@ -11,7 +11,7 @@ class Lead(models.Model):
     _inherit = ["crm.lead"]
     
     term_conditions = fields.Boolean('Terms And Contitions', default=False)
-    newsletter = fields.Boolean('Terms And Contitions', default=False)
+    newsletter = fields.Boolean('Newletter', default=False)
 
 class ResPartner(models.Model):
     _inherit = "res.partner"
