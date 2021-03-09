@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<odoo>
+    
+    <template id="assets_frontend" inherit_id="web_editor.assets_frontend" name="fix text" priority="15">
+        <xpath expr="//script[last()]" position="after">
+            
+            <link rel="stylesheet" href="/syd_custom/static/src/css/fix_text_colors_frontend.css"/>
+        </xpath>
+    </template>
+
+    <template id="assets_backend" inherit_id="web.assets_backend" name="assets">
+        <xpath expr="//link[last()]" position="after">
+        	<link rel="stylesheet" href="/syd_custom/static/src/css/fix_text_colors_frontend.css"/>
+        </xpath>
+    </template> 
+        
+</odoo>
