@@ -29,7 +29,7 @@
         'views/snippet.xml',
         'views/rating_template.xml',
         'views/helpdesk_portal_templates.xml',
-        'views/fix_text_colors_frontend.xml',
+        'views/fix_css.xml',
         'security/ir.model.access.csv'
     ],
     'installable' : True,
