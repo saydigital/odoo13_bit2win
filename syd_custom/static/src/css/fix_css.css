@@ -11,11 +11,10 @@
 	color: #000;
 }
 
-/*
-a{
-	color:white
-} */
-
 .btn.rounded-circle{
 	box-shadow: none !important;
+}
+
+a[href$='slides/all']{
+	color: white;
 }
