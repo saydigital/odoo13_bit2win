@@ -1,0 +1,20 @@
+
+/* File to fix the colors of the texts in the front end*/
+
+/* This fix the color of the text in the popup, because it is set to white as default*/
+.popover-body{
+	color: black;
+}
+
+/* This fix the color of the text in the table, because it is set to white as default*/
+.table{
+	color: #000;
+}
+
+a{
+	color:white
+}
+
+.btn.rounded-circle{
+	box-shadow: none !important;
+}
