@@ -1,7 +1,3 @@
-[submodule "odoo_FE"]
-	path = odoo_FE
-	url = git@github.com:saydigital/odoo_FE.git
-	branch = 13.0
 [submodule "syd_consolidated"]
 	path = syd_consolidated
 	url = git@github.com:saydigital/syd_consolidated.git
