@@ -10,3 +10,7 @@
 	path = syd_payroll
 	url = git@github.com:saydigital/syd_payroll.git
 	branch = 13.0
+[submodule "odoo-accounting"]
+	path = odoo-accounting
+	url = git@github.com:saydigital/odoo-accounting.git
+	branch = 13.0
