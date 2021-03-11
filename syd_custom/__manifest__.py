@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': "Custom B2W",
-    'version': '0.1.17',
+    'version': '0.1.18',
     'license': 'Other proprietary',
     'summary': """Helpdesk Extended
     """,
@@ -29,7 +29,6 @@
         'views/snippet.xml',
         'views/rating_template.xml',
         'views/helpdesk_portal_templates.xml',
-        'views/fix_css.xml',
         'security/ir.model.access.csv'
     ],
     'installable' : True,
