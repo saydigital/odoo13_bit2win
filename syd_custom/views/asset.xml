@@ -6,6 +6,7 @@
             <script type="text/javascript" src="/syd_custom/static/src/js/new_ticket.js"></script>
             
             <link rel="stylesheet" href="/syd_custom/static/src/css/snippet.css"/>
+            <link rel="stylesheet" href="/syd_custom/static/src/css/fix_css.css"/>
         </xpath>
     </template>
     
