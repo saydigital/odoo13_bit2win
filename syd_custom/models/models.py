@@ -9,7 +9,7 @@ TICKET_FIELDS = ['partner_created_id', 'environment_id_desc', 'name', 'release_i
 class Project(models.Model):
     _inherit = 'project.project'
     
-    sale_order_id = fields.Many2one('sale.order', 'Sales Order', domain="[('partner_id', '=', partner_id)]", copy=False, help="Sales order to which the project is linked.")
+    sale_order_id = fields.Many2one('sale.order', 'Sales Order', readonly = False, domain="[('partner_id', '=', partner_id)]", copy=False, help="Sales order to which the project is linked.")
 
 
 class Lead(models.Model):
