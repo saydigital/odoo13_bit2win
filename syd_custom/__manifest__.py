@@ -19,7 +19,7 @@
                 'website', 
                 'website_slides', 
                 'rating',
-                'sale_project'
+                'sale_timesheet'
                 ],
     'data':[
         'data/data.xml',
