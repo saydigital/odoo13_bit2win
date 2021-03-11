@@ -21,3 +21,23 @@ a[href$='slides/all']{
 
 [title$='Share']{display: none !important;}
 [title$='Share Channel']{display: none !important;}
+
+.d-flex.flex-grow-1.my-0{
+	text-shadow:0 0 black;
+}
+
+p.text-muted{
+	color: white !important
+}
+
+.o_my_sidebar{
+	color: black
+}
+
+div.o_portal_my_home{
+	color: black
+}
+
+div.row.o_portal_details{
+	color: black
+}
