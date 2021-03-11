@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-	<template id="syd_custom_website_learning" name="Website learning" inherit_id="website_slides.course_sidebar">
-		<xpath expr="//button[hasclass('btn-block')]" position="replace">
-			<button role="button" class="btn btn-link btn-block" style="display:none" title="Share Channel"
-				aria-label="Share Channel" data-toggle="modal" data-target="#slideChannelShareModal">
-				<i class="fa fa-share-square fa-fw" />
-				Share
-			</button>
-		</xpath>
-	</template>
+<!-- 	<template id="syd_custom_website_learning" name="Website learning" inherit_id="website_slides.course_sidebar"> -->
+<!-- 		<xpath expr="//button[hasclass('btn-block')]" position="replace"> -->
+<!-- 			<button role="button" class="btn btn-link btn-block" style="display:none" title="Share Channel" -->
+<!-- 				aria-label="Share Channel" data-toggle="modal" data-target="#slideChannelShareModal"> -->
+<!-- 				<i class="fa fa-share-square fa-fw" /> -->
+<!-- 				Share -->
+<!-- 			</button> -->
+<!-- 		</xpath> -->
+<!-- 	</template> -->
 
 	<!-- <template id="syd_custom_slide_content_detailed" name="Website learning" -->
 	<!-- inherit_id="website_slides.slide_content_detailed"> -->
