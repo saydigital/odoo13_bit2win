@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="syd_custom_website_learning" name="Website learning" inherit_id="website_slides.course_sidebar">
+		<xpath expr="//button[hasclass('btn-block')]" position="replace">
+			<button role="button" class="btn btn-link btn-block" style="display:none" title="Share Channel"
+				aria-label="Share Channel" data-toggle="modal" data-target="#slideChannelShareModal">
+				<i class="fa fa-share-square fa-fw" />
+				Share
+			</button>
+		</xpath>
+	</template>
+
+	<!-- <template id="syd_custom_slide_content_detailed" name="Website learning" -->
+	<!-- inherit_id="website_slides.slide_content_detailed"> -->
+	<!-- <xpath expr="//a[@href='#share']" position="replace"> -->
+	<!-- <a href="#share" style="display:none" aria-controls="share" class="nav-link" role="tab" data-toggle="tab"> -->
+	<!-- <i class="fa fa-share-alt"></i> -->
+	<!-- Share -->
+	<!-- </a> -->
+
+	<!-- </xpath> -->
+	<!-- </template> -->
+
+	<template id="syd_slide_aside_training" name="Website learning" inherit_id="website_slides.slide_aside_card">
+
+		<xpath expr="//div[hasclass('overflow-hidden','d-flex','flex-column','justify-content-start')]"
+			position="replace">
+			<!-- <h1 t-esc="aside_slide.name" class="o_wslides_desc_truncate_2 mb-1" style="line-height: 1.15" /> -->
+			<t t-esc="aside_slide.name"></t>
+			<small class="text-600">
+				<t t-esc="aside_slide.total_views" />
+				Views &#8226;
+				<timeago class="timeago" t-att-datetime="aside_slide.create_date"></timeago>
+			</small>
+		</xpath>
+
+	</template>
+
+
+
+
+
+	<template id="syd_custom_slide_content_detailed_2" name="Website learning"
+		inherit_id="website_slides.slide_content_detailed">
+		<xpath expr="//ul[hasclass('nav', 'nav-tabs', 'o_wslides_lesson_nav')]" position="replace">
+			<ul class="nav nav-tabs o_wslides_lesson_nav" role="tablist">
+				<li class="nav-item">
+					<a href="#about" aria-controls="about" class="nav-link active" role="tab" data-toggle="tab">
+						<i class="fa fa-home"></i>
+						About
+					</a>
+				</li>
+				<li t-if="slide.channel_id.allow_comment" class="nav-item">
+					<a href="#discuss" aria-controls="discuss" class="nav-link" role="tab" data-toggle="tab">
+						<i class="fa fa-comments-o"></i>
+						Comments (
+						<span t-esc="slide.comments_count" />
+						)
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="#statistic" aria-controls="statistic" class="nav-link" role="tab" data-toggle="tab">
+						<i class="fa fa-bar-chart"></i>
+						Statistics
+					</a>
+				</li>
+			</ul>
+		</xpath>
+	</template>
+</odoo>
