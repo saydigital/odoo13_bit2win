@@ -18,7 +18,8 @@
                 'syd_helpdesk_contract',
                 'website', 
                 'website_slides', 
-                'rating'
+                'rating',
+                'sale_timesheet'
                 ],
     'data':[
         'data/data.xml',

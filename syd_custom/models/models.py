@@ -6,6 +6,12 @@ from odoo.exceptions import UserError, ValidationError
 TICKET_FIELDS = ['partner_created_id', 'environment_id_desc', 'name', 'release_id', 'reported_by', 'access_granted', 'level', 'environment_id', 'description', 'contract_id', 'partner_id', 'partner_created_id', 'user_who_found', 'impact', 'ticket_type_id', 'priority', 'granted_user', 'module', 'package','team_id']
 
 
+class Project(models.Model):
+    _inherit = 'project.project'
+    
+    sale_order_id = fields.Many2one('sale.order', 'Sales Order', readonly = False, domain="[('partner_id', '=', partner_id)]", copy=False, help="Sales order to which the project is linked.")
+
+
 class Lead(models.Model):
     _name = "crm.lead"
     _inherit = ["crm.lead"]
