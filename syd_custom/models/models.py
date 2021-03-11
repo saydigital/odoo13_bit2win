@@ -12,6 +12,13 @@ class Project(models.Model):
     sale_order_id = fields.Many2one('sale.order', 'Sales Order', readonly = False, domain="[('partner_id', '=', partner_id)]", copy=False, help="Sales order to which the project is linked.")
 
 
+class Users(models.Model):
+    _inherit = "res.users"
+    
+    term_conditions = fields.Boolean('Terms And Contitions', default=False)
+    newsletter = fields.Boolean('Newletter', default=False)
+    
+    
 class Lead(models.Model):
     _name = "crm.lead"
     _inherit = ["crm.lead"]
