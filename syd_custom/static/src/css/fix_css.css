@@ -19,7 +19,7 @@ a[href$='slides/all']{
 	color: white;
 }
 
-[title$='Share']{display: none !important;}
+/*[title$='Share']{display: none !important;}*/
 [title$='Share Channel']{display: none !important;}
 
 .d-flex.flex-grow-1.my-0{
@@ -41,3 +41,19 @@ div.o_portal_my_home{
 div.row.o_portal_details{
 	color: black
 }
+
+[title$='Share']{
+	pointer-events: none;
+	cursor: default;
+	background-color: transparent !important;
+    color: transparent !important; 
+	}
+
+i.fa.fa-share-alt{
+	display: none; 
+}	
+
+
+
+
+   
