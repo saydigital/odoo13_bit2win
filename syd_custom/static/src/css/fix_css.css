@@ -1,5 +1,5 @@
 
-/* File to fix the colors of the texts in the front end*/
+/* File to fix css in the front end*/
 
 /* This fix the color of the text in the popup, because it is set to white as default*/
 .popover-body{
@@ -53,6 +53,15 @@ i.fa.fa-share-alt{
 	display: none; 
 }	
 
+/* This fix the color of the text in my/account page*/
+#wrapwrap .form-control{
+	color:black
+}
+
+/* This fix the color of the link in /slides */
+a[href^='/profile/user']{
+	color: white;
+}
 
 
 
