@@ -12,11 +12,10 @@
 	box-shadow: none !important;
 }
 
-a[href$='slides/all']{
+a[href~='slides/all']{
 	color: white;
 }
 
-/*[title$='Share']{display: none !important;}*/
 [title$='Share Channel']{display: none !important;}
 
 .d-flex.flex-grow-1.my-0{
@@ -60,6 +59,35 @@ a[href^='/profile/user']{
 	color: white;
 }
 
+/* Ugly hack for the front end theme for 'my profile'. Don't try this at home please */
+input[data-oe-xpath='/t[1]/t[1]/form[1]/div[1]/div[1]/div[1]/div[2]/input[1]'][name='name']    {
+	color: black !important; 
+}
+input[data-oe-xpath='/t[1]/t[1]/form[1]/div[1]/div[1]/div[1]/div[3]/input[1]'][name='email']    {
+	color: black !important; 
+}
+input[data-oe-xpath='/t[1]/t[1]/form[1]/div[1]/div[1]/div[1]/div[5]/input[1]'][name='company_name']    {
+	color: black !important; 
+}
+input[data-oe-xpath='/t[1]/t[1]/form[1]/div[1]/div[1]/div[1]/div[6]/input[1]'][name='vat']    {
+	color: black !important; 
+}
+input[data-oe-xpath='/t[1]/t[1]/form[1]/div[1]/div[1]/div[1]/div[7]/input[1]'][name='phone']    {
+	color: black !important; 
+}
+input[data-oe-xpath='/t[1]/t[1]/form[1]/div[1]/div[1]/div[1]/div[11]/input[1]'][name='zipcode']    {
+	color: black !important; 
+}
+input[data-oe-xpath='/t[1]/t[1]/form[1]/div[1]/div[1]/div[1]/div[9]/input[1]'][name='street']    {
+	color: black !important; 
+}
+input[data-oe-xpath='/t[1]/t[1]/form[1]/div[1]/div[1]/div[1]/div[10]/input[1]'][name='city']    {
+	color: black !important; 
+}
+div[class='form-group  col-xl-6'] > select[name='country_id'] {
+	color: black !important;
+}
 
-
-   
+div[class="row o_wslides_home_content_section_title align-items-center"] > div[class='col'] > a{
+	color: white; 
+}
