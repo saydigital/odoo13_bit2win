@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+<!-- 	<template id="syd_lesson_card" name="Website lesson card" inherit_id="website_slides.lesson_card"> -->
+<!-- 		<xpath expr="//t[@t-set='can_access']" position="replace"> -->
+<!-- 			 <t t-set="can_access" t-value="slide.is_preview or channel.is_member or channel.can_publish"/> -->
+<!-- 		</xpath> -->
+<!-- 	</template> -->
+
+
 	<template id="syd_slide_aside_training" name="Website learning" inherit_id="website_slides.slide_aside_card">
 		<xpath expr="//div[hasclass('overflow-hidden','d-flex','flex-column','justify-content-start')]"
 			position="replace">
